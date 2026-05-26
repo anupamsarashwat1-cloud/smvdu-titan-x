@@ -8,7 +8,7 @@ This document contains the structural block diagrams for the SMVDU-TITAN-X Phase
 
 Below is the verified microarchitecture block diagram of the SMVDU-TITAN-X Phase 1 RISC-V SoC:
 
-![SMVDU-TITAN-X Phase 1 SoC Architecture Overview](/home/anupam-sarashwat/.gemini/antigravity/brain/53f4159a-d33d-4b64-9c03-0330955d9c11/titan_x_phase1_architecture_1779815029931.png)
+![SMVDU-TITAN-X Phase 1 SoC Architecture Overview](titan_x_phase1_architecture.png)
 
 ---
 

@@ -1,52 +1,32 @@
-## Description
+## 🚀 Pull Request Template
 
-Provide a clear and concise description of the changes introduced in this pull request. Explain the hardware reasoning or design choices if applicable (e.g., pipeline changes, control path logic, timing constraints).
+### Description
+Provide a comprehensive description of the architectural modifications, RTL modules, or software enhancements integrated by this PR. 
 
----
-
-## Type of Change
-
-*Please tick the options that are relevant to this PR:*
-
-- [ ] 🔴 **RTL Bug Fix**: Corrections to existing design logic (Verilog/Chisel).
-- [ ] 🚀 **RTL Feature / Core IP**: Addition of new hardware blocks, peripherals, or accelerators.
-- [ ] 🧪 **Verification / Simulation**: Updates or additions to Cocotb, Verilator harnesses, or compliance suites.
-- [ ] 🎛️ **FPGA Prototyping**: Changes to board targets, LiteX configurations, or pin constraints.
-- [ ] 💾 **Software / Firmware**: Changes to bare-metal code, OpenSBI, U-Boot, or Linux kernel configs.
-- [ ] 📖 **Documentation**: Updates to hardware specs, tutorials, block diagrams, or READMEs.
+### Type of Change
+- [ ] **Bug Fix**: Non-breaking fix to a simulation or hardware defect.
+- [ ] **New Feature**: Synthesizable architectural module or custom instruction set extension.
+- [ ] **Documentation**: MkDocs, relative block diagrams, or software guides.
+- [ ] **ASIC CAD Flow**: Changes to synthesis SDC, PNR script, or library configurations.
 
 ---
 
-## Hardware / RTL Verification Details
+## 🛠️ Verification & ASIC CAD Checklists
 
-*To maintain the stability of SMVDU-TITAN-X, all hardware changes must undergo rigorous simulation regression before merge.*
+### 1. Functional Verification
+- [ ] **RTL Linting**: Checked clean of multi-driven nets, latch inference, or implicit wire declarations via Verilator (`verilator --lint-only`).
+- [ ] **ISA Compliance Tests**: Passed standard RISC-V compliance suite (`rv64ui`/`rv64um` tests) in Spike/Verilator.
+- [ ] **Coherence Validation**: Multi-hart memory sweeps complete with zero cache-line lockups.
 
-### 1. Simulation & Code Quality
-- [ ] **Linter Check**: Run Verilator lint checks on the modified modules:
-  ```bash
-  verilator --lint-only -Wall <modified_file>.v
-  ```
-  *Result*: No lint warnings or errors (or list known exceptions below).
-- [ ] **Cocotb Regression**: Checked using Cocotb testbenches:
-  ```bash
-  bash scripts/sim/run_cocotb.sh
-  ```
-  *Result*: All test cases passed.
-
-### 2. Waveform Verification (Recommended)
-- [ ] **Waveform Analysis**: Inspected the `.vcd` or `.fst` simulation waveforms using GTKWave to confirm cycle-accurate correctness.
-- *Insert key timing waveforms, state machine transitions, or screenshots if applicable.*
+### 2. Physical Design & Timing (ASIC flow)
+- [ ] **Logical Synthesis**: Completed via Cadence Genus (zero unresolved modules).
+- **Setup Timing Slack**: `[Insert Value]` (Must be >= 0.000 ns)
+- **Hold Timing Slack**: `[Insert Value]` (Must be >= 0.000 ns)
+- [ ] **Physical Verification**: Place-and-route completed via Cadence Innovus.
+- **DRC Errors count**: `[Insert Value]` (Must be 0)
+- **LVS Mismatch count**: `[Insert Value]` (Must be 0)
 
 ---
 
-## Verification Logs / Console Outputs
-
-```text
-# Paste relevant Cocotb test console output or Verilator logs here
-```
-
----
-
-## Related Issues & Board Approval
-* Fixes # (issue number)
-* Target SoC Phase: **Phase [1 / 2 / 3 / 4 / 5 / 6]**
+### Screenshots / Waveforms (if applicable)
+Please attach GTKWave trace waveforms or Cadence Innovus physical layout stream captures displaying the correctness of the layout.

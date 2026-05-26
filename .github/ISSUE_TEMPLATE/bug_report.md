@@ -1,55 +1,31 @@
 ---
-name: Bug Report
-about: Report a bug in RTL, simulation, scripts, or documentation
-title: '[BUG] '
-labels: ['bug', 'needs-triage']
-assignees: ''
+name: "🐛 Bug Report"
+about: Report a hardware defect, simulation mismatch, or software compiler error
+title: "[BUG] "
+labels: bug, untriaged
+assignees: ""
 ---
 
-## Bug Description
+### 1. Hardware/Software Environment
+* **SoC Development Phase**: [Phase 1 / Phase 2 / Phase 3 / Phase 4 / Phase 5]
+* **Target Board / Platform**: [Verilator Sim / Spike ISA Sim / FPGA Artix-7 / FPGA Kintex-7 / ASIC Cadence Flow]
+* **Compiler / Toolchain Version**: [e.g. riscv64-unknown-elf-gcc 12.2.0, verilator 5.006, Genus 21.1]
 
-A clear and concise description of what the bug is.
+### 2. Description of the Bug
+Provide a clear and concise description of what the hardware/software defect is.
 
-## Component Affected
+### 3. Step-by-Step Reproduction
+1. Set config to `[Config Name]` (e.g. `TitanXPhase5Config`)
+2. Run simulation command: `make ...`
+3. Pass binary `[Bin Name]`
+4. See timing mismatch or assertion failure:
 
-<!-- Select the affected component -->
-- [ ] Hardware RTL (`hardware/rtl/`)
-- [ ] Chipyard configuration (`hardware/chipyard/`)
-- [ ] Verification / Simulation (`verification/`)
-- [ ] FPGA target (`fpga/`)
-- [ ] Firmware (`software/firmware/`)
-- [ ] OpenSBI / U-Boot / Linux (`software/`)
-- [ ] ASIC flow (`asic/`)
-- [ ] Setup scripts (`scripts/`)
-- [ ] Documentation (`docs/`)
-- [ ] CI/CD (`.github/workflows/`)
-
-## Environment
-
-- **OS**: (e.g., Ubuntu 22.04)
-- **Toolchain version**: (e.g., riscv64-unknown-elf-gcc 14.1.0)
-- **Verilator version**: (e.g., Verilator 5.x)
-- **Chipyard version**: (git commit hash)
-- **FPGA board** (if applicable): 
-
-## Steps to Reproduce
-
-1. 
-2. 
-3. 
-
-## Expected Behavior
-
-What you expected to happen.
-
-## Actual Behavior
-
-What actually happened. Include error messages, logs, or waveform screenshots.
-
-```
-(paste error output here)
+```text
+[Insert trace logs or simulation errors here]
 ```
 
-## Additional Context
+### 4. Expected Behavior
+A clear and concise description of what you expected to happen.
 
-Any other context, waveforms, or notes about the problem.
+### 5. Waveform / Schematics (if applicable)
+If the bug is an RTL timing or state machine error, please attach a screenshot of the GTKWave/SimVision trace waveform showing the signal mismatch.

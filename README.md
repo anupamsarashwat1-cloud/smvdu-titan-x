@@ -103,9 +103,9 @@ smvdu-titan-x/
 │   ├── uboot/         # U-Boot + board config
 │   ├── linux/         # Linux kernel + defconfig
 │   └── buildroot/     # BusyBox rootfs
-├── asic/              # ASIC research flow
-│   ├── openroad/
-│   └── openlane/
+├── asic/              # ASIC research & production flow
+│   ├── openlane/      # Open-source physical design flow
+│   └── cadence/       # Production-grade Cadence Genus & Innovus scripts
 ├── docs/              # Documentation (MkDocs)
 ├── scripts/           # Automation scripts
 └── .github/           # CI/CD workflows
@@ -150,6 +150,22 @@ bash scripts/sim/run_verilator.sh
 pip install mkdocs-material
 mkdocs serve
 ```
+
+### ASIC Production CAD Flow (Cadence)
+
+We provide production-grade automation scripts for industry-standard Cadence toolchains inside `asic/cadence/`:
+
+*   **Logical Synthesis (Genus)**: Maps synthesizable Verilog modules onto standard cell library parameters:
+    ```bash
+    cd asic/cadence/
+    genus -files synthesis_genus.tcl
+    ```
+*   **Physical Implementation (Innovus)**: Runs full floorplanning, macro placement, PG Grid, CCopt Clock Tree Synthesis (CTS), and detail NanoRoute routing:
+    ```bash
+    cd asic/cadence/
+    innovus -files physical_innovus.tcl
+    ```
+*   **Timing Constraints**: SDC parameters (`titan_x_constraints.sdc`) govern maximum fanout, interface delays, and domain crossings.
 
 ---
 

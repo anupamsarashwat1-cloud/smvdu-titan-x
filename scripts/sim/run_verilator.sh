@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
 # SMVDU-TITAN-X — Verilator Simulation Runner
-# Runs RTL simulation of the SMVDU-TITAN-X SoC using Verilator
+# Runs RTL simulation using the Chipyard Verilator flow.
 #
 # Usage:
-#   bash scripts/sim/run_verilator.sh                  # Full simulation
-#   bash scripts/sim/run_verilator.sh --lint-only       # Lint check only
-#   bash scripts/sim/run_verilator.sh --config=TitanXSimConfig
-#   bash scripts/sim/run_verilator.sh --firmware=software/firmware/hello_uart/build/hello_uart.hex
+#   bash scripts/sim/run_verilator.sh                          # Run hello_uart
+#   bash scripts/sim/run_verilator.sh --firmware=path/to/fw   # Custom firmware
+#   bash scripts/sim/run_verilator.sh --test=exit             # Run exit_test (fast)
+#   bash scripts/sim/run_verilator.sh --waves                 # Enable VCD dump
+#   bash scripts/sim/run_verilator.sh --timeout=50000000      # 50M cycle limit
+#
+# Phase 1 Config: TitanXPhase1Config (single Rocket RV64GC + SiFive UART)
 #
 # SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2025 SMVDU-TITAN-X Contributors
 
 set -euo pipefail
 
-RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'; NC='\033[0m'
+RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
+BLUE='\033[0;34m'; CYAN='\033[0;36m'; NC='\033[0m'
 info()  { echo -e "${GREEN}[INFO]${NC}  $*"; }
 warn()  { echo -e "${YELLOW}[WARN]${NC}  $*"; }
 error() { echo -e "${RED}[ERROR]${NC} $*" >&2; }
@@ -21,161 +26,122 @@ step()  { echo -e "\n${BLUE}━━━ $* ━━━${NC}"; }
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 CHIPYARD_DIR="$REPO_ROOT/hardware/chipyard"
 SIM_DIR="$CHIPYARD_DIR/sims/verilator"
-BUILD_DIR="$REPO_ROOT/verification/sim/build"
+OUTPUT_DIR="$SIM_DIR/output/chipyard.harness.TestHarness.TitanXPhase1Config"
 
 # ─── Defaults ────────────────────────────────────────────────────────────────
-CONFIG="smvdu.titan.x.TitanXSimConfig"
-FIRMWARE="${REPO_ROOT}/software/firmware/hello_uart/build/hello_uart.hex"
-LINT_ONLY=false
+CONFIG="TitanXPhase1Config"
+FIRMWARE="$REPO_ROOT/software/firmware/hello_uart/build/hello_uart.elf"
 WAVES=false
-TIMEOUT=10000000   # cycles
+TIMEOUT=50000000   # 50M cycles — enough for full UART banner with DRAMSim2
 
 # ─── Parse arguments ─────────────────────────────────────────────────────────
 for arg in "$@"; do
     case $arg in
-        --lint-only)         LINT_ONLY=true ;;
-        --config=*)          CONFIG="${arg#*=}" ;;
-        --firmware=*)        FIRMWARE="${arg#*=}" ;;
-        --waves)             WAVES=true ;;
-        --timeout=*)         TIMEOUT="${arg#*=}" ;;
+        --test=exit)   FIRMWARE="$REPO_ROOT/software/firmware/exit_test/exit_test.elf"
+                       TIMEOUT=10000000 ;;
+        --test=uart)   FIRMWARE="$REPO_ROOT/software/firmware/hello_uart/build/hello_uart.elf"
+                       TIMEOUT=50000000 ;;
+        --firmware=*)  FIRMWARE="${arg#*=}" ;;
+        --waves)       WAVES=true ;;
+        --timeout=*)   TIMEOUT="${arg#*=}" ;;
+        --config=*)    CONFIG="${arg#*=}" ;;
         --help)
             echo "Usage: $0 [options]"
-            echo "  --lint-only          Run Verilator lint without simulation"
-            echo "  --config=NAME        Chipyard config (default: TitanXSimConfig)"
-            echo "  --firmware=FILE      Firmware HEX file to load"
+            echo "  --test=exit          Fast RTL smoke test (~11s, tohost exit only)"
+            echo "  --test=uart          Full hello_uart simulation (~60 min)"
+            echo "  --firmware=FILE      Custom ELF firmware path"
             echo "  --waves              Enable VCD waveform dump"
-            echo "  --timeout=N          Simulation timeout in cycles (default: 10M)"
-            exit 0
-            ;;
+            echo "  --timeout=N          Cycle limit (default: 50M)"
+            echo "  --config=NAME        Chipyard config (default: TitanXPhase1Config)"
+            exit 0 ;;
+        *) warn "Unknown argument: $arg" ;;
     esac
 done
 
-info "SMVDU-TITAN-X Verilator Simulation"
+echo ""
+echo -e "${CYAN}  ╔══════════════════════════════════════╗${NC}"
+echo -e "${CYAN}  ║   SMVDU-TITAN-X Verilator Runner     ║${NC}"
+echo -e "${CYAN}  ║   Phase 1 — Rocket RV64GC SoC        ║${NC}"
+echo -e "${CYAN}  ╚══════════════════════════════════════╝${NC}"
+echo ""
 info "Config:   $CONFIG"
 info "Firmware: $FIRMWARE"
+info "Timeout:  ${TIMEOUT} cycles"
 
-# ─── Check Prerequisites ──────────────────────────────────────────────────────
-step "Checking prerequisites"
+# ─── Activate Chipyard environment ───────────────────────────────────────────
+step "Activating Chipyard environment"
+CONDA_BASE=$(conda info --base 2>/dev/null || echo "$HOME/miniforge3")
+source "$CONDA_BASE/etc/profile.d/conda.sh"
+conda activate chipyard
+export PATH="$HOME/.local/bin:$PATH"
+info "firtool: $(firtool --version 2>/dev/null || echo 'not found')"
 
-if ! command -v verilator &>/dev/null; then
-    error "Verilator not found. Run: sudo apt install verilator"
+# ─── Check simulator binary ───────────────────────────────────────────────────
+step "Checking simulator binary"
+SIM_BIN="$SIM_DIR/simulator-chipyard.harness-${CONFIG}"
+
+if [ ! -f "$SIM_BIN" ]; then
+    warn "Simulator not found. Building now (may take 30–60 min)..."
+    cd "$SIM_DIR"
+    make CONFIG="$CONFIG" -j$(nproc) 2>&1 | tee /tmp/titan_x_build.log
+    info "Build complete."
+fi
+info "Simulator: $SIM_BIN"
+
+# ─── Check firmware ───────────────────────────────────────────────────────────
+step "Checking firmware"
+if [ ! -f "$FIRMWARE" ]; then
+    FIRMWARE_DIR=$(dirname "$FIRMWARE")
+    if [ -f "$FIRMWARE_DIR/Makefile" ]; then
+        info "Building firmware..."
+        make -C "$FIRMWARE_DIR"
+    elif [ -f "$FIRMWARE_DIR/main.S" ]; then
+        info "Building firmware from assembly..."
+        make -C "$FIRMWARE_DIR" -f "$FIRMWARE_DIR/../../hello_uart/Makefile" \
+             BUILD_DIR="$FIRMWARE_DIR/build" 2>/dev/null || true
+    fi
+fi
+
+if [ ! -f "$FIRMWARE" ]; then
+    error "Firmware not found: $FIRMWARE"
+    error "Build it first: make -C software/firmware/hello_uart"
     exit 1
 fi
-info "Verilator: $(verilator --version | head -1)"
+info "Firmware: $(riscv64-unknown-elf-size "$FIRMWARE" 2>/dev/null | tail -1 || echo 'size unavailable')"
 
-if ! command -v riscv64-unknown-elf-gcc &>/dev/null; then
-    warn "RISC-V toolchain not found. Simulation may fail."
-    warn "Run: bash scripts/setup/setup_riscv_toolchain.sh"
+# ─── Run Simulation ───────────────────────────────────────────────────────────
+step "Running simulation"
+mkdir -p "$OUTPUT_DIR"
+cd "$SIM_DIR"
+
+MAKE_TARGET="run-binary-fast"
+if $WAVES; then
+    MAKE_TARGET="run-binary-debug"
+    info "VCD waveform enabled — output: $OUTPUT_DIR/$(basename "$FIRMWARE" .elf).vcd"
 fi
 
-# ─── Build Firmware (if not present) ─────────────────────────────────────────
-if [ ! -f "$FIRMWARE" ] && [ "$LINT_ONLY" = false ]; then
-    step "Building Phase 1 firmware"
-    FIRMWARE_DIR="$REPO_ROOT/software/firmware/hello_uart"
-    if [ -f "$FIRMWARE_DIR/Makefile" ]; then
-        make -C "$FIRMWARE_DIR"
-        FIRMWARE="$FIRMWARE_DIR/build/hello_uart.hex"
-    else
-        warn "Firmware not found and Makefile missing. Using bare simulation."
-        FIRMWARE=""
-    fi
-fi
+START_TIME=$(date +%s)
 
-# ─── Chipyard Simulation Build ────────────────────────────────────────────────
-if [ -d "$SIM_DIR" ]; then
-    step "Building Chipyard Verilator simulation"
-    cd "$SIM_DIR"
+make CONFIG="$CONFIG" \
+     BINARY="$FIRMWARE" \
+     TIMEOUT_CYCLES="$TIMEOUT" \
+     "$MAKE_TARGET" 2>&1 | tee "$OUTPUT_DIR/$(basename "$FIRMWARE" .elf).log"
+SIM_EXIT=${PIPESTATUS[0]}
 
-    if $LINT_ONLY; then
-        info "Running Verilator lint check..."
-        make lint CONFIG="$CONFIG" 2>&1 | tee "$BUILD_DIR/lint.log"
-        LINT_EXIT=${PIPESTATUS[0]}
-        if [ $LINT_EXIT -eq 0 ]; then
-            info "✓ Lint passed — zero errors/warnings"
-        else
-            error "✗ Lint failed — see $BUILD_DIR/lint.log"
-            exit $LINT_EXIT
-        fi
-        exit 0
-    fi
-
-    MAKE_ARGS="CONFIG=$CONFIG"
-    if $WAVES; then
-        MAKE_ARGS="$MAKE_ARGS debug"
-    fi
-
-    info "Building simulator (this may take several minutes on first run)..."
-    make $MAKE_ARGS 2>&1 | tee "$BUILD_DIR/build.log"
-
-    # ─── Run Simulation ───────────────────────────────────────────────────
-    step "Running simulation"
-
-    SIM_BIN="simulator-$CONFIG"
-    if [ ! -f "$SIM_BIN" ]; then
-        SIM_BIN=$(find . -name "simulator-*" -type f | head -1)
-    fi
-
-    if [ -z "$SIM_BIN" ]; then
-        error "Simulator binary not found after build"
-        exit 1
-    fi
-
-    SIM_ARGS="+max-cycles=$TIMEOUT"
-    if [ -n "$FIRMWARE" ] && [ -f "$FIRMWARE" ]; then
-        SIM_ARGS="$SIM_ARGS +loadmem=$FIRMWARE"
-    fi
-    if $WAVES; then
-        SIM_ARGS="$SIM_ARGS +vcdplusfile=$BUILD_DIR/titan_x_sim.vpd"
-    fi
-
-    info "Running: ./$SIM_BIN $SIM_ARGS"
-    mkdir -p "$BUILD_DIR"
-    "./$SIM_BIN" $SIM_ARGS 2>&1 | tee "$BUILD_DIR/sim.log"
-    SIM_EXIT=${PIPESTATUS[0]}
-
-else
-    # ─── Fallback: Standalone Verilator on RTL stub ────────────────────────
-    step "Standalone Verilator simulation (RTL stub only)"
-    warn "Chipyard not available. Running standalone simulation on RTL stub."
-
-    mkdir -p "$BUILD_DIR"
-    TOP_MODULE="$REPO_ROOT/hardware/rtl/top/titan_x_top.v"
-
-    if [ ! -f "$TOP_MODULE" ]; then
-        error "Top-level RTL not found: $TOP_MODULE"
-        exit 1
-    fi
-
-    info "Running Verilator lint on RTL stub..."
-    verilator \
-        --lint-only \
-        --top-module titan_x_top \
-        -Wall \
-        "$TOP_MODULE" \
-        2>&1 | tee "$BUILD_DIR/lint.log"
-
-    SIM_EXIT=${PIPESTATUS[0]}
-    if [ $SIM_EXIT -eq 0 ]; then
-        info "✓ RTL stub lint passed"
-    else
-        warn "Lint warnings found — see $BUILD_DIR/lint.log"
-    fi
-fi
+END_TIME=$(date +%s)
+ELAPSED=$((END_TIME - START_TIME))
 
 # ─── Summary ─────────────────────────────────────────────────────────────────
 echo ""
-info "═══════════════════════════════════════════"
-if [ "${SIM_EXIT:-0}" -eq 0 ]; then
-    info "  ✓ Simulation PASSED"
+echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+if [ "$SIM_EXIT" -eq 0 ]; then
+    echo -e "${GREEN}  ✓ Simulation PASSED${NC}"
 else
-    info "  ✗ Simulation FAILED (exit: ${SIM_EXIT:-?})"
+    echo -e "${RED}  ✗ Simulation FAILED (exit: $SIM_EXIT)${NC}"
 fi
-info "  Log: $BUILD_DIR/sim.log"
-if $WAVES; then
-    info "  Waveform: $BUILD_DIR/titan_x_sim.vpd"
-    info "  View: gtkwave $BUILD_DIR/titan_x_sim.vpd"
-fi
-info "═══════════════════════════════════════════"
+echo -e "  Time:    ${ELAPSED}s"
+echo -e "  Log:     $OUTPUT_DIR/$(basename "$FIRMWARE" .elf).log"
+echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 
-exit "${SIM_EXIT:-0}"
+exit "$SIM_EXIT"

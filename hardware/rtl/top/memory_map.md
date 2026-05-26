@@ -5,6 +5,7 @@
 | Rev | Date | Author | Description |
 |-----|------|--------|-------------|
 | 0.1 | 2025-05-26 | Project Team | Initial Phase 1 memory map |
+| 0.2 | 2026-05-26 | SMVDU-TITAN-X | Updated with validated Chipyard Phase 1 addresses |
 
 ---
 
@@ -33,16 +34,20 @@ The SMVDU-TITAN-X memory map is divided into three main regions:
 
 ### Peripheral MMIO Regions
 
-| Peripheral | Base Address | End Address | Size | IRQ | Description |
-|------------|-------------|-------------|------|-----|-------------|
-| **UART 0** | `0x5400_0000` | `0x5400_0FFF` | 4 KB | 1 | Primary debug console |
-| **UART 1** | `0x5400_1000` | `0x5400_1FFF` | 4 KB | 2 | Secondary UART (reserved) |
-| **GPIO** | `0x5401_0000` | `0x5401_0FFF` | 4 KB | 3 | 32-bit GPIO controller |
-| **SPI 0** | `0x5402_0000` | `0x5402_0FFF` | 4 KB | 4 | SPI master (SD card/flash) |
-| **SPI 1** | `0x5402_1000` | `0x5402_1FFF` | 4 KB | 5 | SPI master (reserved) |
-| **I2C 0** | `0x5403_0000` | `0x5403_0FFF` | 4 KB | 6 | I2C master |
-| **Timer 0** | `0x5404_0000` | `0x5404_0FFF` | 4 KB | — | 64-bit CLINT-mapped timer |
-| **PWM** | `0x5405_0000` | `0x5405_0FFF` | 4 KB | 7 | PWM controller |
+> **Phase 1 Note:** Chipyard uses SiFive UART (not 16550). Address `0x1002_0000`
+> validated in simulation. Future phases will add peripherals at `0x5400_0000`.
+
+| Peripheral | Base Address | End Address | Size | IRQ | Status | Description |
+|------------|-------------|-------------|------|-----|--------|-------------|
+| **UART 0** | `0x1002_0000` | `0x1002_0FFF` | 4 KB | 1 | ✅ **Phase 1 Validated** | SiFive UART (Chipyard default) |
+| **CLINT** | `0x0200_0000` | `0x020B_FFFF` | 768 KB | — | ✅ **Phase 1 Validated** | mtime/mtimecmp |
+| **PLIC** | `0x0C00_0000` | `0x0FFF_FFFF` | 64 MB | — | Phase 2 | Platform interrupt controller |
+| **GPIO** | `0x5401_0000` | `0x5401_0FFF` | 4 KB | 3 | Phase 2 | 32-bit GPIO controller |
+| **SPI 0** | `0x5402_0000` | `0x5402_0FFF` | 4 KB | 4 | Phase 2 | SPI master (SD card/flash) |
+| **SPI 1** | `0x5402_1000` | `0x5402_1FFF` | 4 KB | 5 | Phase 3 | SPI master (reserved) |
+| **I2C 0** | `0x5403_0000` | `0x5403_0FFF` | 4 KB | 6 | Phase 3 | I2C master |
+| **Timer 0** | `0x5404_0000` | `0x5404_0FFF` | 4 KB | — | Phase 2 | 64-bit CLINT-mapped timer |
+| **PWM** | `0x5405_0000` | `0x5405_0FFF` | 4 KB | 7 | Phase 3 | PWM controller |
 
 ### Phase 4+ Peripheral Extensions (Reserved)
 
@@ -80,6 +85,24 @@ See [`platform.h`](../../../software/opensbi/platform/smvdu_titan_x/platform.h) 
 
 ## Boot Sequence Address Flow
 
+### Phase 1 (Simulation — Validated ✅)
+```
+Verilator loads ELF directly into DRAM
+     │
+     ▼
+0x8000_0000  ← _start (hello_uart.elf / exit_test.elf)
+     │        Rocket core fetches first instruction
+     ▼
+0x1002_0000  ← SiFive UART init (BAUD_DIV, TXCTRL, RXCTRL)
+     │
+     ▼
+0x8000_xxxx  ← uart_puts (print boot banner)
+     │
+     ▼
+0x8000_1000  ← tohost = 1 (HTIF exit → $finish)
+```
+
+### Phase 3+ (FPGA with Boot ROM)
 ```
 Power-On Reset
      │
@@ -90,22 +113,17 @@ Power-On Reset
 0x8020_0000  ← OpenSBI runtime in DDR
      │
      ▼
-0x8020_0000+ ← U-Boot (loaded by OpenSBI)
-     │
-     ▼
-0x8020_0000+ ← Linux kernel image
-     │
-     ▼
-  DDR         ← Kernel + rootfs running
+0x8020_0000+ ← U-Boot → Linux kernel
 ```
 
 ---
 
 ## RISC-V Platform Compliance
 
-- **CLINT** at `0x0200_0000` — compatible with `mtime`/`mtimecmp` as defined in RISC-V Privileged ISA Spec
-- **PLIC** at `0x0C00_0000` — compatible with SiFive PLIC v1.0 / OpenSBI expectations
-- **UART** at `0x5400_0000` — 16550-compatible register layout
+- **CLINT** at `0x0200_0000` — compatible with `mtime`/`mtimecmp` (RISC-V Privileged ISA Spec)
+- **PLIC** at `0x0C00_0000` — compatible with SiFive PLIC v1.0 / OpenSBI expectations  
+- **UART** at `0x1002_0000` — SiFive UART (Phase 1, Chipyard default); 16550-compatible UART planned at `0x5400_0000` for Phase 2
+- **HTIF tohost** at `0x8000_1000` — simulation exit mechanism (Verilator/Spike)
 
 ---
 

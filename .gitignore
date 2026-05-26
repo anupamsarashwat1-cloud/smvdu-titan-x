@@ -1,0 +1,166 @@
+# SMVDU-TITAN-X .gitignore
+# Comprehensive ignore rules for RISC-V SoC project
+
+# ─── Chisel / Scala / SBT ───────────────────────────────────────────────────
+target/
+project/target/
+project/project/
+*.class
+*.jar
+.bsp/
+.metals/
+.bloop/
+*.semanticdb
+
+# ─── Verilator ───────────────────────────────────────────────────────────────
+obj_dir/
+*.vcd
+*.fst
+*.fst.hier
+simX/
+simX-debug/
+simulator-*/
+emulator-*/
+*.dmp
+*.vpd
+
+# ─── Vivado / FPGA ───────────────────────────────────────────────────────────
+*.jou
+*.log
+*.str
+*.xpr
+*.bit
+*.bin
+*.mcs
+*.ltx
+*.rpt
+*.dcp
+*.xsa
+*.xml
+*.xdc.bak
+vivado_project/*.runs/
+vivado_project/*.sim/
+vivado_project/*.ip_user_files/
+vivado_project/*.hw/
+vivado_project/*.cache/
+vivado_project/*.gen/
+vivado_project/*.srcs/
+*.hbs
+NA/
+
+# Quartus
+*.qpf
+*.qsf.bak
+db/
+incremental_db/
+output_files/
+simulation/
+
+# ─── OpenROAD / OpenLane ────────────────────────────────────────────────────
+runs/
+results/
+logs/
+reports/
+tmp/
+*.def.gz
+*.lef.gz
+*.odb
+*.sdc.bak
+
+# ─── GCC / C / C++ Build ────────────────────────────────────────────────────
+*.o
+*.a
+*.so
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+build/
+_build/
+out/
+
+# ─── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.pytest_cache/
+.tox/
+.nox/
+*.egg-info/
+dist/
+*.egg
+.eggs/
+venv/
+.venv/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+site/
+
+# ─── Waveforms ───────────────────────────────────────────────────────────────
+*.vcd
+*.fst
+*.ghw
+*.shm/
+*.vpd
+*.fsdb
+
+# ─── Documentation ───────────────────────────────────────────────────────────
+site/
+.cache/
+
+# ─── OS / Editor ─────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# ─── Rocket-Chip / Chipyard Artifacts ────────────────────────────────────────
+chipyard/output/
+chipyard/generators/
+chipyard/.conda-env/
+chipyard/sims/verilator/generated-src/
+chipyard/sims/vcs/generated-src/
+chipyard/tools/
+*.fir
+*.anno.json
+*.top.v
+*.harness.v
+
+# ─── cocotb ──────────────────────────────────────────────────────────────────
+sim_build/
+results.xml
+*.coverage
+
+# ─── RISC-V Toolchain ────────────────────────────────────────────────────────
+riscv-gnu-toolchain/build/
+
+# ─── LiteX ───────────────────────────────────────────────────────────────────
+litex_output/
+build/
+
+# ─── Secrets / Config ────────────────────────────────────────────────────────
+.env
+*.pem
+*.key
+*.secret
+
+# ─── Archives ────────────────────────────────────────────────────────────────
+*.tar.gz
+*.tar.bz2
+*.zip
+*.7z
+*.rar

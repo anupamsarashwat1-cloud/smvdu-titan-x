@@ -1,0 +1,149 @@
+site_name: SMVDU-TITAN-X
+site_description: Open-Source High-Performance 64-bit RISC-V Multicore SoC
+site_author: SMVDU-TITAN-X Contributors
+site_url: https://your-org.github.io/smvdu-titan-x/
+repo_name: your-org/smvdu-titan-x
+repo_url: https://github.com/your-org/smvdu-titan-x
+edit_uri: edit/main/docs/
+
+# ─── Theme ───────────────────────────────────────────────────────────────────
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/chip
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+# ─── Plugins ─────────────────────────────────────────────────────────────────
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - minify:
+      minify_html: true
+
+# ─── Markdown Extensions ─────────────────────────────────────────────────────
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: On this page
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: your-org
+      repo: smvdu-titan-x
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# ─── Navigation ──────────────────────────────────────────────────────────────
+nav:
+  - Home: index.md
+  - Architecture:
+    - architecture/overview.md
+    - architecture/cpu_subsystem.md
+    - architecture/interconnect.md
+    - architecture/memory_map.md
+    - architecture/accelerators.md
+  - Development Phases:
+    - phases/phase1_bringup.md
+    - phases/phase2_linux_boot.md
+    - phases/phase3_multicore.md
+    - phases/phase4_advanced_io.md
+    - phases/phase5_accelerators.md
+    - phases/phase6_asic.md
+  - Tutorials:
+    - tutorials/environment_setup.md
+    - tutorials/chipyard_setup.md
+    - tutorials/first_simulation.md
+    - tutorials/fpga_deployment.md
+  - Contributing: ../CONTRIBUTING.md
+
+# ─── Extra ───────────────────────────────────────────────────────────────────
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-org/smvdu-titan-x
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX  # Replace with your GA4 property
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - assets/javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

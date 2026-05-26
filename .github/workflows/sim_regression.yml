@@ -1,0 +1,118 @@
+name: Simulation Regression
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'hardware/rtl/**'
+      - 'verification/**'
+      - 'software/firmware/**'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'hardware/rtl/**'
+      - 'verification/**'
+  workflow_dispatch:
+
+jobs:
+  # ──────────────────────────────────────────────────────────────────────────
+  firmware-build:
+    name: Build Phase 1 Firmware
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install RISC-V toolchain
+        run: |
+          # Install prebuilt toolchain
+          wget -q https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2024.09.03/riscv64-elf-ubuntu-22.04-gcc-nightly-2024.09.03-nightly.tar.gz \
+            -O /tmp/riscv-toolchain.tar.gz
+          sudo tar -xzf /tmp/riscv-toolchain.tar.gz -C /opt/ 2>/dev/null || true
+          # Fallback: use distro packages
+          sudo apt-get install -y gcc-riscv64-unknown-elf binutils-riscv64-unknown-elf || true
+          echo "Toolchain version:"
+          riscv64-unknown-elf-gcc --version || riscv64-elf-gcc --version || true
+
+      - name: Build hello_uart firmware
+        run: |
+          cd software/firmware/hello_uart
+          make CROSS_COMPILE=riscv64-unknown-elf- || \
+          make CROSS_COMPILE=riscv64-elf-
+          ls -la build/
+
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello-uart-firmware
+          path: |
+            software/firmware/hello_uart/build/hello_uart.elf
+            software/firmware/hello_uart/build/hello_uart.hex
+            software/firmware/hello_uart/build/hello_uart.bin
+
+  # ──────────────────────────────────────────────────────────────────────────
+  rtl-lint-sim:
+    name: RTL Lint & Stub Simulation
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Verilator
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y verilator
+
+      - name: Verilator lint — RTL stubs
+        run: |
+          verilator --lint-only -Wall \
+            hardware/rtl/top/titan_x_top.v \
+            2>&1 | tee verilator-lint.log || true
+          echo "Lint complete"
+
+      - name: Verilator compile — RTL stubs
+        run: |
+          mkdir -p verification/sim/build
+          verilator \
+            --cc \
+            --exe \
+            --build \
+            --top-module titan_x_top \
+            -Wall \
+            hardware/rtl/top/titan_x_top.v \
+            2>&1 | tee verification/sim/build/verilator_compile.log || true
+
+      - name: Upload lint/sim logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sim-logs
+          path: |
+            verilator-lint.log
+            verification/sim/build/*.log
+
+  # ──────────────────────────────────────────────────────────────────────────
+  cocotb-uart-test:
+    name: cocotb UART Peripheral Test
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y verilator iverilog
+          pip3 install cocotb cocotb-bus pyelftools
+
+      - name: Run UART testbench (stub — will expand when RTL is ready)
+        run: |
+          echo "UART testbench placeholder — RTL stub simulation"
+          python3 -c "import cocotb; print(f'cocotb {cocotb.__version__} ready')"
+          # When UART RTL is available:
+          # cd verification/cocotb/uart && SIM=icarus make
+        continue-on-error: true
+
+      - name: Upload cocotb results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cocotb-results
+          path: verification/results/

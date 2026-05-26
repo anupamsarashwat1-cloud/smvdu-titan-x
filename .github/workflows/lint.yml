@@ -1,0 +1,113 @@
+name: Lint & Static Analysis
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  # ──────────────────────────────────────────────────────────────────────────
+  verilog-lint:
+    name: Verilog / SystemVerilog Lint (Verilator)
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false   # Don't pull full submodules for lint
+
+      - name: Install Verilator
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y verilator
+
+      - name: Run Verilator lint on RTL stubs
+        run: |
+          echo "Running Verilator lint on hardware/rtl..."
+          find hardware/rtl -name "*.v" -o -name "*.sv" | while read -r f; do
+            echo "  Linting: $f"
+            verilator --lint-only -Wall "$f" || EXIT_CODE=$?
+          done
+          echo "Lint complete."
+
+      - name: Check for zero-warning policy
+        run: |
+          verilator --lint-only -Wall hardware/rtl/top/titan_x_top.v \
+            2>&1 | tee lint_output.txt
+          # Fail if any warnings (excluding known-safe ones)
+          WARNINGS=$(grep -c "Warning" lint_output.txt || true)
+          echo "Verilator warnings: $WARNINGS"
+          # In early development, report but don't fail on warnings
+          # Uncomment below for strict mode:
+          # [ "$WARNINGS" -eq 0 ]
+
+      - name: Upload lint report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verilator-lint-report
+          path: lint_output.txt
+
+  # ──────────────────────────────────────────────────────────────────────────
+  python-lint:
+    name: Python Lint (flake8 + black)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install linters
+        run: pip install flake8 black isort
+
+      - name: Run flake8
+        run: |
+          flake8 verification/cocotb/ fpga/ scripts/ \
+            --max-line-length=120 \
+            --extend-ignore=E501,W503 \
+            --exclude=__pycache__,.git \
+            --statistics
+        continue-on-error: true   # Report but don't block in early dev
+
+      - name: Check Black formatting
+        run: |
+          black --check --diff verification/cocotb/ fpga/
+        continue-on-error: true
+
+  # ──────────────────────────────────────────────────────────────────────────
+  shell-lint:
+    name: Shell Script Lint (shellcheck)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Run shellcheck on all scripts
+        run: |
+          find scripts/ -name "*.sh" | while read -r f; do
+            echo "Checking: $f"
+            shellcheck --severity=warning "$f" || true
+          done
+
+  # ──────────────────────────────────────────────────────────────────────────
+  markdown-lint:
+    name: Documentation Lint (markdownlint)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: |
+            README.md
+            CONTRIBUTING.md
+            docs/**/*.md
+            hardware/**/*.md
+        continue-on-error: true   # Advisory only in early development

@@ -1,0 +1,69 @@
+[submodule "hardware/chipyard"]
+	path = hardware/chipyard
+	url = https://github.com/ucb-bar/chipyard.git
+	branch = main
+
+[submodule "hardware/ip/rocket-chip"]
+	path = hardware/ip/rocket-chip
+	url = https://github.com/chipsalliance/rocket-chip.git
+	branch = master
+
+[submodule "hardware/ip/cva6"]
+	path = hardware/ip/cva6
+	url = https://github.com/openhwgroup/cva6.git
+	branch = master
+
+[submodule "hardware/ip/boom"]
+	path = hardware/ip/boom
+	url = https://github.com/riscv-boom/riscv-boom.git
+	branch = master
+
+[submodule "hardware/ip/litedram"]
+	path = hardware/ip/litedram
+	url = https://github.com/enjoy-digital/litedram.git
+	branch = master
+
+[submodule "hardware/ip/liteeth"]
+	path = hardware/ip/liteeth
+	url = https://github.com/enjoy-digital/liteeth.git
+	branch = master
+
+[submodule "hardware/ip/litepcie"]
+	path = hardware/ip/litepcie
+	url = https://github.com/enjoy-digital/litepcie.git
+	branch = master
+
+[submodule "hardware/ip/pulp-axi"]
+	path = hardware/ip/pulp-axi
+	url = https://github.com/pulp-platform/axi.git
+	branch = master
+
+[submodule "fpga/litex_targets/litex"]
+	path = fpga/litex_targets/litex
+	url = https://github.com/enjoy-digital/litex.git
+	branch = master
+
+[submodule "software/opensbi"]
+	path = software/opensbi
+	url = https://github.com/riscv-software-src/opensbi.git
+	branch = master
+
+[submodule "software/uboot"]
+	path = software/uboot
+	url = https://github.com/u-boot/u-boot.git
+	branch = master
+
+[submodule "verification/riscv-tests"]
+	path = verification/riscv-tests
+	url = https://github.com/riscv-software-src/riscv-tests.git
+	branch = master
+
+[submodule "verification/cocotb"]
+	path = verification/cocotb
+	url = https://github.com/cocotb/cocotb.git
+	branch = master
+
+[submodule "verification/riscv-dv"]
+	path = verification/riscv-dv
+	url = https://github.com/chipsalliance/riscv-dv.git
+	branch = master

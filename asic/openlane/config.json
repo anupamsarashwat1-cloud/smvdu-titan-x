@@ -1,0 +1,29 @@
+{
+    "DESIGN_NAME": "titan_x_top",
+    "VERILOG_FILES": [
+        "hardware/rtl/top/titan_x_top.v"
+    ],
+    "CLOCK_PORT": "sys_clk",
+    "CLOCK_PERIOD": 10.0,
+    "FP_SIZING": "relative",
+    "FP_CORE_UTIL": 45,
+    "FP_ASPECT_RATIO": 1,
+    "DESIGN_IS_CORE": 1,
+
+    "PL_TARGET_DENSITY": 0.40,
+
+    "VDD_NETS": ["vccd1"],
+    "GND_NETS": ["vssd1"],
+
+    "DIODE_INSERTION_STRATEGY": 4,
+
+    "GLB_RESIZER_TIMING_OPTIMIZATIONS": 1,
+
+    "SYNTH_STRATEGY": "DELAY 0",
+    "SYNTH_BUFFERING": 1,
+    "SYNTH_SIZING": 1,
+
+    "RUN_CVC": 1,
+
+    "_note_": "Phase 6 ASIC exploration config. Target: Sky130 PDK (sky130_fd_sc_hd). Update DESIGN_NAME and VERILOG_FILES when RTL is ready for synthesis."
+}

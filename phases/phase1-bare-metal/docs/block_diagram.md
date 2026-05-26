@@ -4,9 +4,15 @@ This document contains the structural block diagrams for the SMVDU-TITAN-X Phase
 
 ---
 
-## 1. High-Level SoC Block Diagram
+## 1. High-Fidelity Microarchitecture Overview
 
-The block diagram below represents the exact system hierarchy of the custom generated RISC-V SoC:
+Below is the verified microarchitecture block diagram of the SMVDU-TITAN-X Phase 1 RISC-V SoC:
+
+![SMVDU-TITAN-X Phase 1 SoC Architecture Overview](/home/anupam-sarashwat/.gemini/antigravity/brain/53f4159a-d33d-4b64-9c03-0330955d9c11/titan_x_phase1_architecture_1779815029931.png)
+
+---
+
+## 2. Bus Architecture and Core Topology
 
 ```mermaid
 graph TB
@@ -36,7 +42,7 @@ graph TB
         subgraph Peripherals [MMIO Peripherals]
             UART[SiFive UART @ 0x10020000]
             BootROM[BootROM 10KB @ 0x00010000]
-            CLINT[CLINT Timer/IPI @ 0x02000000]
+            CLINT[CLINT Timer @ 0x02000000]
             PLIC[PLIC Interrupts @ 0x0C000000]
         end
 
@@ -47,7 +53,7 @@ graph TB
 
         subgraph MemorySubsystem [Memory Hierarchy]
             L2[Inclusive Shared L2 Cache 512KB]
-            DRAMSim[SimDRAM 2GB DDR3]
+            DRAMSim[DRAMSim2 DDR3 2GB]
             HTIF[HTIF Host-Target Interface]
         end
 
@@ -64,7 +70,7 @@ graph TB
 
 ---
 
-## 2. Bus Architecture and Address Domains
+## 3. Address Domains
 
 *   **TileLink-C (Coherent)**: Links L1 Instruction and Data caches to the shared L2 Cache. Manages hardware-enforced cache coherency.
 *   **TileLink-UH (Uncached High-performance)**: Standard non-coherent bridge interfacing the BootROM and high-speed memory spaces.

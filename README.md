@@ -68,14 +68,14 @@ Built on proven open-source ecosystems — **Chipyard**, **Rocket-Chip**, **Tile
 
 ## Project Phases
 
-| Phase | Goal | Status |
-|-------|------|--------|
-| **Phase 1** | Single-core bring-up, UART, bare-metal firmware | 🚧 In Progress |
-| **Phase 2** | DDR + OpenSBI + Linux boot | 📋 Planned |
-| **Phase 3** | Multicore (quad-core) + SMP Linux | 📋 Planned |
-| **Phase 4** | Advanced IO (Ethernet, USB, PCIe, SDIO) | 📋 Planned |
-| **Phase 5** | AI / DSP / Crypto accelerators | 📋 Planned |
-| **Phase 6** | ASIC Cadence Flow compilation, physical synthesis, place-and-route, tapeout prep | 📋 Planned |
+| Phase | Goal | Directory | Status |
+|-------|------|-----------|--------|
+| **Phase 1** | Single-core bring-up, UART, bare-metal firmware | [phases/phase1-bare-metal](phases/phase1-bare-metal) | ✅ Completed |
+| **Phase 2** | GPIO, BootROM, SPI Flash, OpenSBI Platform Setup | [phases/phase2-boot-infra](phases/phase2-boot-infra) | ✅ Completed |
+| **Phase 3** | Quad-Core coherent Rocket cluster, DDR, Ethernet, Linux Boot | [phases/phase3-linux-boot](phases/phase3-linux-boot) | ✅ Completed |
+| **Phase 4** | PCIe Gen2 x4, USB 2.0, HDMI TMDS Video active output | [phases/phase4-high-speed-io](phases/phase4-high-speed-io) | ✅ Completed |
+| **Phase 5** | Single-Core, RoCC Systolic ML accelerator, HBM2, Crypto cores | [phases/phase5-acceleration](phases/phase5-acceleration) | ✅ Completed |
+| **ASIC Tapeout** | Cadence Flow (Genus, Innovus, Xcelium) physical verification | [walkthrough.md](walkthrough.md) | ✅ ASIC-Ready |
 
 ---
 

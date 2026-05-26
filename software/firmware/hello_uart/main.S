@@ -10,27 +10,26 @@
 # Copyright (c) 2025 SMVDU-TITAN-X Contributors
 
 # ─── Memory Map Constants ─────────────────────────────────────────────────────
-.equ UART0_BASE,        0x54000000
-.equ UART_TX_DATA,      0x00        # TX Data register
-.equ UART_RX_DATA,      0x04        # RX Data register
-.equ UART_TX_CTRL,      0x08        # TX Control
-.equ UART_RX_CTRL,      0x0C        # RX Control
-.equ UART_STATUS,       0x10        # Status register
-.equ UART_BAUD_DIV,     0x18        # Baud rate divisor
-.equ UART_STATUS_TXFULL, 0x00000001 # TX FIFO full bit
+# SiFive UART (Chipyard default)
+.equ UART0_BASE,        0x10020000
+.equ UART_TXDATA,       0x00        # TX Data (bit 31 = full)
+.equ UART_RXDATA,       0x04        # RX Data (bit 31 = empty)
+.equ UART_TXCTRL,       0x08        # TX Control (bit 0 = enable)
+.equ UART_RXCTRL,       0x0C        # RX Control (bit 0 = enable)
+.equ UART_IE,           0x10        # Interrupt enable
+.equ UART_IP,           0x14        # Interrupt pending
+.equ UART_DIV,          0x18        # Baud rate divisor
+.equ UART_TXFULL_BIT,   31          # TX FIFO full = bit 31 of txdata
 
-.equ GPIO_BASE,         0x54010000
-.equ GPIO_OUTPUT,       0x00        # GPIO output register
-.equ GPIO_OE,           0x04        # GPIO output enable
-
-.equ TIMER_BASE,        0x54040000
+# CLINT (standard RISC-V)
 .equ MTIME_BASE,        0x02000000  # CLINT mtime
 .equ MTIMECMP_BASE,     0x02004000  # CLINT mtimecmp
 
 # ─── Baud Rate Divisor ───────────────────────────────────────────────────────
 # UART baud rate divisor = sys_clk / baud_rate - 1
-# For 100 MHz clock and 115200 baud: 100000000 / 115200 - 1 = 867
-.equ BAUD_DIV,          867
+# For 500 MHz clock and 115200 baud: 500000000 / 115200 - 1 = 4339
+# (Chipyard default bus frequency is 500 MHz)
+.equ BAUD_DIV,          4339
 
 # ─── Sections ────────────────────────────────────────────────────────────────
     .section .text.init, "ax", @progbits
@@ -61,13 +60,6 @@ _start:
     # ── Initialize UART ──────────────────────────────────────────────────
     call    uart_init
 
-    # ── Enable LED[0] (power-on indicator) ───────────────────────────────
-    li      t0, GPIO_BASE
-    li      t1, 0xF             # LEDs on GPIO[3:0]
-    sw      t1, GPIO_OE(t0)     # Set as outputs
-    li      t1, 0x1             # LED[0] ON
-    sw      t1, GPIO_OUTPUT(t0)
-
     # ── Print boot banner ────────────────────────────────────────────────
     la      a0, msg_banner
     call    uart_puts
@@ -80,16 +72,17 @@ _start:
     la      a0, msg_ready
     call    uart_puts
 
-    # ── Main loop: heartbeat on LEDs ─────────────────────────────────────
-.Lmain_loop:
-    # Toggle LED[1] as heartbeat
-    li      t0, GPIO_BASE
-    lw      t1, GPIO_OUTPUT(t0)
-    xori    t1, t1, 0x2         # Toggle bit 1
-    sw      t1, GPIO_OUTPUT(t0)
+    # ── Simulation exit via HTIF tohost ──────────────────────────────────
+    # In Verilator simulation, writing 1 to tohost signals success.
+    # On real hardware, this would enter the heartbeat loop instead.
+    la      t0, tohost
+    li      t1, 1              # exit code 0 = success (encoded as 1)
+    sd      t1, 0(t0)
 
-    # Delay loop (~0.5s at 100 MHz)
-    li      t2, 50000000
+    # ── Main loop: heartbeat (reached on real hardware) ──────────────────
+.Lmain_loop:
+    # Simple delay loop (~0.5s at 500 MHz)
+    li      t2, 250000000
 .Ldelay:
     addi    t2, t2, -1
     bnez    t2, .Ldelay
@@ -104,11 +97,11 @@ uart_init:
     li      t0, UART0_BASE
     # Set baud rate divisor
     li      t1, BAUD_DIV
-    sw      t1, UART_BAUD_DIV(t0)
+    sw      t1, UART_DIV(t0)
     # Enable TX (bit 0) and RX (bit 0) in control registers
     li      t1, 0x1
-    sw      t1, UART_TX_CTRL(t0)
-    sw      t1, UART_RX_CTRL(t0)
+    sw      t1, UART_TXCTRL(t0)
+    sw      t1, UART_RXCTRL(t0)
     ret
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -118,10 +111,9 @@ uart_init:
 uart_putc:
     li      t0, UART0_BASE
 .Lwait_tx:
-    lw      t1, UART_STATUS(t0)
-    andi    t1, t1, UART_STATUS_TXFULL
-    bnez    t1, .Lwait_tx       # Wait while TX FIFO full
-    sw      a0, UART_TX_DATA(t0)
+    lw      t1, UART_TXDATA(t0)    # Read txdata register
+    bltz    t1, .Lwait_tx           # Bit 31 set = FIFO full, retry
+    sw      a0, UART_TXDATA(t0)     # Write character
     ret
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -152,12 +144,12 @@ uart_puts:
     .align 2
 
 msg_banner:
+    .ascii "\r\n"
+    .ascii "  ========================================\r\n"
+    .ascii "  |        SMVDU-TITAN-X  v0.1.0         |\r\n"
+    .ascii "  |   RISC-V RV64GC Open-Source SoC      |\r\n"
+    .ascii "  ========================================\r\n"
     .string "\r\n"
-    .string "  ╔═══════════════════════════════════════╗\r\n"
-    .string "  ║        SMVDU-TITAN-X  v0.1.0          ║\r\n"
-    .string "  ║   RISC-V RV64GC Open-Source SoC       ║\r\n"
-    .string "  ╚═══════════════════════════════════════╝\r\n"
-    .string "\r\n\0"
 
 msg_phase1:
     .string "  [PHASE 1] Bare-Metal Bring-Up\r\n\0"
@@ -166,12 +158,11 @@ msg_core:
     .string "  Core:  Rocket RV64GC (Single Core)\r\n\0"
 
 msg_freq:
-    .string "  Clock: 100 MHz\r\n\0"
+    .string "  Clock: 500 MHz (Chipyard default)\r\n\0"
 
 msg_ready:
-    .string "  UART0 initialized at 115200 baud\r\n"
-    .string "  LED heartbeat active\r\n"
-    .string "\r\n  SMVDU-TITAN-X ready!\r\n\0"
+    .ascii "  UART0 initialized at 115200 baud\r\n"
+    .string "\r\n  SMVDU-TITAN-X ready!\r\n"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # BSS Section
@@ -183,7 +174,7 @@ _bss_start:
 _bss_end:
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Stack (at top of BRAM — 8KB stack)
+# Stack (8KB)
 # ─────────────────────────────────────────────────────────────────────────────
     .section .stack, "aw", @nobits
     .align 3
@@ -192,3 +183,14 @@ _stack_bottom:
     .space 8192
     .globl _stack_top
 _stack_top:
+
+# ─────────────────────────────────────────────────────────────────────────────
+# HTIF (Host-Target Interface for simulation)
+# ─────────────────────────────────────────────────────────────────────────────
+    .section .tohost, "aw", @progbits
+    .globl tohost
+    .globl fromhost
+    .align 3
+tohost:   .dword 0
+fromhost: .dword 0
+

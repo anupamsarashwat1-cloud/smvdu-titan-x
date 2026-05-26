@@ -1,68 +1,75 @@
 /* SMVDU-TITAN-X Phase 1 Linker Script
  *
- * Memory layout for bare-metal firmware:
- *   - Firmware loads to Boot ROM at 0x00001000
- *   - SRAM at 0x08000000 (64 MB BRAM on FPGA)
- *   - Stack at top of SRAM region
+ * Memory layout for bare-metal firmware running in DRAM starting at 0x80000000.
+ * Pads every loadable section size to 64 bytes (cache line aligned) to prevent
+ * unaligned/partial writes (PutPartial TileLink transactions) during host loading.
  *
  * SPDX-License-Identifier: Apache-2.0
  * Copyright (c) 2025 SMVDU-TITAN-X Contributors
  */
 
-/* ─── Memory Regions ─────────────────────────────────────────────────────── */
-MEMORY
-{
-    ROM  (rx)  : ORIGIN = 0x00001000, LENGTH = 60K   /* Boot ROM         */
-    SRAM (rwx) : ORIGIN = 0x08000000, LENGTH = 64M   /* On-chip BRAM     */
-}
-
-/* ─── Entry Point ─────────────────────────────────────────────────────────── */
+OUTPUT_ARCH( "riscv" )
 ENTRY(_start)
 
-/* ─── Section Layout ──────────────────────────────────────────────────────── */
 SECTIONS
 {
-    /* ── Boot code: placed in ROM ─────────────────────────────────────── */
+    . = 0x80000000;
+
+    /* ── Boot code: placed at start of DRAM ───────────────────────────── */
     .text.init : {
         KEEP(*(.text.init))
-    } > ROM
+        . = ALIGN(64);
+    }
 
-    /* ── Code: placed in ROM (read-execute) ────────────────────────────── */
+    /* ── Host-Target Interface (HTIF) section ─────────────────────────── */
+    . = ALIGN(0x1000);
+    .tohost : {
+        *(.tohost)
+        . = ALIGN(64);
+    }
+
+    /* ── Code: placed in DRAM (read-execute) ──────────────────────────── */
+    . = ALIGN(0x1000);
     .text : {
         *(.text .text.*)
-    } > ROM
+        . = ALIGN(64);
+    }
 
-    /* ── Read-only data: placed in ROM ─────────────────────────────────── */
+    /* ── Read-only data: placed in DRAM ───────────────────────────────── */
     .rodata : {
         *(.rodata .rodata.*)
         *(.srodata .srodata.*)
-    } > ROM
+        . = ALIGN(64);
+    }
 
-    /* ── Initialized data: VMA=SRAM, LMA=ROM ───────────────────────────── */
-    .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {
+    /* ── Initialized data: placed in DRAM ─────────────────────────────── */
+    .data : {
         _data_start = .;
         *(.data .data.*)
         *(.sdata .sdata.*)
         _data_end = .;
-    } > SRAM
+        . = ALIGN(64);
+    }
 
-    /* ── Uninitialized data (BSS) ───────────────────────────────────────── */
-    .bss (NOLOAD) : {
+    /* ── Uninitialized data (BSS) ─────────────────────────────────────── */
+    .bss : {
         _bss_start = .;
         *(.bss .bss.*)
         *(.sbss .sbss.*)
         *(COMMON)
         _bss_end = .;
-    } > SRAM
+        . = ALIGN(64);
+    }
 
-    /* ── Stack (at top of SRAM) ─────────────────────────────────────────── */
-    .stack (NOLOAD) : {
+    /* ── Stack (8KB) ──────────────────────────────────────────────────── */
+    .stack : {
         _stack_bottom = .;
         . = . + 8K;
         _stack_top = .;
-    } > SRAM
+        . = ALIGN(64);
+    }
 
-    /* ── Discard unwanted sections ──────────────────────────────────────── */
+    /* ── Discard unwanted sections ────────────────────────────────────── */
     /DISCARD/ : {
         *(.comment)
         *(.note.*)
@@ -71,8 +78,5 @@ SECTIONS
     }
 }
 
-/* ─── Symbols used in assembly ────────────────────────────────────────────── */
-PROVIDE(_sram_start = ORIGIN(SRAM));
-PROVIDE(_sram_end   = ORIGIN(SRAM) + LENGTH(SRAM));
-PROVIDE(_rom_start  = ORIGIN(ROM));
-PROVIDE(_rom_end    = ORIGIN(ROM)  + LENGTH(ROM));
+PROVIDE(_sram_start = 0x80000000);
+PROVIDE(_sram_end   = 0x90000000);

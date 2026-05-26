@@ -49,6 +49,8 @@
 // Titan-X SoC Top Module (Stub)
 // ─────────────────────────────────────────────────────────────────────────────
 
+/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNDRIVEN */
 module titan_x_top (
     // ── Clock & Reset ──────────────────────────────────────────────────────
     input  wire        sys_clk,          // System clock (100 MHz)
@@ -147,3 +149,5 @@ module titan_x_top (
     assign jtag_tdo   = 1'b0;
 
 endmodule // titan_x_top
+/* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNDRIVEN */

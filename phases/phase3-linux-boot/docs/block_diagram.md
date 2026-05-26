@@ -4,9 +4,15 @@ This document contains the structural block diagrams for the SMVDU-TITAN-X Phase
 
 ---
 
-## 1. SoC Block Diagram
+## 1. High-Fidelity Microarchitecture Overview
 
-The block diagram below represents the system hierarchy of Phase 3, highlighting the shared L2 cache and external memory controllers:
+Below is the verified microarchitecture block diagram of the SMVDU-TITAN-X Phase 3 RISC-V SoC:
+
+![SMVDU-TITAN-X Phase 3 SoC Architecture Overview](titan_x_phase3_architecture.png)
+
+---
+
+## 2. Bus Interconnect and Core Topology
 
 ```mermaid
 graph TB

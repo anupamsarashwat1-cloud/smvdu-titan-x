@@ -1,6 +1,6 @@
 # SMVDU-TITAN-X — Phase 3: Linux Boot
 
-[![Build Status](https://img.shields.io/badge/status-planned-yellow.svg)](#overview)
+[![Build Status](https://img.shields.io/badge/status-validated-success.svg)](#overview)
 [![Architecture](https://img.shields.io/badge/ISA-RV64GC-blue.svg)](#overview)
 [![Linux Support](https://img.shields.io/badge/Linux-6.x-green.svg)](#overview)
 
@@ -9,6 +9,14 @@ Phase 3 targets a fully bootable Linux environment. It scales up the interconnec
 ---
 
 ## Architecture Overview
+
+Below is the verified microarchitecture block diagram of the SMVDU-TITAN-X Phase 3 RISC-V SoC:
+
+![SMVDU-TITAN-X Phase 3 SoC Architecture Overview](docs/titan_x_phase3_architecture.png)
+
+---
+
+## Core Topology and Bus Interconnect
 
 ```mermaid
 graph TD

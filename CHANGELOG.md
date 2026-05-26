@@ -57,5 +57,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[Unreleased]: https://github.com/your-org/smvdu-titan-x/compare/v0.1.0-alpha...HEAD
-[0.1.0-alpha]: https://github.com/your-org/smvdu-titan-x/releases/tag/v0.1.0-alpha
+[Unreleased]: https://github.com/anupamsarashwat1-cloud/smvdu-titan-x/compare/v0.1.0-alpha...HEAD
+[0.1.0-alpha]: https://github.com/anupamsarashwat1-cloud/smvdu-titan-x/releases/tag/v0.1.0-alpha

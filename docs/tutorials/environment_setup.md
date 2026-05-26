@@ -23,7 +23,7 @@ This tutorial will set up your SMVDU-TITAN-X development environment from scratc
 ## Step 1: Clone the Repository
 
 ```bash
-git clone --recursive https://github.com/your-org/smvdu-titan-x.git
+git clone --recursive https://github.com/anupamsarashwat1-cloud/smvdu-titan-x.git
 cd smvdu-titan-x
 ```
 

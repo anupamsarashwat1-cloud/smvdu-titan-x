@@ -204,4 +204,4 @@ make isa
 
 ## Questions?
 
-Open a [Discussion](https://github.com/your-org/smvdu-titan-x/discussions) or file an issue using the appropriate template.
+Open a [Discussion](https://github.com/anupamsarashwat1-cloud/smvdu-titan-x/discussions) or file an issue using the appropriate template.

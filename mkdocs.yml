@@ -1,9 +1,9 @@
 site_name: SMVDU-TITAN-X
 site_description: Open-Source High-Performance 64-bit RISC-V Multicore SoC
 site_author: SMVDU-TITAN-X Contributors
-site_url: https://your-org.github.io/smvdu-titan-x/
-repo_name: your-org/smvdu-titan-x
-repo_url: https://github.com/your-org/smvdu-titan-x
+site_url: https://anupamsarashwat1-cloud.github.io/smvdu-titan-x/
+repo_name: anupamsarashwat1-cloud/smvdu-titan-x
+repo_url: https://github.com/anupamsarashwat1-cloud/smvdu-titan-x
 edit_uri: edit/main/docs/
 
 # ─── Theme ───────────────────────────────────────────────────────────────────
@@ -87,7 +87,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       normalize_issue_symbols: true
       repo_url_shorthand: true
-      user: your-org
+      user: anupamsarashwat1-cloud
       repo: smvdu-titan-x
   - pymdownx.mark
   - pymdownx.smartsymbols
@@ -135,7 +135,7 @@ extra:
     provider: mike
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/your-org/smvdu-titan-x
+      link: https://github.com/anupamsarashwat1-cloud/smvdu-titan-x
   analytics:
     provider: google
     property: G-XXXXXXXXXX  # Replace with your GA4 property

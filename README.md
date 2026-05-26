@@ -10,7 +10,7 @@
 [![RISC-V](https://img.shields.io/badge/ISA-RISC--V%20RV64GC-brightgreen.svg)](https://riscv.org)
 [![Chipyard](https://img.shields.io/badge/Framework-Chipyard-orange.svg)](https://github.com/ucb-bar/chipyard)
 [![Docs](https://img.shields.io/badge/Docs-MkDocs-informational.svg)](docs/)
-[![CI](https://github.com/your-org/smvdu-titan-x/actions/workflows/lint.yml/badge.svg)](/.github/workflows)
+[![CI](https://github.com/anupamsarashwat1-cloud/smvdu-titan-x/actions/workflows/lint.yml/badge.svg)](/.github/workflows)
 
 </div>
 
@@ -127,7 +127,7 @@ bash scripts/setup/setup_riscv_toolchain.sh
 ### Clone with Submodules
 
 ```bash
-git clone --recursive https://github.com/your-org/smvdu-titan-x.git
+git clone --recursive https://github.com/anupamsarashwat1-cloud/smvdu-titan-x.git
 cd smvdu-titan-x
 git submodule update --init --recursive
 ```

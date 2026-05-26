@@ -8,7 +8,7 @@
 
 [Get Started](tutorials/environment_setup.md){ .md-button .md-button--primary }
 [Architecture](architecture/overview.md){ .md-button }
-[View on GitHub](https://github.com/your-org/smvdu-titan-x){ .md-button }
+[View on GitHub](https://github.com/anupamsarashwat1-cloud/smvdu-titan-x){ .md-button }
 
 </div>
 
@@ -112,7 +112,7 @@ SMVDU-TITAN-X Hardware
 
 ```bash
 # Clone with all submodules
-git clone --recursive https://github.com/your-org/smvdu-titan-x.git
+git clone --recursive https://github.com/anupamsarashwat1-cloud/smvdu-titan-x.git
 cd smvdu-titan-x
 
 # Install system dependencies (Ubuntu 22.04/24.04)
@@ -151,4 +151,4 @@ bash scripts/sim/run_verilator.sh
 
 ## License
 
-SMVDU-TITAN-X is licensed under [Apache 2.0](https://github.com/your-org/smvdu-titan-x/blob/main/LICENSE).
+SMVDU-TITAN-X is licensed under [Apache 2.0](https://github.com/anupamsarashwat1-cloud/smvdu-titan-x/blob/main/LICENSE).

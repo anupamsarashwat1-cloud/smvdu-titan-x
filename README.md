@@ -75,7 +75,7 @@ Built on proven open-source ecosystems — **Chipyard**, **Rocket-Chip**, **Tile
 | **Phase 3** | Multicore (quad-core) + SMP Linux | 📋 Planned |
 | **Phase 4** | Advanced IO (Ethernet, USB, PCIe, SDIO) | 📋 Planned |
 | **Phase 5** | AI / DSP / Crypto accelerators | 📋 Planned |
-| **Phase 6** | ASIC synthesis and physical design exploration | 📋 Planned |
+| **Phase 6** | ASIC Cadence Flow compilation, physical synthesis, place-and-route, tapeout prep | 📋 Planned |
 
 ---
 
@@ -180,7 +180,7 @@ SMVDU-TITAN-X Hardware
 | ISA Verification | riscv-dv, riscv-tests |
 | FPGA | Xilinx Vivado, LiteX |
 | Software | RISC-V GCC, OpenSBI, U-Boot, Linux, Buildroot |
-| ASIC | OpenROAD, OpenLane, Sky130 PDK |
+| ASIC | Cadence Genus (Synthesis), Cadence Innovus (P&R), Cadence Xcelium (GLS), OpenLane, OpenROAD, Sky130 PDK |
 
 ---
 

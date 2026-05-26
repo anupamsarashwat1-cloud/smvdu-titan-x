@@ -42,7 +42,7 @@
 #define TITAN_X_PLIC_NUM_SRCS   32             /* Number of interrupt sources */
 
 /* ─── UART (SiFive UART-compatible) ─────────────────────────────────────── */
-#define TITAN_X_UART0_BASE      0x54000000UL
+#define TITAN_X_UART0_BASE      0x10020000UL
 #define TITAN_X_UART0_BAUD      115200UL
 #define TITAN_X_UART0_IRQ       1
 

@@ -43,13 +43,13 @@
 	url = https://github.com/enjoy-digital/litex.git
 	branch = master
 
-[submodule "software/opensbi"]
-	path = software/opensbi
+[submodule "software/opensbi_src"]
+	path = software/opensbi_src
 	url = https://github.com/riscv-software-src/opensbi.git
 	branch = master
 
-[submodule "software/uboot"]
-	path = software/uboot
+[submodule "software/uboot_src"]
+	path = software/uboot_src
 	url = https://github.com/u-boot/u-boot.git
 	branch = master
 
@@ -58,10 +58,6 @@
 	url = https://github.com/riscv-software-src/riscv-tests.git
 	branch = master
 
-[submodule "verification/cocotb"]
-	path = verification/cocotb
-	url = https://github.com/cocotb/cocotb.git
-	branch = master
 
 [submodule "verification/riscv-dv"]
 	path = verification/riscv-dv

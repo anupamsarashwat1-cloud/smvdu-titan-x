@@ -8,6 +8,8 @@ This document contains the structural block diagrams for the SMVDU-TITAN-X Phase
 
 The block diagram below represents the system hierarchy of Phase 5, highlighting the custom RoCC coprocessor and security block:
 
+![Titan-X Phase 5 Microarchitecture Block Diagram](titan_x_phase5_architecture.png)
+
 ```mermaid
 graph TB
     subgraph ChipBoundary [Titan-X SoC Top Level]

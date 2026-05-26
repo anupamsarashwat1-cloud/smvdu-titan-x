@@ -10,6 +10,8 @@ Phase 5 represents the peak computational capability of the SMVDU-TITAN-X proces
 
 ## Architecture Overview
 
+![Titan-X Phase 5 Microarchitecture Block Diagram](docs/titan_x_phase5_architecture.png)
+
 ```mermaid
 graph TD
     subgraph TitanX_SoC [Titan-X SoC Top Level]

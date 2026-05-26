@@ -8,6 +8,8 @@ This document contains the structural block diagrams for the SMVDU-TITAN-X Phase
 
 The block diagram below represents the system hierarchy of Phase 4, highlighting the PCIe, USB and HDMI controllers:
 
+![Titan-X Phase 4 Microarchitecture Block Diagram](titan_x_phase4_architecture.png)
+
 ```mermaid
 graph TB
     subgraph ChipBoundary [Titan-X SoC Top Level]

@@ -1,6 +1,6 @@
 # SMVDU-TITAN-X — Phase 2: Boot Infrastructure
 
-[![Build Status](https://img.shields.io/badge/status-planned-yellow.svg)](#overview)
+[![Build Status](https://img.shields.io/badge/status-validated-success.svg)](#overview)
 [![Architecture](https://img.shields.io/badge/ISA-RV64GC-blue.svg)](#overview)
 [![Features](https://img.shields.io/badge/Boot ROM-OpenSBI-lightgrey.svg)](#overview)
 
@@ -9,6 +9,14 @@ Phase 2 builds upon the bare-metal foundation of Phase 1 to introduce a standard
 ---
 
 ## Architecture Overview
+
+Below is the verified microarchitecture block diagram of the SMVDU-TITAN-X Phase 2 RISC-V SoC:
+
+![SMVDU-TITAN-X Phase 2 SoC Architecture Overview](docs/titan_x_phase2_architecture.png)
+
+---
+
+## Core Topology and Bus Interconnect
 
 ```mermaid
 graph TD
@@ -27,7 +35,7 @@ graph TD
         L1D <--> TL_Bus
 
         subgraph MemorySubsystem [Boot & Memory]
-            SPIFlash[SPI Flash Controller @ 0x20000000]
+            SPIFlash[SPI Flash Controller @ 0x10030000]
             BootROM[BootROM @ 0x00010000]
             DRAM[DDR3 / SRAM Controller]
         end

@@ -4,9 +4,15 @@ This document contains the structural block diagrams for the SMVDU-TITAN-X Phase
 
 ---
 
-## 1. SoC Block Diagram
+## 1. High-Fidelity Microarchitecture Overview
 
-The block diagram below represents the system hierarchy of Phase 2, highlighting the addition of SPI and GPIO controllers:
+Below is the verified microarchitecture block diagram of the SMVDU-TITAN-X Phase 2 RISC-V SoC:
+
+![SMVDU-TITAN-X Phase 2 SoC Architecture Overview](titan_x_phase2_architecture.png)
+
+---
+
+## 2. Bus Interconnect and Core Topology
 
 ```mermaid
 graph TB
@@ -34,7 +40,7 @@ graph TB
         subgraph Peripherals [MMIO Peripherals]
             UART[SiFive UART @ 0x10020000]
             BootROM[BootROM 10KB @ 0x00010000]
-            SPI[SPI Flash Controller @ 0x54020000]
+            SPI[SPI Flash Controller @ 0x10030000]
             GPIO[GPIO Controller @ 0x54010000]
         end
 

@@ -127,7 +127,7 @@ nav:
     - tutorials/chipyard_setup.md
     - tutorials/first_simulation.md
     - tutorials/fpga_deployment.md
-  - Contributing: ../CONTRIBUTING.md
+  - Contributing: CONTRIBUTING.md
 
 # ─── Extra ───────────────────────────────────────────────────────────────────
 extra:

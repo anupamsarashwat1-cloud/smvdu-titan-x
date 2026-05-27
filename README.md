@@ -26,9 +26,11 @@
 
 <div align="center">
 
-[![Silicon Core Boot Sequence Visualizer](docs/assets/soc_boot_animation.svg)](https://anupamsarashwat1-cloud.github.io/smvdu-titan-x/soc_visualizer.html)
+> **[▶ Launch the Live Interactive Visualizer →](https://anupamsarashwat1-cloud.github.io/smvdu-titan-x/soc_visualizer.html)**
 
-<sub>*The animated model above demonstrates the 16s real-time silicon boot stages (BootROM decrypt → CPU core complex init → cache coherence → high-speed link training → vector interrupt routing). <b>Click the animation above</b> to open the interactive scrubbing scrubber.*</sub>
+[![Click to open live interactive Silicon Boot Sequence Visualizer — 16-stage animated SoC block diagram with real-time neon boot progression](docs/assets/soc_visualizer_preview.png)](https://anupamsarashwat1-cloud.github.io/smvdu-titan-x/soc_visualizer.html)
+
+<sub>*Preview of the interactive Silicon Boot Visualizer. Click the image above to open the **live animated demo** — a real-time 16-second boot sequence showing BootROM decrypt → CPU core complex init → L2 cache coherence → PCIe LTSSM link training → interrupt routing across all SoC blocks. Hosted on GitHub Pages.*</sub>
 
 </div>
 

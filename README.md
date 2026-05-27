@@ -2,6 +2,11 @@
 
 <div align="center">
 
+<img src="docs/assets/repo_logo.png" width="180px" alt="SMVDU-TITAN-X Logo" />
+
+<br/>
+<br/>
+
 ![SMVDU-TITAN-X Premium Poster](docs/assets/banner_poster.jpg)
 
 <br/>

@@ -455,32 +455,47 @@ To avoid "reinventing the wheel" and to guarantee layout timing success, we inte
 
 ```text
 smvdu-titan-x/
-├── hardware/          # RTL design (Chisel + Verilog)
-│   ├── rtl/           # Source RTL
-│   ├── chipyard/      # Chipyard submodule + configs
-│   ├── constraints/   # FPGA pin constraints
-│   └── ip/            # Third-party IP
-├── verification/      # Simulation & verification
-│   ├── sim/           # Verilator harnesses
-│   ├── cocotb/        # Python testbenches
-│   ├── riscv-dv/      # Instruction generators
-│   └── riscv-tests/   # Compliance tests
-├── fpga/              # FPGA deployment targets
-│   ├── artix7/        # Xilinx Artix-7
-│   ├── kintex7/       # Xilinx Kintex-7
-│   └── litex_targets/ # LiteX rapid prototyping
-├── software/          # Software stack
-│   ├── firmware/      # Bare-metal firmware
-│   ├── opensbi/       # OpenSBI + platform config
-│   ├── uboot/         # U-Boot + board config
-│   ├── linux/         # Linux kernel + defconfig
-│   └── buildroot/     # BusyBox rootfs
-├── asic/              # ASIC research & production flow
-│   ├── openlane/      # Open-source physical design flow
-│   └── cadence/       # Production-grade Cadence Genus & Innovus scripts
-├── docs/              # Documentation (MkDocs)
-├── scripts/           # Automation scripts
-└── .github/           # CI/CD workflows
+├── phases/                  # Five-Phase Development Sandboxes
+│   ├── phase1-bare-metal/   # Phase 1: Single-core + UART bare-metal
+│   ├── phase2-boot-infra/   # Phase 2: BootROM, SPI Flash, GPIO peripherals
+│   ├── phase3-linux-boot/   # Phase 3: Quad-Core SMP Cluster + coherent L2 + LiteDRAM/LiteETH
+│   ├── phase4-high-speed-io/# Phase 4: Dual-Core + PCIe Gen2 x4, USB 2.0, HDMI TMDS
+│   ├── phase5-acceleration/ # Phase 5: RoCC AI/ML Systolic Array + HBM2 + Crypto Engine
+│   └── final-integration/   # Unified Silicon-Ready 5-Hart Coherent SoC
+├── hardware/                # Hardware Microarchitecture Design & RTL
+│   ├── rtl/top/             # Integrated SoC RTL stubs & Physical Memory Maps
+│   │   ├── titan_x_top.v    # Golden top-level synthesizable integration RTL
+│   │   └── memory_map.md    # SoC physical memory and MMIO address allocation
+│   ├── chipyard/            # UCB Chipyard generator framework core submodule
+│   └── constraints/         # Physical pin & FPGA target mapping parameters
+├── verification/            # Verification & Cycle-Accurate Emulation
+│   ├── cocotb/uart/         # Python-based testbenches using the Cocotb co-simulation framework
+│   └── riscv-tests/         # RISC-V ISA compatibility and hardware compliance suite
+├── fpga/                    # Rapid FPGA Prototyping Targets
+│   └── litex_targets/       # LiteX board level wrappers and rapid synthesis targets
+├── software/                # System Software Stack & Firmware
+│   ├── firmware/            # First-Stage Bootloader and Assembly tests
+│   │   ├── hello_uart/      # Serial boot banner print program
+│   │   └── exit_test/       # Core register compliance smoke test
+│   └── opensbi/             # OpenSBI Machine-Mode supervisor runtime submodule
+├── asic/                    # Silicon-Ready ASIC Physical CAD Flow
+│   ├── openlane/            # Open-source RTL-to-GDSII flow scripts & constraints
+│   │   ├── config.json      # OpenLane environment configuration parameters
+│   │   └── run_openlane_flow.sh # Shell wrapper to synthesize standard cell layouts
+│   └── cadence/             # Industrial logical synthesis & P&R automation scripts
+│       ├── synthesis_genus.tcl # Cadence Genus multi-corner logical mapping recipe
+│       ├── physical_innovus.tcl # Cadence Innovus floorplanning, placement & NanoRoute routing
+│       └── titan_x_constraints.sdc # Synopsys Design Constraints timing file
+├── scripts/                 # System Automation & Toolchain Setup
+│   ├── setup/               # Conda, RISC-V GNU compilers, and Chipyard environment setup
+│   └── sim/                 # Cycle-accurate Verilator, Spike, and Cocotb simulators wrappers
+├── docs/                    # MkDocs-based web pages and system architecture spec sheets
+├── .github/                 # GitHub Actions continuous integration & linting workflows
+├── CHANGELOG.md             # Repository version bump logs
+├── CONTRIBUTING.md          # Collaborative logic contribution guidelines
+├── LICENSE                  # Apache 2.0 open-source licensing agreement
+├── mkdocs.yml               # MkDocs static site layout template settings
+└── walkthrough.md           # Unified step-by-step verification log and walkthrough
 ```
 
 ---

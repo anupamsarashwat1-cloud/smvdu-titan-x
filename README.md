@@ -53,8 +53,7 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 ### 📍 Phase 1: Bare-Metal Core Bring-up
 *   **Focus**: Base RISC-V scalar core bring-up with primary serial interfaces and local clock blocks.
 *   **Architecture**: Single 64-bit RV64GC (IMAFDC) Rocket core with 32KB private L1 I/D caches and an integrated SiFive UART.
-*  
-
+*   **Microarchitecture Diagram**:
     ```mermaid
     graph TD
         subgraph TitanX_SoC [Titan-X SoC Top Level]
@@ -116,10 +115,6 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 *   **Focus**: Synthesizable first-stage BootROM assembly, APB/TileLink GPIO, and SPI Flash.
 *   **Architecture**: Adds bootrom, a 32-bit APB GPIO controller, and memory-mapped SPI Flash memory space.
 *   **Microarchitecture Diagram**:
-    <div align="center">
-      <img src="phases/phase2-boot-infra/docs/titan_x_phase2_architecture.png" alt="Phase 2 Block Diagram" width="550px" />
-    </div>
-
     ```mermaid
     graph TD
         subgraph TitanX_SoC [Titan-X SoC Top Level]
@@ -180,10 +175,6 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 *   **Focus**: Symmetric Multiprocessing (SMP) core complex, DDR memory interfaces, and Ethernet MAC blocks.
 *   **Architecture**: Coherent Quad-Core RV64GC Rocket cluster, shared inclusive 512KB L2 cache, 2GB LiteDRAM DDR space, LiteETH Gigabit MAC, and SD Card SPI.
 *   **Microarchitecture Diagram**:
-    <div align="center">
-      <img src="phases/phase3-linux-boot/docs/titan_x_phase3_architecture.png" alt="Phase 3 Block Diagram" width="550px" />
-    </div>
-
     ```mermaid
     graph TD
         subgraph TitanX_SoC [Titan-X SoC Top Level]
@@ -240,10 +231,6 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 *   **Focus**: Gigabit serial interfaces, transceivers, and active display output engines.
 *   **Architecture**: Dual-Core Rocket complex, PCIe Gen2 x4 with LTSSM L0 training, USB 2.0 OTG, and HDMI TMDS active colorbars generator.
 *   **Microarchitecture Diagram**:
-    <div align="center">
-      <img src="phases/phase4-high-speed-io/docs/titan_x_phase4_architecture.png" alt="Phase 4 Block Diagram" width="550px" />
-    </div>
-
     ```mermaid
     graph TD
         subgraph TitanX_SoC [Titan-X SoC Top Level]
@@ -296,10 +283,6 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 *   **Focus**: Custom coprocessor pipelines, high-bandwidth stack memory, and hardware security cores.
 *   **Architecture**: Single Rocket core, tightly coupled RoCC 8x8 INT8 Systolic Array ML Coprocessor, dual AXI4 HBM2 controller channels, and MMIO Cryptographic cores (AES-256 / SHA-3).
 *   **Microarchitecture Diagram**:
-    <div align="center">
-      <img src="phases/phase5-acceleration/docs/titan_x_phase5_architecture.png" alt="Phase 5 Block Diagram" width="550px" />
-    </div>
-
     ```mermaid
     graph TD
         subgraph TitanX_SoC [Titan-X SoC Top Level]
@@ -352,10 +335,6 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 *   **Focus**: Hierarchical integration of the compute complex, memory subsystems, AMBA interconnect switches, high-speed transceivers, low-speed communications, and secure boot sub-systems.
 *   **Architecture**: Unified 5-Hart processor cluster (4x RV64GC App cores + 1x RV64IMAC Monitor core), 2MB shared banked L2 Cache/LIM, central 15-Master 9-Slave AXI4 Switch, PCIe Gen2 x4 Root Port, dualGEM Ethernet MACs, MIPI CSI-2 ISP camera inputs, HDMI 1.4 TMDS output, 5x MMUARTs, QSPI XIP, dual CAN 2.0B, and secure boot eNVM crypto cores.
 *   **Microarchitecture Diagram**:
-    <div align="center">
-      <img src="phases/final-integration/docs/titan_x_final_architecture.png" alt="Final Integration Block Diagram" width="550px" />
-    </div>
-
     ```mermaid
     graph TD
         subgraph TitanX_SoC [Titan-X Unified SoC Top Level]

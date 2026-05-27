@@ -1,0 +1,49 @@
+# Legal Notice & Licenses
+
+This document lists the licenses and attributions for all third-party components, frameworks, submodules, and IPs integrated into the **SMVDU-TITAN-X** processor ecosystem.
+
+---
+
+## 1. SMVDU-TITAN-X Core Codebase
+* **License**: **Apache License 2.0**
+* **Copyright**: Copyright © 2025-2026 SMVDU-TITAN-X Contributors.
+* **Coverage**: All custom RTL design blocks, peripherals (APB/TileLink GPIO, custom PCIe/HDMI state machines, RoCC ML systolic array controller, security coprocessor), physical synthesis CAD scripts, assembly firmware, and SystemVerilog testbenches.
+
+---
+
+## 2. Integrated Third-Party Submodules & IPs
+
+### 2.1 CPU Harts Complex (Rocket-Chip)
+* **Source**: UCB Rocket-Chip Generator (https://github.com/chipsalliance/rocket-chip)
+* **License**: **Apache License 2.0**
+* **Copyright**: Copyright © 2012-2026 Regents of the University of California.
+
+### 2.2 SoC Generator Framework (Chipyard)
+* **Source**: UCB Chipyard Framework (https://github.com/ucb-bar/chipyard)
+* **License**: **Apache License 2.0**
+* **Copyright**: Copyright © 2016-2026 Regents of the University of California.
+
+### 2.3 Machine-Mode Supervisor Runtime (OpenSBI)
+* **Source**: RISC-V OpenSBI (https://github.com/riscv-software-src/opensbi)
+* **License**: **BSD 2-Clause License**
+* **Copyright**: Copyright © 2018-2026 Western Digital Corporation or its affiliates and other contributors.
+
+### 2.4 Gigabit Bus & Memory Controllers (LiteX Ecosystem)
+* **Source**: Enjoy-Digital LiteX (https://github.com/enjoy-digital/litex)
+* **License**: **BSD 2-Clause License**
+* **Copyright**: Copyright © 2012-2026 Enjoy-Digital and other contributors.
+
+### 2.5 Verification Co-Simulation Framework (Cocotb)
+* **Source**: Cocotb Project (https://github.com/cocotb/cocotb)
+* **License**: **BSD 3-Clause License**
+* **Copyright**: Copyright © 2013-2026 Cocotb Contributors.
+
+### 2.6 RTL Simulation Platform (Verilator)
+* **Source**: Verilator Simulator (https://github.com/verilator/verilator)
+* **License**: **LGPL v3.0**
+* **Copyright**: Copyright © 2003-2026 Wilson Snyder and other contributors.
+
+---
+
+## 3. Physical Fabrication PDK Notice
+Physical semiconductor Process Design Kits (PDKs) utilized for ASIC synthesis and P&R implementation (e.g., SCL 180nm CMOS technology node) are standard-cell assets owned and distributed under strict Non-Disclosure Agreements (NDA) by their respective silicon foundries (such as Semiconductor Laboratory, Chandigarh). SMVDU-TITAN-X does not redistribute foundry PDK cell layouts or libraries directly; users are responsible for securing the appropriate academic research NDA licenses directly from the respective foundry for physical fabrication.

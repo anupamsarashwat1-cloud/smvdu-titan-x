@@ -62,14 +62,14 @@ Built on proven open-source hardware ecosystems — **Chipyard**, **Rocket-Chip*
 | **Final Integration** | Unified 5-Hart SoC (4x App + 1x Monitor) with full Specs | 5-Hart Coherent SoC | [phases/final-integration](phases/final-integration) | **✅ 100% COMPLETE & PASSING** |
 | **Step 1: RTL Extraction** | Translating parameterized Scala Chisel configurations to synthesizable Verilog | 5-Hart Coherent SoC | [phases/final-integration/rtl_handoff](phases/final-integration/rtl_handoff) | **✅ 100% EXTRACTED & VERIFIED** |
 | **Step 2: FPGA Emulation** | Synthesizing Vivado bitstreams and testing on target hardware | FPGA Emulation Wrapper | [fpga/litex_targets](fpga/litex_targets) | **✅ 100% EMULATED & PASSING** |
-| **Step 3: Functional Sim** | Simulating golden RTL with SystemVerilog testbenches in Cadence Xcelium | 5-Hart Coherent RTL | [asic/cadence/functional_verification](asic/cadence/functional_verification) | **🚀 100% SCRIPTED & READY** |
-| **Step 4: Code Coverage** | Measuring Block, Toggle, Expression and Subprogram coverage in IMC | Instrumentation Hooks | [asic/cadence/code_coverage](asic/cadence/code_coverage) | **🚀 100% SCRIPTED & READY** |
-| **Step 5: Logic Synthesis** | Mapping behavioral gates to standard cell libraries with Cadence Genus | Standard Cell Netlist | [asic/cadence/synthesis_genus.tcl](asic/cadence/synthesis_genus.tcl) | **🚀 100% SCRIPTED & READY** |
-| **Step 6: DFT Scan Insertion** | Configuring test control structures and scan flip-flops in Modus | Scan-Inserted Netlist | [asic/cadence/dft_atpg](asic/cadence/dft_atpg) | **🚀 100% SCRIPTED & READY** |
-| **Step 7: ATPG Generation** | Generating stuck-at and transition test pattern vectors with Modus | Test Pattern Vectors | [asic/cadence/dft_atpg](asic/cadence/dft_atpg) | **🚀 100% SCRIPTED & READY** |
-| **Step 8: Gate-Level Sim** | Running netlist simulations with back-annotated SDF timing in Xcelium | Post-Synthesis Netlist | [asic/cadence/gls](asic/cadence/gls) | **🚀 100% SCRIPTED & READY** |
-| **Step 9: Conformal LEC** | Formally verifying Golden RTL vs Revised Netlist in Conformal | Formal Logic Matching | [asic/cadence/lec](asic/cadence/lec) | **🚀 100% SCRIPTED & READY** |
-| **Step 10: Physical Design** | Macro floorplanning, placement, CTS, NanoRoute routing in Innovus | Tape-out Ready GDSII | [asic/cadence/physical_innovus.tcl](asic/cadence/physical_innovus.tcl) | **🚀 100% TAPE-OUT READY** |
+| **Step 3: Functional Sim** | Simulating golden RTL with SystemVerilog testbenches in Cadence Xcelium | 5-Hart Coherent RTL | [asic/cadence/functional_verification](asic/cadence/functional_verification) | **⏳ TO BE DONE** |
+| **Step 4: Code Coverage** | Measuring Block, Toggle, Expression and Subprogram coverage in IMC | Instrumentation Hooks | [asic/cadence/code_coverage](asic/cadence/code_coverage) | **⏳ TO BE DONE** |
+| **Step 5: Logic Synthesis** | Mapping behavioral gates to standard cell libraries with Cadence Genus | Standard Cell Netlist | [asic/cadence/synthesis_genus.tcl](asic/cadence/synthesis_genus.tcl) | **⏳ TO BE DONE** |
+| **Step 6: DFT Scan Insertion** | Configuring test control structures and scan flip-flops in Modus | Scan-Inserted Netlist | [asic/cadence/dft_atpg](asic/cadence/dft_atpg) | **⏳ TO BE DONE** |
+| **Step 7: ATPG Generation** | Generating stuck-at and transition test pattern vectors with Modus | Test Pattern Vectors | [asic/cadence/dft_atpg](asic/cadence/dft_atpg) | **⏳ TO BE DONE** |
+| **Step 8: Gate-Level Sim** | Running netlist simulations with back-annotated SDF timing in Xcelium | Post-Synthesis Netlist | [asic/cadence/gls](asic/cadence/gls) | **⏳ TO BE DONE** |
+| **Step 9: Conformal LEC** | Formally verifying Golden RTL vs Revised Netlist in Conformal | Formal Logic Matching | [asic/cadence/lec](asic/cadence/lec) | **⏳ TO BE DONE** |
+| **Step 10: Physical Design** | Macro floorplanning, placement, CTS, NanoRoute routing in Innovus | Tape-out Ready GDSII | [asic/cadence/physical_innovus.tcl](asic/cadence/physical_innovus.tcl) | **⏳ TO BE DONE** |
 
 </div>
 

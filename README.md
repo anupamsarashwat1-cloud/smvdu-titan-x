@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![SMVDU-TITAN-X Banner](docs/assets/banner.svg)
+![SMVDU-TITAN-X Banner](docs/assets/banner.png)
 
 **A Fully Integrated, Five-Phase 64-bit RISC-V Multicore SoC Ecosystem & ASIC CAD Flow**
 

@@ -57,7 +57,7 @@ I bridge the gap between abstract computer architectures and physical silicon, w
 * **Phase 4: High-Speed Serial I/O**: Integrated PCIe Gen2 (x4) controller with full LTSSM L0 training state machine, USB 2.0 OTG, and HDMI TMDS active colorbars generator on a dual-core topology.
 * **Phase 5: Coprocessor & Accelerators**: Designed and integrated a tightly coupled 8x8 INT8 Systolic Array ML Coprocessor via the RoCC custom interface, dual-channel AXI4 HBM2 controller, and MMIO Cryptographic blocks (AES-256/SHA-3).
 * **Final Unified Integration**: Completed a unified 5-Hart silicon-ready SoC (4x RV64GC Application cores + 1x RV64IMAC Monitor core) optimized for physical semiconductor tapeout (SCL 180nm node).
-* **ASIC CAD Flow**: Authored production-grade logical synthesis (`Cadence Genus`) and floorplanning, CTS, and routing scripts (`Innovus`) yielding timing closure and tape-out readiness.
+* **ASIC CAD & Verification Flow**: Authored production-grade scripts covering the complete 10-step silicon roadmap: SystemVerilog/UVM simulations with **Cadence Xcelium**, Block/Toggle/Expression coverage with **IMC**, multi-corner logical synthesis with **Genus**, scan-chain insertion and stuck-at/transition fault ATPG generation with **Modus**, Gate-Level Simulations (GLS) with SDF back-annotation, formal logical equivalence checking (LEC) with **Conformal**, and macro P&R implementation scripts with **Innovus** yielding tape-out readiness.
 
 #### ⚡ **SMVDU-AHO-32: 32-bit RISC-V Processor Core**
 *End-to-End Design, FPGA Prototyping & RTL-to-GDSII ASIC Flow | Dec 2025 – May 2026*

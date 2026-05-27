@@ -15,7 +15,15 @@ smvdu-titan-x/
 │   ├── phase2-boot-infra/         ← GPIO, BootROM assembly compilation & SPI Flash (100% Validated!)
 │   ├── phase3-linux-boot/         ← Quad-Core coherent Rocket cluster, DDR & Ethernet (100% Validated!)
 │   ├── phase4-high-speed-io/      ← Dual-Core Rocket, PCIe Gen2 x4, USB 2.0 & HDMI TMDS (100% Validated!)
-│   └── phase5-acceleration/       ← Single-Core, custom RoCC Systolic Array & Crypto Engines (100% Validated!)
+│   ├── phase5-acceleration/       ← Single-Core, custom RoCC Systolic Array & Crypto Engines (100% Validated!)
+│   └── final-integration/         ← Unified 5-Hart silicon-ready SoC (100% Validated!)
+├── asic/
+│   └── cadence/                   ← Cadence ASIC physical CAD & silicon verification scripts
+│       ├── functional_verification/ ← Cadence Xcelium simulation runner template
+│       ├── code_coverage/         ← Block, subprogram, toggle, & expression coverage
+│       ├── dft_atpg/              ← Modus scan insertion & ATPG generation
+│       ├── lec/                   ← Conformal LEC golden RTL vs netlist verification
+│       └── gls/                   ← Gate-Level Simulation with SDF timing checks
 ├── README.md                      ← Updated main repository roadmap
 └── walkthrough.md                 ← This comprehensive integration walkthrough
 ```
@@ -86,10 +94,94 @@ Both Phase 4 and Phase 5 SystemVerilog verification suites compile cleanly and o
 
 ---
 
-## 5. ASIC Tapeout Integration Plan (Cadence Flow)
+## 5. Unified Silicon Verification & Production Flow (Cadence & FPGA Roadmap)
 
 > [!IMPORTANT]
-> **Silicon Tapeout Readiness**: The generated and structured Verilog modules inside all five phase folders are modeled with clean clock/reset boundaries and robust bus wrappers, allowing seamless migration to standard **Cadence ASIC Design Flows**:
-> *   **Logical Synthesis (Cadence Genus)**: Compile the standalone synthesizable top RTL wrappers (`titan_x_top.v`) and peripheral RTL blocks under a foundry PDK (e.g. TSMC 28nm, GlobalFoundries 12nm). Use `read_hdl` and `elaborate` in Genus, supplying Synopsys Design Constraints (.sdc) defining clock clocks (e.g. `create_clock -name sys_clk -period 10.0 [get_ports sys_clk]`) to produce a structurally optimized, gate-level netlist.
-> *   **Physical Implementation (Cadence Innovus)**: Import the gate-level netlist along with physical LEF files and timing lib (.lib) models. Execute partition floorplanning, placement of core complex and accelerator macros, Clock Tree Synthesis (CTS), routing, timing closure, power grid integrity analysis, and full physical verification (DRC, LVS, antenna rules) to output a physical tapeout-ready GDSII file.
-> *   **Functional Verification (Cadence Xcelium)**: Run compile-time Gate-Level Simulations (GLS) on the netlist using the SystemVerilog testbenches (`tb_titan_x_phase4.sv`/`tb_titan_x_phase5.sv`) and compliance firmware suites inside Xcelium to ensure zero functional regression, timing violations, or race conditions prior to mask submission.
+> **Production-Grade Silicon Readiness**: 
+> The `SMVDU-TITAN-X` design is optimized to translate from high-level behavioral Chisel configurations into standard-cell layout structures ready for physical mask fabrication. The newly integrated scripts under `asic/cadence/` cover the complete end-to-end flow:
+
+### 1️⃣ Verilog Extraction
+*   **Tool**: Chipyard Scala/Chisel Generator & SBT.
+*   **Purpose**: Compiles high-level parameterizable Scala configurations into synthesizable Verilog modules.
+*   **Handoff Directory**: `phases/final-integration/rtl_handoff/`
+
+### 2️⃣ FPGA Implementation & Prototyping
+*   **Tool**: Xilinx Vivado & LiteX FPGA SoC Builder.
+*   **Purpose**: Emulates the multicore SoC on real-world FPGA chips (e.g., Zynq-7000 / Kintex) to verify hardware compliance, local clock dividers, and MMIO interfaces.
+*   **Command**: `python3 fpga/litex_targets/build_board.py --target xc7z020 --build`
+
+### 3️⃣ Cadence Functional Verification (Xcelium)
+*   **Tool**: Cadence Xcelium (`xrun`).
+*   **Purpose**: Runs rapid, cycle-accurate SystemVerilog verification suites on golden RTL to detect logical bugs and interrupt handler race conditions.
+*   **Script**: [run_xcelium.sh](file:///home/anupam-sarashwat/Documents/antigravity/wonderful-mendel/asic/cadence/functional_verification/run_xcelium.sh)
+*   **Command**:
+    ```bash
+    cd asic/cadence/functional_verification/
+    ./run_xcelium.sh
+    ```
+
+### 4️⃣ Cadence Code Coverage Checks
+*   **Tools**: Cadence Xcelium (`xrun`) & Integrated Metrics Center (`imc`).
+*   **Purpose**: Analyzes statement, branch, toggle, and expression coverage metrics to guarantee that the verification test suites exhaustively stimulate all state machines.
+*   **Script**: [run_coverage.sh](file:///home/anupam-sarashwat/Documents/antigravity/wonderful-mendel/asic/cadence/code_coverage/run_coverage.sh)
+*   **Command**:
+    ```bash
+    cd asic/cadence/code_coverage/
+    ./run_coverage.sh
+    ```
+
+### 5️⃣ ASIC Synthesis (Genus)
+*   **Tool**: Cadence Genus Synthesis (`genus`).
+*   **Purpose**: Elaborates behavioral RTL, applies timing constraints (SDC), and maps logic gates into target standard cell libraries, outputting a structural netlist.
+*   **Script**: [synthesis_genus.tcl](file:///home/anupam-sarashwat/Documents/antigravity/wonderful-mendel/asic/cadence/synthesis_genus.tcl)
+*   **Command**:
+    ```bash
+    cd asic/cadence/
+    genus -files synthesis_genus.tcl
+    ```
+
+### 6️⃣ DFT Introduction (Modus Scan Insertion)
+*   **Tool**: Cadence Modus (`modus`).
+*   **Purpose**: Audits the netlist for testability rules and synthesizes scan chains (e.g., multiplexed flip-flops) to enable high-quality post-fabrication silicon testing.
+*   **Script**: [run_dft_modus.tcl](file:///home/anupam-sarashwat/Documents/antigravity/wonderful-mendel/asic/cadence/dft_atpg/run_dft_modus.tcl)
+*   **Command**:
+    ```bash
+    cd asic/cadence/dft_atpg/
+    modus -files run_dft_modus.tcl
+    ```
+
+### 7️⃣ ATPG Vector Generation (Modus)
+*   **Tool**: Cadence Modus.
+*   **Purpose**: Generates dynamic stuck-at and transition fault test patterns to verify chip logic after foundry manufacturing.
+*   *(Executed automatically during the `run_dft_modus.tcl` scan-synthesis flow).*
+
+### 8️⃣ Gate-Level Simulation (GLS + SDF)
+*   **Tool**: Cadence Xcelium (`xrun`).
+*   **Purpose**: Simulates the post-synthesis gate-level netlist back-annotated with standard delay format (SDF) parasitics, confirming timing closure and zero setup/hold violations.
+*   **Script**: [run_gls.sh](file:///home/anupam-sarashwat/Documents/antigravity/wonderful-mendel/asic/cadence/gls/run_gls.sh)
+*   **Command**:
+    ```bash
+    cd asic/cadence/gls/
+    ./run_gls.sh
+    ```
+
+### 9️⃣ Logical Equivalence Checking (LEC)
+*   **Tool**: Cadence Conformal LEC (`lec`).
+*   **Purpose**: Performs formal mathematical comparisons to prove that the structural synthesized netlist is logically identical to the golden behavioral RTL.
+*   **Script**: [run_conformal_lec.tcl](file:///home/anupam-sarashwat/Documents/antigravity/wonderful-mendel/asic/cadence/lec/run_conformal_lec.tcl)
+*   **Command**:
+    ```bash
+    cd asic/cadence/lec/
+    lec -files run_conformal_lec.tcl
+    ```
+
+### 🔟 Physical Layout Implementation (Innovus)
+*   **Tool**: Cadence Innovus (`innovus`).
+*   **Purpose**: Executes macro floorplanning, Power Grid (PG) synthesis, placement, Clock Tree Synthesis (CTS), routing, and physical extraction to generate tape-out ready GDSII masks.
+*   **Script**: [physical_innovus.tcl](file:///home/anupam-sarashwat/Documents/antigravity/wonderful-mendel/asic/cadence/physical_innovus.tcl)
+*   **Command**:
+    ```bash
+    cd asic/cadence/
+    innovus -files physical_innovus.tcl
+    ```
+

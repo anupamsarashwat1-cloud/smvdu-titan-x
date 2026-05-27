@@ -429,6 +429,12 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
       FINAL INTEGRATION VERIFICATION METRICS: 100% SUCCESS
     ================================================================
     ```
+*   **RTL Handoff Deliverables**:
+    For standalone logic verification and physical design synthesis on separate environments, we have prepared a fully packed, self-contained handoff:
+    *   **Handoff Guide & Specs**: [RTL Handoff of Final Integrated chip and Testbench.md](phases/final-integration/RTL%20Handoff%20of%20Final%20Integrated%20chip%20and%20Testbench.md)
+    *   **Synthesizable Verilog RTL**: [titan_x_final_top.v](phases/final-integration/rtl_handoff/titan_x_final_top.v)
+    *   **SystemVerilog Testbench (GTKWave VCD dump)**: [tb_titan_x_final.sv](phases/final-integration/rtl_handoff/tb_titan_x_final.sv)
+    *   **Simulation Script**: [run_sim.sh](phases/final-integration/rtl_handoff/run_sim.sh)
 
 ---
 

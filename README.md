@@ -199,6 +199,31 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 
 ---
 
+## 🛠️ SoC Design Methodology: Custom Hardware vs. Integrated Silicon IP
+
+Aligning with top-tier industrial semiconductor and research tape-out best practices, the SMVDU-TITAN-X SoC utilizes a hybrid integration strategy. It balances custom-designed, domain-specific acceleration cores with verified, silicon-proven standard communication interfaces to significantly reduce physical fabrication risks at standard PDK nodes (such as SCL 180nm).
+
+### 1. Custom Hardware Designs (Our Core Engineering Output)
+We custom-modeled, simulated, and integrated the critical execution pathways, control systems, and synthesis compilers:
+*   **Custom Peripherals & RTL Modules**:
+    *   **TileLink/APB GPIO Controller (`titan_x_gpio.v`)**: Synthesizable digital input/output core with programmable registers.
+    *   **PCIe Gen2 LTSSM State Machine (`titan_x_top.v` in Phase 4)**: Synthesizable controller executing full Gen2 (5 GT/s) link training sweeps (Detect -> Polling -> Config -> L0).
+    *   **HDMI TMDS Serializer (`titan_x_top.v` in Phase 4)**: Serializer mapping internal frame buffer RGB streams to active differential TMDS clock/data lanes.
+    *   **RoCC ML Systolic Array Decoder (`titan_x_top.v` in Phase 5)**: Hardware command decoder mapping LOAD_ACC, MAT_MUL, and READ_ACC instructions.
+    *   **MMIO Cryptographic Coprocessor (`titan_x_top.v` in Phase 5)**: Synthesizable ciphers executing AES-256 block encryption and SHA-3 compression hashing.
+*   **First-Stage BootROM Firmware**: Hand-crafted RISC-V assembly (`main.S` in Phase 2) executing clock configurations and jumping to SPI Flash.
+*   **Exhaustive SystemVerilog Testbenches**: Comprehensive verification test suites (`tb_titan_x_phase1.sv` to `tb_titan_x_final.sv`) running cycle-accurate clocking, memory, and interrupt sweeps.
+*   **ASIC CAD Design Flow Scripts**: Production-grade logical synthesis (`synthesis_genus.tcl`) and Innovus P&R (`physical_innovus.tcl`) scripts with full timing constraints (`titan_x_constraints.sdc`).
+
+### 2. Silicon-Proven Integrated IP Blocks (Proven Standard Interfaces)
+To avoid "reinventing the wheel" and to guarantee layout timing success, we integrated battle-tested open-source IP cores:
+*   **CPU Harts Complex**: 4x RV64GC Application Cores and 1x RV64IMAC Monitor Core (from the UC Berkeley Rocket-Chip generator).
+*   **System Bus & Bridges**: TileLink coherent crossbars (TileLink-C) and AMBA AXI4/AHB-Lite/APB protocol bridges.
+*   **Interrupt & Debug blocks**: Standard PLIC (186 global sources), CLINT timers, and JTAG hardware debug modules.
+*   **Standard Physical Layers (PHYs)**: High-speed DDR4 memory controllers, USB 2.0 ULPI interfaces, and Gigabit Ethernet MAC (GEM) cores.
+
+---
+
 ## 📂 Repository Structure
 
 ```text

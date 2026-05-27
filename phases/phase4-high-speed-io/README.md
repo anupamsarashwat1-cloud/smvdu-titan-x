@@ -10,8 +10,6 @@ Phase 4 expands the physical system interface scope by integrating high-speed co
 
 ## Architecture Overview
 
-![Titan-X Phase 4 Microarchitecture Block Diagram](docs/titan_x_phase4_architecture.png)
-
 ```mermaid
 graph TD
     subgraph TitanX_SoC [Titan-X SoC Top Level]

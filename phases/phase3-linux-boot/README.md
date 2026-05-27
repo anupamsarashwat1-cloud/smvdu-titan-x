@@ -10,9 +10,7 @@ Phase 3 targets a fully bootable Linux environment. It scales up the interconnec
 
 ## Architecture Overview
 
-Below is the verified microarchitecture block diagram of the SMVDU-TITAN-X Phase 3 RISC-V SoC:
-
-![SMVDU-TITAN-X Phase 3 SoC Architecture Overview](docs/titan_x_phase3_architecture.png)
+Below is the verified interactive microarchitecture diagram of the SMVDU-TITAN-X Phase 3 RISC-V SoC:
 
 ---
 

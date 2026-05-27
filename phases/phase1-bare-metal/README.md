@@ -10,8 +10,6 @@ Phase 1 establishes the baseline processing node for the **SMVDU-TITAN-X** SoC. 
 
 ## Architecture Overview
 
-![SMVDU-TITAN-X Phase 1 SoC Architecture Overview](docs/titan_x_phase1_architecture.png)
-
 ```mermaid
 graph TD
     subgraph TitanX_SoC [Titan-X SoC Top Level]

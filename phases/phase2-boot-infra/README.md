@@ -10,9 +10,7 @@ Phase 2 builds upon the bare-metal foundation of Phase 1 to introduce a standard
 
 ## Architecture Overview
 
-Below is the verified microarchitecture block diagram of the SMVDU-TITAN-X Phase 2 RISC-V SoC:
-
-![SMVDU-TITAN-X Phase 2 SoC Architecture Overview](docs/titan_x_phase2_architecture.png)
+Below is the verified interactive microarchitecture diagram of the SMVDU-TITAN-X Phase 2 RISC-V SoC:
 
 ---
 

@@ -10,7 +10,78 @@ This sandbox directory contains the completely integrated, silicon-ready, synthe
 
 ## 1. Unified SoC Microarchitecture
 
-![SMVDU-TITAN-X Final Integrated SoC Block Diagram](docs/titan_x_final_architecture.png)
+```mermaid
+graph TD
+    subgraph TitanX_SoC [Titan-X Unified SoC Top Level]
+        direction LR
+        subgraph CoreComplex [5-Hart Coherent Core Complex]
+            Core0[Hart 0: RV64GC App] <--> L1_0[32KB L1 I/D]
+            Core1[Hart 1: RV64GC App] <--> L1_1[32KB L1 I/D]
+            Core2[Hart 2: RV64GC App] <--> L1_2[32KB L1 I/D]
+            Core3[Hart 3: RV64GC App] <--> L1_3[32KB L1 I/D]
+            Core4[Hart 4: RV64IMAC Monitor] <--> L1_4[16KB I-Cache / DTIM]
+        end
+
+        subgraph Interconnect [TileLink Coherent Central Interconnect]
+            TL_Bus((TileLink-C Central Switch))
+        end
+
+        L1_0 <--> TL_Bus
+        L1_1 <--> TL_Bus
+        L1_2 <--> TL_Bus
+        L1_3 <--> TL_Bus
+        L1_4 <--> TL_Bus
+
+        subgraph L2Subsystem [L2 Memory & Coherence]
+            L2[2MB Banked L2 Cache / LIM]
+        end
+        TL_Bus <--> L2
+
+        subgraph MemorySubsystem [External Memory & Boot]
+            AXI_DDR[AXI4 DDR4 Controller]
+            eNVM[128KB eNVM Secure Boot ROM]
+        end
+        L2 <--> AXI_DDR
+        TL_Bus <--> eNVM
+
+        subgraph HighSpeedIO [High-Speed AXI/AHB Master Subsystems]
+            PCIe[PCIe Gen2 x4]
+            Eth[Dual GEM Gigabit Ethernet]
+            USB[USB 2.0 OTG]
+            Video[MIPI CSI-2 ISP & HDMI 1.4]
+        end
+        TL_Bus <--> PCIe
+        TL_Bus <--> Eth
+        TL_Bus <--> USB
+        TL_Bus <--> Video
+
+        subgraph LowSpeedSubsystem [APB Low-Speed Peripherals]
+            APB_Bus[APB Bus Bridge]
+            UARTs[5x MMUART]
+            SPIs[2x SPI & QSPI XIP]
+            I2Cs[2x I2C]
+            CANs[Dual CAN 2.0B]
+            GPIO[32-bit Muxed GPIO]
+        end
+        TL_Bus <--> APB_Bus
+        APB_Bus <--> UARTs
+        APB_Bus <--> SPIs
+        APB_Bus <--> I2Cs
+        APB_Bus <--> CANs
+        APB_Bus <--> GPIO
+
+        subgraph SecuritySubsystem [Cryptoprocessor]
+            Crypto[AES-256 / SHA-3 / ECDSA & TRNG]
+        end
+        TL_Bus <--> SecuritySubsystem
+    end
+
+    sys_clk[sys_clk 125-200MHz] --> TitanX_SoC
+    sys_rst_n[sys_rst_n] --> TitanX_SoC
+    pcie_phy[PCIe PHY x4] <--> PCIe
+    eth_phy[Dual RJ-45 PHY] <--> Eth
+    hdmi_con[HDMI Output / CSI Camera] <--> Video
+```
 
 ---
 

@@ -53,10 +53,7 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 ### 📍 Phase 1: Bare-Metal Core Bring-up
 *   **Focus**: Base RISC-V scalar core bring-up with primary serial interfaces and local clock blocks.
 *   **Architecture**: Single 64-bit RV64GC (IMAFDC) Rocket core with 32KB private L1 I/D caches and an integrated SiFive UART.
-*   **Microarchitecture Diagram**:
-    <div align="center">
-      <img src="phases/phase1-bare-metal/docs/titan_x_phase1_architecture.png" alt="Phase 1 Block Diagram" width="550px" />
-    </div>
+*  
 
     ```mermaid
     graph TD

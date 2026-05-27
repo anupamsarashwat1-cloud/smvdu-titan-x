@@ -636,3 +636,11 @@ SMVDU-TITAN-X builds upon the exceptional work of:
 - [OpenHW Group](https://www.openhwgroup.org/) — CVA6
 - [lowRISC](https://lowrisc.org/) — OpenTitan security IP
 - [enjoy-digital](https://github.com/enjoy-digital) — LiteX ecosystem
+
+---
+
+<div align="center">
+
+![SMVDU-TITAN-X Underbanner](docs/assets/underbanner.png)
+
+</div>

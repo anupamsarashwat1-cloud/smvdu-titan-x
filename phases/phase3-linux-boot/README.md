@@ -70,3 +70,11 @@ smvdu-titan-x-phase3/
     └── testbench/
         └── tb_titan_x_phase3.sv # SystemVerilog top testbench
 ```
+
+---
+
+<div align="center">
+
+![SMVDU-TITAN-X Underbanner](../../docs/assets/underbanner.png)
+
+</div>

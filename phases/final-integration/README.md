@@ -137,3 +137,11 @@ The SoC layout is strictly partitioned into high-level sub-systems:
 ### 6.0 Security & Boot Subsystem
 *   **6.1 Boot Logic**: 128KB eNVM Flash memory controller and secure bootloader ROM.
 *   **6.2 User Crypto-Processor**: Hardware coprocessor for AES-256 block ciphers, SHA-3 compression hashing, ECDSA signatures, and a hardware TRNG.
+
+---
+
+<div align="center">
+
+![SMVDU-TITAN-X Underbanner](../../docs/assets/underbanner.png)
+
+</div>

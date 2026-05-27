@@ -124,3 +124,11 @@ All validation runs succeeded with zero errors:
     *   **Verilator RTL Sim**: **10/10 PASS**
 
 For full execution transcripts, logs, and trace logs, see [RESULTS.md](RESULTS.md).
+
+---
+
+<div align="center">
+
+![SMVDU-TITAN-X Underbanner](../../docs/assets/underbanner.png)
+
+</div>

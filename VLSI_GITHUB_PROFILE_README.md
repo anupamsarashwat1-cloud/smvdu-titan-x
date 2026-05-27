@@ -50,11 +50,14 @@ I bridge the gap between abstract computer architectures and physical silicon, w
 ### 🌟 Featured VLSI Projects
 
 #### 🛡️ **[SMVDU-TITAN-X: Advanced RISC-V SoC](https://github.com/anupamsarashwat1-cloud/smvdu-titan-x)**
-*Quad-core RV64GC Design & SCL 180nm Implementation (Ongoing) | May 2026 – Present*
-* **Architecture**: Architecting a Linux-capable Quad-core RV64GC SoC utilizing Chisel and C for High-Level Design (HLD) to generate complex TileLink/AXI4 interconnects and coherent L2 cache logic.
-* **Memory Hierarchy**: Implementing 32KB ECC L1 caches, a 2MB banked shared L2 cache optimized for large-area physical constraints, and an Sv39 MMU for Debian/Ubuntu boot capability.
-* **ASIC Implementation**: Targeting the SCL 180nm node for physical fabrication at SCL Chandigarh, utilizing `Cadence Genus` for Multi-Mode Multi-Corner (MMMC) synthesis and `Innovus` for macro floorplanning.
-* **GLS Validation**: Validating the multicore handshake and pipeline integrity post-synthesis via Gate-Level Simulation (GLS) with SDF back-annotation using `Cadence Xcelium`.
+*SCL 180nm CMOS 5-Hart RISC-V Multicore SoC | May 2026 – Present*
+* **Phase 1: Bare-Metal Core Bring-Up**: Configured and validated a single RV64GC Rocket core with private 32KB L1 instruction/data caches, a SiFive UART peripheral block, and bare-metal firmware stubs.
+* **Phase 2: Boot Infrastructure**: Designed a synthesizable first-stage BootROM, APB-to-TileLink 32-bit GPIO controller, and memory-mapped SPI Flash interface to execute OpenSBI boot firmware.
+* **Phase 3: Linux-Capable SMP Cluster**: Scaled up to a coherent Quad-Core RV64GC Rocket complex with a shared inclusive 512KB banked L2 cache, 2GB LiteDRAM DDR space, and LiteETH Gigabit MAC.
+* **Phase 4: High-Speed Serial I/O**: Integrated PCIe Gen2 (x4) controller with full LTSSM L0 training state machine, USB 2.0 OTG, and HDMI TMDS active colorbars generator on a dual-core topology.
+* **Phase 5: Coprocessor & Accelerators**: Designed and integrated a tightly coupled 8x8 INT8 Systolic Array ML Coprocessor via the RoCC custom interface, dual-channel AXI4 HBM2 controller, and MMIO Cryptographic blocks (AES-256/SHA-3).
+* **Final Unified Integration**: Completed a unified 5-Hart silicon-ready SoC (4x RV64GC Application cores + 1x RV64IMAC Monitor core) optimized for physical semiconductor tapeout (SCL 180nm node).
+* **ASIC CAD Flow**: Authored production-grade logical synthesis (`Cadence Genus`) and floorplanning, CTS, and routing scripts (`Innovus`) yielding timing closure and tape-out readiness.
 
 #### ⚡ **SMVDU-AHO-32: 32-bit RISC-V Processor Core**
 *End-to-End Design, FPGA Prototyping & RTL-to-GDSII ASIC Flow | Dec 2025 – May 2026*

@@ -29,15 +29,13 @@
         </linearGradient>
 
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;family=Outfit:wght@400;600;700;800&amp;display=swap');
-            
-            /* Root Styles */
+            /* System-fallback fonts to satisfy GitHub sanitization (strictly no external network fetches) */
             text {
-                font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
                 user-select: none;
             }
             .code-text {
-                font-family: 'Fira Code', monospace;
+                font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, "Liberation Mono", monospace;
             }
 
             /* Main Loop Timeline (16 seconds total loop)
@@ -54,16 +52,12 @@
                 0% { stroke-dashoffset: 100; }
                 100% { stroke-dashoffset: 0; }
             }
-            .bus-path {
-                stroke-dasharray: 15 45;
-                stroke-opacity: 0.15;
-                transition: stroke-opacity 0.5s ease;
-            }
             @keyframes bus-activate {
-                0%, 12.5% { stroke-opacity: 0.15; animation-play-state: paused; }
-                12.5%, 100% { stroke-opacity: 1; animation: bus-scroll 3s linear infinite; }
+                0%, 12.5% { stroke-opacity: 0.15; stroke-dashoffset: 0; }
+                12.5%, 100% { stroke-opacity: 1; stroke-dasharray: 15 45; animation: bus-scroll 3s linear infinite; }
             }
             .bus-path {
+                stroke-opacity: 0.15;
                 animation: bus-activate 16s infinite;
             }
 
@@ -160,50 +154,57 @@
             }
             .text-ruby { animation: text-color-ruby 16s infinite; }
 
-            /* Status State Values */
-            @keyframes val-envm {
-                0%, 12.5% { content: "Signature: Unchecked"; fill: #57657a; }
-                12.5%, 31.25% { content: "Decrypting FSBL..."; fill: #f59e0b; }
-                31.25%, 100% { content: "Secure Lock [SECURED]"; fill: #d97706; }
-            }
-            .status-envm::after { animation: val-envm 16s step-end infinite; content: "Signature: Unchecked"; }
+            /* SVG Text Opacity Animations (Proper Standard-Compliant Text Swapping) */
+            @keyframes envm-o0 { 0%, 12.5% { opacity: 1; } 12.501%, 100% { opacity: 0; } }
+            @keyframes envm-o1 { 0%, 12.5% { opacity: 0; } 12.501%, 31.25% { opacity: 1; } 31.251%, 100% { opacity: 0; } }
+            @keyframes envm-o2 { 0%, 31.25% { opacity: 0; } 31.251%, 100% { opacity: 1; } }
+            .envm-t0 { animation: envm-o0 16s infinite; }
+            .envm-t1 { animation: envm-o1 16s infinite; }
+            .envm-t2 { animation: envm-o2 16s infinite; }
 
-            @keyframes val-cpu {
-                0%, 31.25% { content: "State: Power-down"; fill: #57657a; }
-                31.25%, 43.75% { content: "Booting: Step 2/7"; fill: #818cf8; }
-                43.75%, 56.25% { content: "Booting: Step 5/7"; fill: #818cf8; }
-                56.25%, 100% { content: "4x App + 1x Mon [ACTIVE]"; fill: #6366f1; }
-            }
-            .status-cpu::after { animation: val-cpu 16s step-end infinite; content: "State: Power-down"; }
+            @keyframes cpu-o0 { 0%, 31.25% { opacity: 1; } 31.251%, 100% { opacity: 0; } }
+            @keyframes cpu-o1 { 0%, 31.25% { opacity: 0; } 31.251%, 43.75% { opacity: 1; } 43.751%, 100% { opacity: 0; } }
+            @keyframes cpu-o2 { 0%, 43.75% { opacity: 0; } 43.751%, 56.25% { opacity: 1; } 56.251%, 100% { opacity: 0; } }
+            @keyframes cpu-o3 { 0%, 56.25% { opacity: 0; } 56.251%, 100% { opacity: 1; } }
+            .cpu-t0 { animation: cpu-o0 16s infinite; }
+            .cpu-t1 { animation: cpu-o1 16s infinite; }
+            .cpu-t2 { animation: cpu-o2 16s infinite; }
+            .cpu-t3 { animation: cpu-o3 16s infinite; }
 
-            @keyframes val-cache {
-                0%, 37.5% { content: "Coherence: Idle"; fill: #57657a; }
-                37.5%, 50% { content: "L2 Bank 0 Hit"; fill: #22d3ee; }
-                50%, 62.5% { content: "L2 Bank 1 Hit"; fill: #22d3ee; }
-                62.5%, 100% { content: "Snooping Coherent"; fill: #06b6d4; }
-            }
-            .status-cache::after { animation: val-cache 16s step-end infinite; content: "Coherence: Idle"; }
+            @keyframes cache-o0 { 0%, 37.5% { opacity: 1; } 37.501%, 100% { opacity: 0; } }
+            @keyframes cache-o1 { 0%, 37.5% { opacity: 0; } 37.501%, 50% { opacity: 1; } 50.001%, 100% { opacity: 0; } }
+            @keyframes cache-o2 { 0%, 50% { opacity: 0; } 50.001%, 62.5% { opacity: 1; } 62.501%, 100% { opacity: 0; } }
+            @keyframes cache-o3 { 0%, 62.5% { opacity: 0; } 62.501%, 100% { opacity: 1; } }
+            .cache-t0 { animation: cache-o0 16s infinite; }
+            .cache-t1 { animation: cache-o1 16s infinite; }
+            .cache-t2 { animation: cache-o2 16s infinite; }
+            .cache-t3 { animation: cache-o3 16s infinite; }
 
-            @keyframes val-pcie {
-                0%, 50% { content: "LTSSM: Power-off"; fill: #57657a; }
-                50%, 68.75% { content: "LTSSM: CONFIGURATION"; fill: #34d399; }
-                68.75%, 100% { content: "LTSSM: L0 [LINK UP]"; fill: #10b981; }
-            }
-            .status-pcie::after { animation: val-pcie 16s step-end infinite; content: "LTSSM: Power-off"; }
+            @keyframes pcie-o0 { 0%, 50% { opacity: 1; } 50.001%, 100% { opacity: 0; } }
+            @keyframes pcie-o1 { 0%, 50% { opacity: 0; } 50.001%, 68.75% { opacity: 1; } 68.751%, 100% { opacity: 0; } }
+            @keyframes pcie-o2 { 0%, 68.75% { opacity: 0; } 68.751%, 100% { opacity: 1; } }
+            .pcie-t0 { animation: pcie-o0 16s infinite; }
+            .pcie-t1 { animation: pcie-o1 16s infinite; }
+            .pcie-t2 { animation: pcie-o2 16s infinite; }
 
-            @keyframes val-video {
-                0%, 56.25% { content: "Pipeline: Inactive"; fill: #57657a; }
-                56.25%, 75% { content: "MIPI CSI-2 Rx Active"; fill: #f472b6; }
-                75%, 100% { content: "HDMI TMDS Tx Active"; fill: #d946ef; }
-            }
-            .status-video::after { animation: val-video 16s step-end infinite; content: "Pipeline: Inactive"; }
+            @keyframes video-o0 { 0%, 56.25% { opacity: 1; } 56.251%, 100% { opacity: 0; } }
+            @keyframes video-o1 { 0%, 56.25% { opacity: 0; } 56.251%, 75% { opacity: 1; } 75.001%, 100% { opacity: 0; } }
+            @keyframes video-o2 { 0%, 75% { opacity: 0; } 75.001%, 100% { opacity: 1; } }
+            .video-t0 { animation: video-o0 16s infinite; }
+            .video-t1 { animation: video-o1 16s infinite; }
+            .video-t2 { animation: video-o2 16s infinite; }
 
-            @keyframes val-plic {
-                0%, 75% { content: "IRQ status: Idle"; fill: #57657a; }
-                75%, 93.75% { content: "PLIC Alert: UART IRQ!"; fill: #f43f5e; }
-                93.75%, 100% { content: "IRQ Routed [PASSED]"; fill: #fda4af; }
-            }
-            .status-plic::after { animation: val-plic 16s step-end infinite; content: "IRQ status: Idle"; }
+            @keyframes plic-o0 { 0%, 75% { opacity: 1; } 75.001%, 100% { opacity: 0; } }
+            @keyframes plic-o1 { 0%, 75% { opacity: 0; } 75.001%, 93.75% { opacity: 1; } 93.751%, 100% { opacity: 0; } }
+            @keyframes plic-o2 { 0%, 93.75% { opacity: 0; } 93.751%, 100% { opacity: 1; } }
+            .plic-t0 { animation: plic-o0 16s infinite; }
+            .plic-t1 { animation: plic-o1 16s infinite; }
+            .plic-t2 { animation: plic-o2 16s infinite; }
+
+            @keyframes periph-o0 { 0%, 75% { opacity: 1; } 75.001%, 100% { opacity: 0; } }
+            @keyframes periph-o1 { 0%, 75% { opacity: 0; } 75.001%, 100% { opacity: 1; } }
+            .periph-t0 { animation: periph-o0 16s infinite; }
+            .periph-t1 { animation: periph-o1 16s infinite; }
 
             /* Interrupt wire animation */
             @keyframes irq-flow {
@@ -244,7 +245,14 @@
         <text x="140" y="217" class="text-royal" font-size="9" font-weight="600" text-anchor="middle">RoCC Coprocessor</text>
         
         <text x="140" y="75" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">RISC-V CPU Core Complex</text>
-        <text x="140" y="262" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-cpu"></text>
+        
+        <!-- CPU Status swapping -->
+        <g class="code-text" font-size="9" font-weight="600">
+            <text x="140" y="262" fill="#57657a" text-anchor="middle" class="cpu-t0">State: Power-down</text>
+            <text x="140" y="262" fill="#818cf8" text-anchor="middle" class="cpu-t1">Booting: Step 2/7</text>
+            <text x="140" y="262" fill="#818cf8" text-anchor="middle" class="cpu-t2">Booting: Step 5/7</text>
+            <text x="140" y="262" fill="#6366f1" text-anchor="middle" class="cpu-t3">4x App + 1x Mon [ACTIVE]</text>
+        </g>
     </g>
 
     <!-- eNVM Secure Boot ROM Block -->
@@ -257,7 +265,13 @@
         <text x="95" y="379" class="text-gold" font-size="9" font-weight="700" text-anchor="middle">AES-256 Crypto</text>
         
         <text x="95" y="282" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Secure Boot</text>
-        <text x="95" y="422" font-size="8.5" font-weight="600" text-anchor="middle" class="code-text status-envm"></text>
+        
+        <!-- Secure Boot Status swapping -->
+        <g class="code-text" font-size="8.5" font-weight="600">
+            <text x="95" y="422" fill="#57657a" text-anchor="middle" class="envm-t0">Signature: Unchecked</text>
+            <text x="95" y="422" fill="#f59e0b" text-anchor="middle" class="envm-t1">Decrypting FSBL...</text>
+            <text x="95" y="422" fill="#d97706" text-anchor="middle" class="envm-t2">Secure Lock [SECURED] 🔐</text>
+        </g>
     </g>
 
     <!-- L2 Cache Directory Block -->
@@ -270,7 +284,14 @@
         <text x="450" y="120" class="text-cyan" font-size="9" font-weight="700" text-anchor="middle">L2 Bank 1</text>
         
         <text x="400" y="50" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">L2 Coherent Directory</text>
-        <text x="400" y="192" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-cache"></text>
+        
+        <!-- Cache Status swapping -->
+        <g class="code-text" font-size="9" font-weight="600">
+            <text x="400" y="192" fill="#57657a" text-anchor="middle" class="cache-t0">Coherence: Idle</text>
+            <text x="400" y="192" fill="#22d3ee" text-anchor="middle" class="cache-t1">L2 Bank 0 Hit</text>
+            <text x="400" y="192" fill="#22d3ee" text-anchor="middle" class="cache-t2">L2 Bank 1 Hit</text>
+            <text x="400" y="192" fill="#06b6d4" text-anchor="middle" class="cache-t3">Snooping Coherent</text>
+        </g>
     </g>
 
     <!-- PCIe High-Speed I/O Block -->
@@ -283,7 +304,13 @@
         <text x="660" y="157" class="text-emerald" font-size="9" font-weight="700" text-anchor="middle">PIPE Transceiver</text>
         
         <text x="660" y="50" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">PCIe High-Speed I/O</text>
-        <text x="660" y="202" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-pcie"></text>
+        
+        <!-- PCIe Status swapping -->
+        <g class="code-text" font-size="9" font-weight="600">
+            <text x="660" y="202" fill="#57657a" text-anchor="middle" class="pcie-t0">LTSSM: Power-off</text>
+            <text x="660" y="202" fill="#34d399" text-anchor="middle" class="pcie-t1">LTSSM: CONFIGURATION</text>
+            <text x="660" y="202" fill="#10b981" text-anchor="middle" class="pcie-t2">LTSSM: L0 [LINK UP]</text>
+        </g>
     </g>
 
     <!-- Video Core Pipeline Block -->
@@ -299,7 +326,13 @@
         <text x="640" y="377" class="text-magenta" font-size="9" font-weight="600" text-anchor="middle">Image Processor (ISP)</text>
         
         <text x="640" y="260" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Video Core Pipeline</text>
-        <text x="640" y="422" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-video"></text>
+        
+        <!-- Video Status swapping -->
+        <g class="code-text" font-size="9" font-weight="600">
+            <text x="640" y="422" fill="#57657a" text-anchor="middle" class="video-t0">Pipeline: Inactive</text>
+            <text x="640" y="422" fill="#f472b6" text-anchor="middle" class="video-t1">MIPI CSI-2 Rx Active</text>
+            <text x="640" y="422" fill="#d946ef" text-anchor="middle" class="video-t2">HDMI TMDS Tx Active</text>
+        </g>
     </g>
 
     <!-- Interrupt Hub (PLIC) Block -->
@@ -312,7 +345,13 @@
         <text x="380" y="369" class="text-ruby" font-size="9" font-weight="700" text-anchor="middle">CLINT Core Blocks</text>
         
         <text x="380" y="270" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Interrupt Hub</text>
-        <text x="380" y="412" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-plic"></text>
+        
+        <!-- PLIC Status swapping -->
+        <g class="code-text" font-size="9" font-weight="600">
+            <text x="380" y="412" fill="#57657a" text-anchor="middle" class="plic-t0">IRQ status: Idle</text>
+            <text x="380" y="412" fill="#f43f5e" text-anchor="middle" class="plic-t1">PLIC Alert: UART IRQ!</text>
+            <text x="380" y="412" fill="#fda4af" text-anchor="middle" class="plic-t2">IRQ Routed [PASSED]</text>
+        </g>
     </g>
 
     <!-- Low-Speed Peripherals Block -->
@@ -324,7 +363,12 @@
         <text x="225" y="385" fill="#cbd5e1" font-size="9" font-weight="600" text-anchor="middle">2x CAN 2.0B</text>
         
         <text x="225" y="282" fill="#f8fafc" font-size="10.5" font-weight="700" text-anchor="middle">Low-Speed</text>
-        <text x="225" y="422" fill="#57657a" font-size="8.5" font-weight="600" text-anchor="middle" class="code-text" id="periph-status-text">Idle</text>
+        
+        <!-- Peripherals Status swapping -->
+        <g class="code-text" font-size="8.5" font-weight="600">
+            <text x="225" y="422" fill="#57657a" text-anchor="middle" class="periph-t0">Idle</text>
+            <text x="225" y="422" fill="#3b82f6" text-anchor="middle" class="periph-t1">UART 1 RX Active</text>
+        </g>
     </g>
 
     <!-- Bus Links & Interrupt Wires -->

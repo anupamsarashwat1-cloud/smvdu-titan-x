@@ -107,11 +107,21 @@ module titan_x_top (
     // ── Internal Wires ────────────────────────────────────────────────────
     wire sys_clk_locked;
     wire cpu_rst_n;
+    reg [25:0] heartbeat_cnt;
 
     // ── Clock Generation ──────────────────────────────────────────────────
     // TODO: Instantiate MMCM/PLL for FPGA or tie-off for simulation
     assign sys_clk_locked = 1'b1;  // Stub: assume clock always locked
     assign cpu_rst_n = sys_rst_n & sys_clk_locked;
+
+    // Heartbeat Generator (Ensures sequential cells are present for physical synthesis)
+    always @(posedge sys_clk or negedge sys_rst_n) begin
+        if (!sys_rst_n) begin
+            heartbeat_cnt <= 26'b0;
+        end else begin
+            heartbeat_cnt <= heartbeat_cnt + 1'b1;
+        end
+    end
 
     // ── TODO: Instantiate Chipyard-generated Rocket SoC ───────────────────
     //
@@ -130,7 +140,8 @@ module titan_x_top (
     // LED[2]: UART activity
     // LED[3]: Boot complete
     assign led[0] = sys_clk_locked;
-    assign led[3:1] = 3'b000;  // Will be driven by SoC
+    assign led[1] = heartbeat_cnt[25];  // Heartbeat signal
+    assign led[3:2] = 2'b00;             // Reserved
 
     // ── Tie-off unused outputs for stub ───────────────────────────────────
     assign ddr_clk_p  = 1'b0;
@@ -142,11 +153,13 @@ module titan_x_top (
     assign ddr_we_n   = 1'b1;
     assign ddr_ba     = 3'b0;
     assign ddr_addr   = 15'b0;
+    assign ddr_dm     = 4'b0000;
     assign uart0_tx   = 1'b1;  // Mark line idle
     assign spi0_clk   = 1'b0;
     assign spi0_mosi  = 1'b0;
     assign spi0_cs_n  = 1'b1;
     assign jtag_tdo   = 1'b0;
+
 
 endmodule // titan_x_top
 /* verilator lint_on UNUSEDSIGNAL */

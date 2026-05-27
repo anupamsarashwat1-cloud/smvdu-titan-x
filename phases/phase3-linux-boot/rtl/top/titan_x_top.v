@@ -41,9 +41,20 @@ module titan_x_top (
     output wire [3:0]  led
 );
 
-    // Active diagnostic indicators
+    // Diagnostics & Heartbeat logic
+    reg [25:0] heartbeat_cnt;
+    always @(posedge sys_clk or negedge sys_rst_n) begin
+        if (!sys_rst_n) begin
+            heartbeat_cnt <= 26'b0;
+        end else begin
+            heartbeat_cnt <= heartbeat_cnt + 1'b1;
+        end
+    end
+
     assign led[0] = sys_rst_n;
-    assign led[3:1] = 3'b000;
+    assign led[1] = heartbeat_cnt[25];
+    assign led[3:2] = 2'b00;
+
 
     // DDR stub drive
     assign ddr_clk_p  = 1'b0;

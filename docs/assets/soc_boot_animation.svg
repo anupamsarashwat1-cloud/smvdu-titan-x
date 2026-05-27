@@ -1,0 +1,337 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+    <defs>
+        <!-- Premium Glow Filters -->
+        <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="glow-emerald" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="glow-royal" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="glow-ruby" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        
+        <linearGradient id="grad-bus" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#6366f1" />
+            <stop offset="50%" stop-color="#06b6d4" />
+            <stop offset="100%" stop-color="#6366f1" />
+        </linearGradient>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;family=Outfit:wght@400;600;700;800&amp;display=swap');
+            
+            /* Root Styles */
+            text {
+                font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                user-select: none;
+            }
+            .code-text {
+                font-family: 'Fira Code', monospace;
+            }
+
+            /* Main Loop Timeline (16 seconds total loop)
+               0s - 2s   : Reset Phase (All dark/idle)
+               2s - 5s   : Secure BootROM Decryption
+               5s - 8s   : CPU Complex & L2 Coherency Boot
+               8s - 12s  : High-Speed I/O Link (PCIe + MIPI/HDMI Video)
+               12s - 15s : Peripheral interrupts / RoCC Acc active
+               15s - 16s : Full SoC active state / loop reset
+            */
+
+            /* AXI Bus Active Pulsing */
+            @keyframes bus-scroll {
+                0% { stroke-dashoffset: 100; }
+                100% { stroke-dashoffset: 0; }
+            }
+            .bus-path {
+                stroke-dasharray: 15 45;
+                stroke-opacity: 0.15;
+                transition: stroke-opacity 0.5s ease;
+            }
+            @keyframes bus-activate {
+                0%, 12.5% { stroke-opacity: 0.15; animation-play-state: paused; }
+                12.5%, 100% { stroke-opacity: 1; animation: bus-scroll 3s linear infinite; }
+            }
+            .bus-path {
+                animation: bus-activate 16s infinite;
+            }
+
+            /* Block Background & Border Glow Animations */
+            @keyframes envm-flow {
+                0%, 12.5% { fill: #0c0f1b; stroke: #191f32; filter: none; }
+                12.5%, 31.25% { fill: #201303; stroke: #f59e0b; filter: url(#glow-gold); }
+                31.25%, 100% { fill: #130a01; stroke: rgba(245, 158, 11, 0.4); filter: none; }
+            }
+            .block-envm { animation: envm-flow 16s infinite; }
+
+            @keyframes cpu-flow {
+                0%, 31.25% { fill: #0c0f1b; stroke: #191f32; filter: none; }
+                31.25%, 75% { fill: #0f102a; stroke: #6366f1; filter: url(#glow-royal); }
+                75%, 100% { fill: #060714; stroke: rgba(99, 102, 241, 0.4); filter: none; }
+            }
+            .block-cpu { animation: cpu-flow 16s infinite; }
+
+            @keyframes cache-flow {
+                0%, 37.5% { fill: #0c0f1b; stroke: #191f32; filter: none; }
+                37.5%, 75% { fill: #03212d; stroke: #06b6d4; filter: url(#glow-cyan); }
+                75%, 100% { fill: #011016; stroke: rgba(6, 182, 212, 0.4); filter: none; }
+            }
+            .block-cache { animation: cache-flow 16s infinite; }
+
+            @keyframes pcie-flow {
+                0%, 50% { fill: #0c0f1b; stroke: #191f32; filter: none; }
+                50%, 87.5% { fill: #012019; stroke: #10b981; filter: url(#glow-emerald); }
+                87.5%, 100% { fill: #000c0a; stroke: rgba(16, 185, 129, 0.4); filter: none; }
+            }
+            .block-pcie { animation: pcie-flow 16s infinite; }
+
+            @keyframes video-flow {
+                0%, 56.25% { fill: #0c0f1b; stroke: #191f32; filter: none; }
+                56.25%, 87.5% { fill: #21053d; stroke: #d946ef; filter: url(#glow-cyan); }
+                87.5%, 100% { fill: #0d0119; stroke: rgba(217, 70, 239, 0.4); filter: none; }
+            }
+            .block-video { animation: video-flow 16s infinite; }
+
+            @keyframes plic-flow {
+                0%, 75% { fill: #0c0f1b; stroke: #191f32; filter: none; }
+                75%, 93.75% { fill: #370311; stroke: #f43f5e; filter: url(#glow-ruby); }
+                93.75%, 100% { fill: #190107; stroke: rgba(244, 63, 94, 0.4); filter: none; }
+            }
+            .block-plic { animation: plic-flow 16s infinite; }
+
+            @keyframes periph-flow {
+                0%, 75% { fill: #0c0f1b; stroke: #191f32; filter: none; }
+                75%, 93.75% { fill: #08141d; stroke: #3b82f6; filter: url(#glow-cyan); }
+                93.75%, 100% { fill: #02070c; stroke: rgba(59, 130, 246, 0.4); filter: none; }
+            }
+            .block-periph { animation: periph-flow 16s infinite; }
+
+            /* Text & Inner Sub-Block Animations */
+            @keyframes text-color-gold {
+                0%, 12.5% { fill: #57657a; }
+                12.5%, 31.25% { fill: #fcd34d; }
+                31.25%, 100% { fill: #92400e; }
+            }
+            .text-gold { animation: text-color-gold 16s infinite; }
+
+            @keyframes text-color-royal {
+                0%, 31.25% { fill: #57657a; }
+                31.25%, 75% { fill: #c7d2fe; }
+                75%, 100% { fill: #6366f1; }
+            }
+            .text-royal { animation: text-color-royal 16s infinite; }
+
+            @keyframes text-color-cyan {
+                0%, 37.5% { fill: #57657a; }
+                37.5%, 75% { fill: #cffafe; }
+                75%, 100% { fill: #06b6d4; }
+            }
+            .text-cyan { animation: text-color-cyan 16s infinite; }
+
+            @keyframes text-color-emerald {
+                0%, 50% { fill: #57657a; }
+                50%, 87.5% { fill: #d1fae5; }
+                87.5%, 100% { fill: #10b981; }
+            }
+            .text-emerald { animation: text-color-emerald 16s infinite; }
+
+            @keyframes text-color-magenta {
+                0%, 56.25% { fill: #57657a; }
+                56.25%, 87.5% { fill: #fdf4ff; }
+                87.5%, 100% { fill: #d946ef; }
+            }
+            .text-magenta { animation: text-color-magenta 16s infinite; }
+
+            @keyframes text-color-ruby {
+                0%, 75% { fill: #57657a; }
+                75%, 93.75% { fill: #ffe4e6; }
+                93.75%, 100% { fill: #f43f5e; }
+            }
+            .text-ruby { animation: text-color-ruby 16s infinite; }
+
+            /* Status State Values */
+            @keyframes val-envm {
+                0%, 12.5% { content: "Signature: Unchecked"; fill: #57657a; }
+                12.5%, 31.25% { content: "Decrypting FSBL..."; fill: #f59e0b; }
+                31.25%, 100% { content: "Secure Lock [SECURED]"; fill: #d97706; }
+            }
+            .status-envm::after { animation: val-envm 16s step-end infinite; content: "Signature: Unchecked"; }
+
+            @keyframes val-cpu {
+                0%, 31.25% { content: "State: Power-down"; fill: #57657a; }
+                31.25%, 43.75% { content: "Booting: Step 2/7"; fill: #818cf8; }
+                43.75%, 56.25% { content: "Booting: Step 5/7"; fill: #818cf8; }
+                56.25%, 100% { content: "4x App + 1x Mon [ACTIVE]"; fill: #6366f1; }
+            }
+            .status-cpu::after { animation: val-cpu 16s step-end infinite; content: "State: Power-down"; }
+
+            @keyframes val-cache {
+                0%, 37.5% { content: "Coherence: Idle"; fill: #57657a; }
+                37.5%, 50% { content: "L2 Bank 0 Hit"; fill: #22d3ee; }
+                50%, 62.5% { content: "L2 Bank 1 Hit"; fill: #22d3ee; }
+                62.5%, 100% { content: "Snooping Coherent"; fill: #06b6d4; }
+            }
+            .status-cache::after { animation: val-cache 16s step-end infinite; content: "Coherence: Idle"; }
+
+            @keyframes val-pcie {
+                0%, 50% { content: "LTSSM: Power-off"; fill: #57657a; }
+                50%, 68.75% { content: "LTSSM: CONFIGURATION"; fill: #34d399; }
+                68.75%, 100% { content: "LTSSM: L0 [LINK UP]"; fill: #10b981; }
+            }
+            .status-pcie::after { animation: val-pcie 16s step-end infinite; content: "LTSSM: Power-off"; }
+
+            @keyframes val-video {
+                0%, 56.25% { content: "Pipeline: Inactive"; fill: #57657a; }
+                56.25%, 75% { content: "MIPI CSI-2 Rx Active"; fill: #f472b6; }
+                75%, 100% { content: "HDMI TMDS Tx Active"; fill: #d946ef; }
+            }
+            .status-video::after { animation: val-video 16s step-end infinite; content: "Pipeline: Inactive"; }
+
+            @keyframes val-plic {
+                0%, 75% { content: "IRQ status: Idle"; fill: #57657a; }
+                75%, 93.75% { content: "PLIC Alert: UART IRQ!"; fill: #f43f5e; }
+                93.75%, 100% { content: "IRQ Routed [PASSED]"; fill: #fda4af; }
+            }
+            .status-plic::after { animation: val-plic 16s step-end infinite; content: "IRQ status: Idle"; }
+
+            /* Interrupt wire animation */
+            @keyframes irq-flow {
+                0%, 75% { stroke: #334155; stroke-dasharray: 4 4; stroke-width: 2; }
+                75%, 93.75% { stroke: #f43f5e; stroke-dasharray: 0; stroke-width: 3.5; }
+                93.75%, 100% { stroke: rgba(244, 63, 94, 0.4); stroke-dasharray: 4 4; stroke-width: 2; }
+            }
+            .irq-path { animation: irq-flow 16s infinite; }
+        </style>
+    </defs>
+
+    <!-- Background Space Canvas -->
+    <rect width="100%" height="100%" fill="#07080d" rx="20" stroke="rgba(255,255,255,0.06)" stroke-width="2" />
+    <rect x="5" y="5" width="790" height="470" rx="16" fill="none" stroke="#1f2537" stroke-width="1.5" stroke-dasharray="8 4" />
+    <text x="24" y="28" fill="#475569" font-size="11" font-weight="800" letter-spacing="1.5">CHIP SILICON BOUNDARY (180nm CMOS TAPE-OUT MODEL)</text>
+    <text x="776" y="28" fill="#475569" font-size="10" font-weight="800" letter-spacing="0.5" text-anchor="end">SMVDU-TITAN-X MULTICORE SoC</text>
+
+    <!-- AMBA System Interconnect -->
+    <g id="bus-interconnect">
+        <rect x="180" y="220" width="460" height="24" rx="6" fill="#0f0f23" stroke="#2c2a75" stroke-width="1.5" />
+        <path class="bus-path" d="M 190,232 L 630,232" stroke="url(#grad-bus)" stroke-width="4" stroke-linecap="round" />
+        <text x="410" y="236" fill="#818cf8" font-size="10" font-weight="800" letter-spacing="2.5" text-anchor="middle">AMBA AXI4 SYSTEM INTERCONNECT</text>
+    </g>
+
+    <!-- CPU Core Complex Block -->
+    <g id="block-cpu-group">
+        <rect x="30" y="90" width="220" height="150" rx="12" class="block-cpu" />
+        <rect x="40" y="100" width="95" height="45" rx="6" fill="#101321" stroke="#1f2537" />
+        <text x="87" y="128" class="text-royal" font-size="9" font-weight="700" text-anchor="middle">HART 0-3</text>
+        
+        <rect x="145" y="100" width="95" height="45" rx="6" fill="#101321" stroke="#1f2537" />
+        <text x="192" y="128" class="text-royal" font-size="9" font-weight="700" text-anchor="middle">HART 4</text>
+        
+        <rect x="40" y="155" width="200" height="30" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="140" y="174" class="text-royal" font-size="9" font-weight="600" text-anchor="middle">Coherent L1 Cache</text>
+        
+        <rect x="40" y="195" width="200" height="35" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="140" y="217" class="text-royal" font-size="9" font-weight="600" text-anchor="middle">RoCC Coprocessor</text>
+        
+        <text x="140" y="75" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">RISC-V CPU Core Complex</text>
+        <text x="140" y="262" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-cpu"></text>
+    </g>
+
+    <!-- eNVM Secure Boot ROM Block -->
+    <g id="block-envm-group">
+        <rect x="30" y="290" width="130" height="110" rx="12" class="block-envm" />
+        <rect x="42" y="325" width="106" height="30" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="95" y="344" class="text-gold" font-size="9" font-weight="700" text-anchor="middle">128KB eNVM</text>
+        
+        <rect x="42" y="360" width="106" height="30" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="95" y="379" class="text-gold" font-size="9" font-weight="700" text-anchor="middle">AES-256 Crypto</text>
+        
+        <text x="95" y="282" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Secure Boot</text>
+        <text x="95" y="422" font-size="8.5" font-weight="600" text-anchor="middle" class="code-text status-envm"></text>
+    </g>
+
+    <!-- L2 Cache Directory Block -->
+    <g id="block-cache-group">
+        <rect x="290" y="60" width="220" height="110" rx="12" class="block-cache" />
+        <rect x="305" y="95" width="90" height="40" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="350" y="120" class="text-cyan" font-size="9" font-weight="700" text-anchor="middle">L2 Bank 0</text>
+        
+        <rect x="405" y="95" width="90" height="40" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="450" y="120" class="text-cyan" font-size="9" font-weight="700" text-anchor="middle">L2 Bank 1</text>
+        
+        <text x="400" y="50" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">L2 Coherent Directory</text>
+        <text x="400" y="192" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-cache"></text>
+    </g>
+
+    <!-- PCIe High-Speed I/O Block -->
+    <g id="block-pcie-group">
+        <rect x="550" y="60" width="220" height="120" rx="12" class="block-pcie" />
+        <rect x="565" y="95" width="190" height="30" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="660" y="114" class="text-emerald" font-size="9" font-weight="700" text-anchor="middle">Gen2 x4 Core</text>
+        
+        <rect x="565" y="135" width="190" height="35" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="660" y="157" class="text-emerald" font-size="9" font-weight="700" text-anchor="middle">PIPE Transceiver</text>
+        
+        <text x="660" y="50" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">PCIe High-Speed I/O</text>
+        <text x="660" y="202" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-pcie"></text>
+    </g>
+
+    <!-- Video Core Pipeline Block -->
+    <g id="block-video-group">
+        <rect x="510" y="270" width="260" height="130" rx="12" class="block-video" />
+        <rect x="525" y="305" width="105" height="40" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="577" y="330" class="text-magenta" font-size="9" font-weight="700" text-anchor="middle">MIPI CSI-2 Rx</text>
+        
+        <rect x="640" y="305" width="115" height="40" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="697" y="330" class="text-magenta" font-size="9" font-weight="700" text-anchor="middle">HDMI TMDS Tx</text>
+        
+        <rect x="525" y="355" width="230" height="35" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="640" y="377" class="text-magenta" font-size="9" font-weight="600" text-anchor="middle">Image Processor (ISP)</text>
+        
+        <text x="640" y="260" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Video Core Pipeline</text>
+        <text x="640" y="422" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-video"></text>
+    </g>
+
+    <!-- Interrupt Hub (PLIC) Block -->
+    <g id="block-plic-group">
+        <rect x="290" y="280" width="180" height="110" rx="12" class="block-plic" />
+        <rect x="305" y="315" width="150" height="30" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="380" y="334" class="text-ruby" font-size="9" font-weight="700" text-anchor="middle">186 Source PLIC Matrix</text>
+        
+        <rect x="305" y="350" width="150" height="30" rx="4" fill="#101321" stroke="#1f2537" />
+        <text x="380" y="369" class="text-ruby" font-size="9" font-weight="700" text-anchor="middle">CLINT Core Blocks</text>
+        
+        <text x="380" y="270" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Interrupt Hub</text>
+        <text x="380" y="412" font-size="9" font-weight="600" text-anchor="middle" class="code-text status-plic"></text>
+    </g>
+
+    <!-- Low-Speed Peripherals Block -->
+    <g id="block-periph-group">
+        <rect x="180" y="290" width="90" height="110" rx="12" class="block-periph" />
+        <text x="225" y="325" fill="#cbd5e1" font-size="9" font-weight="600" text-anchor="middle">5x MMUART</text>
+        <text x="225" y="345" fill="#cbd5e1" font-size="9" font-weight="600" text-anchor="middle">2x SPI</text>
+        <text x="225" y="365" fill="#cbd5e1" font-size="9" font-weight="600" text-anchor="middle">2x I2C</text>
+        <text x="225" y="385" fill="#cbd5e1" font-size="9" font-weight="600" text-anchor="middle">2x CAN 2.0B</text>
+        
+        <text x="225" y="282" fill="#f8fafc" font-size="10.5" font-weight="700" text-anchor="middle">Low-Speed</text>
+        <text x="225" y="422" fill="#57657a" font-size="8.5" font-weight="600" text-anchor="middle" class="code-text" id="periph-status-text">Idle</text>
+    </g>
+
+    <!-- Bus Links & Interrupt Wires -->
+    <path d="M 250,140 L 290,140" stroke="#1f2537" stroke-width="2.5" fill="none" />
+    <path d="M 140,240 L 140,265 A 15,15 0 0 0 155,280 L 190,280" stroke="#1f2537" stroke-width="2.5" fill="none" />
+    <path d="M 190,230 L 190,240" stroke="#1f2537" stroke-width="2.5" fill="none" />
+    
+    <!-- Animated PLIC IRQ vector route -->
+    <path class="irq-path" d="M 290,300 L 270,300 L 270,180 L 250,180" fill="none" />
+</svg>

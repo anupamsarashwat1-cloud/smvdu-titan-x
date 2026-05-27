@@ -22,10 +22,15 @@
 
 ---
 
-### 🖥️ Interactive Silicon Core Boot Sequence Visualizer
-> **[Interactive Live Demo: Experience the Live Silicon Boot Visualizer on GitHub Pages](https://anupamsarashwat1-cloud.github.io/smvdu-titan-x/soc_visualizer.html)**
->
-> Scrub through the real-time boot timeline (0.0 to 450 ns) to visualize Hart power transitions, AXI interconnect active pulsing, Coherent L2 Cache snoop hits, PCIe Gen2 LTSSM state changes, MIPI-to-HDMI video routing, and active PLIC interrupt vectors.
+### 🖥️ Silicon Core Boot Sequence Visualizer
+
+<div align="center">
+
+[![Silicon Core Boot Sequence Visualizer](docs/assets/soc_boot_animation.svg)](https://anupamsarashwat1-cloud.github.io/smvdu-titan-x/soc_visualizer.html)
+
+<sub>*The animated model above demonstrates the 16s real-time silicon boot stages (BootROM decrypt → CPU core complex init → cache coherence → high-speed link training → vector interrupt routing). <b>Click the animation above</b> to open the interactive scrubbing scrubber.*</sub>
+
+</div>
 
 ---
 

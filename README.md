@@ -57,6 +57,44 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
     <div align="center">
       <img src="phases/phase1-bare-metal/docs/titan_x_phase1_architecture.png" alt="Phase 1 Block Diagram" width="550px" />
     </div>
+
+    ```mermaid
+    graph TD
+        subgraph TitanX_SoC [Titan-X SoC Top Level]
+            direction LR
+            subgraph CoreComplex [Rocket Core Complex]
+                Core[RV64GC CPU] <--> L1I[32KB L1 I-Cache]
+                Core <--> L1D[32KB L1 D-Cache]
+            end
+
+            subgraph Interconnect [TileLink System Bus Coherent Interconnect]
+                TL_Bus((TileLink-C))
+            end
+
+            L1I <--> TL_Bus
+            L1D <--> TL_Bus
+
+            subgraph MemorySubsystem [Memory & Debug]
+                BootROM[BootROM 10KB]
+                DRAM[DRAMSim2 DDR3 2GB]
+                HTIF[HTIF tohost/fromhost]
+            end
+
+            subgraph Peripherals [I/O Peripherals]
+                UART[SiFive UART @ 0x10020000]
+            end
+
+            TL_Bus <--> BootROM
+            TL_Bus <--> DRAM
+            TL_Bus <--> HTIF
+            TL_Bus <--> UART
+        end
+
+        sys_clk[sys_clk 100MHz] --> TitanX_SoC
+        sys_rst_n[sys_rst_n] --> TitanX_SoC
+        TitanX_SoC --> uart_tx[uart0_tx]
+        uart_rx[uart0_rx] --> TitanX_SoC
+    ```
 *   **Simulation Check**:
     ```text
     ================================================================
@@ -84,6 +122,46 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
     <div align="center">
       <img src="phases/phase2-boot-infra/docs/titan_x_phase2_architecture.png" alt="Phase 2 Block Diagram" width="550px" />
     </div>
+
+    ```mermaid
+    graph TD
+        subgraph TitanX_SoC [Titan-X SoC Top Level]
+            direction LR
+            subgraph CoreComplex [Rocket Core Complex]
+                Core[RV64GC CPU] <--> L1I[L1 I-Cache]
+                Core <--> L1D[L1 D-Cache]
+            end
+
+            subgraph Interconnect [TileLink Interconnect]
+                TL_Bus((TileLink))
+            end
+
+            L1I <--> TL_Bus
+            L1D <--> TL_Bus
+
+            subgraph MemorySubsystem [Boot & Memory]
+                SPIFlash[SPI Flash Controller @ 0x10030000]
+                BootROM[BootROM @ 0x00010000]
+                DRAM[DDR3 / SRAM Controller]
+            end
+
+            subgraph Peripherals [MMIO Peripherals]
+                UART[SiFive UART @ 0x10020000]
+                GPIO[32-bit GPIO @ 0x54010000]
+            end
+
+            TL_Bus <--> SPIFlash
+            TL_Bus <--> BootROM
+            TL_Bus <--> DRAM
+            TL_Bus <--> UART
+            TL_Bus <--> GPIO
+        end
+
+        sys_clk[sys_clk] --> TitanX_SoC
+        sys_rst_n[sys_rst_n] --> TitanX_SoC
+        TitanX_SoC <--> gpio_pins[gpio_pins]
+        TitanX_SoC <--> spi_pins[spi_pins]
+    ```
 *   **Simulation Check**:
     ```text
     ================================================================
@@ -108,6 +186,41 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
     <div align="center">
       <img src="phases/phase3-linux-boot/docs/titan_x_phase3_architecture.png" alt="Phase 3 Block Diagram" width="550px" />
     </div>
+
+    ```mermaid
+    graph TD
+        subgraph TitanX_SoC [Titan-X SoC Top Level]
+            direction LR
+            subgraph CoreComplex [Quad-Core Rocket SMP]
+                Core0[Core 0] <--> L2[Shared L2 Cache 512KB]
+                Core1[Core 1] <--> L2
+                Core2[Core 2] <--> L2
+                Core3[Core 3] <--> L2
+            end
+
+            subgraph Interconnect [TileLink Coherent Interconnect]
+                TL_Bus((TileLink))
+            end
+
+            L2 <--> TL_Bus
+
+            subgraph MemorySubsystem [Memory Hierarchy]
+                LiteDRAM[DDR3/4 Memory Controller @ 0x80000000]
+                LiteETH[Gigabit Ethernet MAC @ 0x55000000]
+                SPI_SD[SD Card Reader SPI @ 0x54020000]
+            end
+
+            TL_Bus <--> LiteDRAM
+            TL_Bus <--> LiteETH
+            TL_Bus <--> SPI_SD
+        end
+
+        sys_clk[sys_clk] --> TitanX_SoC
+        sys_rst_n[sys_rst_n] --> TitanX_SoC
+        TitanX_SoC <--> ddr_bus[DDR3/4 Bus]
+        TitanX_SoC <--> eth_pins[Ethernet PHY RJ45]
+        TitanX_SoC <--> sd_pins[SD Card Reader]
+    ```
 *   **Simulation Check**:
     ```text
     ================================================================
@@ -133,6 +246,39 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
     <div align="center">
       <img src="phases/phase4-high-speed-io/docs/titan_x_phase4_architecture.png" alt="Phase 4 Block Diagram" width="550px" />
     </div>
+
+    ```mermaid
+    graph TD
+        subgraph TitanX_SoC [Titan-X SoC Top Level]
+            direction LR
+            subgraph CoreComplex [Dual-Core Rocket SMP]
+                Core0[Core 0] <--> L2[Shared L2 Cache 512KB]
+                Core1[Core 1] <--> L2
+            end
+
+            subgraph Interconnect [TileLink System Bus]
+                TL_Bus((TileLink))
+            end
+
+            L2 <--> TL_Bus
+
+            subgraph HighSpeedIO [High-Speed Interfaces]
+                PCIe[PCIe Gen2 x4 Controller @ 0x57000000]
+                USB[USB 2.0 OTG Controller @ 0x56000000]
+                HDMI[HDMI 1.4 Frame Buffer @ 0x58000000]
+            end
+
+            TL_Bus <--> PCIe
+            TL_Bus <--> USB
+            TL_Bus <--> HDMI
+        end
+
+        sys_clk[sys_clk] --> TitanX_SoC
+        sys_rst_n[sys_rst_n] --> TitanX_SoC
+        TitanX_SoC <--> pcie_lanes[PCIe Tx/Rx Lanes]
+        TitanX_SoC <--> usb_pads[USB Differential Pads]
+        TitanX_SoC --> hdmi_ports[HDMI Output Channel]
+    ```
 *   **Simulation Check**:
     ```text
     ================================================================
@@ -156,6 +302,38 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
     <div align="center">
       <img src="phases/phase5-acceleration/docs/titan_x_phase5_architecture.png" alt="Phase 5 Block Diagram" width="550px" />
     </div>
+
+    ```mermaid
+    graph TD
+        subgraph TitanX_SoC [Titan-X SoC Top Level]
+            direction LR
+            subgraph CoreComplex [Rocket Core Complex]
+                Core[RV64GC CPU] <--> RoCC[RoCC Interface]
+                RoCC <--> SystolicArray[AI Systolic Array 8x8 INT8]
+            end
+
+            subgraph Interconnect [TileLink Coherent Interconnect]
+                TL_Bus((TileLink))
+            end
+
+            Core <--> TL_Bus
+
+            subgraph Security [Security Subsystem]
+                Crypto[Crypto Engine AES/SHA/TRNG @ 0x65000000]
+            end
+
+            subgraph MemorySubsystem [High-Speed Memory]
+                HBM[HBM2 Memory Controller @ 0x80000000]
+            end
+
+            TL_Bus <--> Security
+            TL_Bus <--> HBM
+        end
+
+        sys_clk[sys_clk] --> TitanX_SoC
+        sys_rst_n[sys_rst_n] --> TitanX_SoC
+        TitanX_SoC <--> hbm_interface[HBM2 Memory Interface]
+    ```
 *   **Simulation Check**:
     ```text
     ================================================================
@@ -180,6 +358,79 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
     <div align="center">
       <img src="phases/final-integration/docs/titan_x_final_architecture.png" alt="Final Integration Block Diagram" width="550px" />
     </div>
+
+    ```mermaid
+    graph TD
+        subgraph TitanX_SoC [Titan-X Unified SoC Top Level]
+            direction LR
+            subgraph CoreComplex [5-Hart Coherent Core Complex]
+                Core0[Hart 0: RV64GC App] <--> L1_0[32KB L1 I/D]
+                Core1[Hart 1: RV64GC App] <--> L1_1[32KB L1 I/D]
+                Core2[Hart 2: RV64GC App] <--> L1_2[32KB L1 I/D]
+                Core3[Hart 3: RV64GC App] <--> L1_3[32KB L1 I/D]
+                Core4[Hart 4: RV64IMAC Monitor] <--> L1_4[16KB I-Cache / DTIM]
+            end
+
+            subgraph Interconnect [TileLink Coherent Central Interconnect]
+                TL_Bus((TileLink-C Central Switch))
+            end
+
+            L1_0 <--> TL_Bus
+            L1_1 <--> TL_Bus
+            L1_2 <--> TL_Bus
+            L1_3 <--> TL_Bus
+            L1_4 <--> TL_Bus
+
+            subgraph L2Subsystem [L2 Memory & Coherence]
+                L2[2MB Banked L2 Cache / LIM]
+            end
+            TL_Bus <--> L2
+
+            subgraph MemorySubsystem [External Memory & Boot]
+                AXI_DDR[AXI4 DDR4 Controller]
+                eNVM[128KB eNVM Secure Boot ROM]
+            end
+            L2 <--> AXI_DDR
+            TL_Bus <--> eNVM
+
+            subgraph HighSpeedIO [High-Speed AXI/AHB Master Subsystems]
+                PCIe[PCIe Gen2 x4]
+                Eth[Dual GEM Gigabit Ethernet]
+                USB[USB 2.0 OTG]
+                Video[MIPI CSI-2 ISP & HDMI 1.4]
+            end
+            TL_Bus <--> PCIe
+            TL_Bus <--> Eth
+            TL_Bus <--> USB
+            TL_Bus <--> Video
+
+            subgraph LowSpeedSubsystem [APB Low-Speed Peripherals]
+                APB_Bus[APB Bus Bridge]
+                UARTs[5x MMUART]
+                SPIs[2x SPI & QSPI XIP]
+                I2Cs[2x I2C]
+                CANs[Dual CAN 2.0B]
+                GPIO[32-bit Muxed GPIO]
+            end
+            TL_Bus <--> APB_Bus
+            APB_Bus <--> UARTs
+            APB_Bus <--> SPIs
+            APB_Bus <--> I2Cs
+            APB_Bus <--> CANs
+            APB_Bus <--> GPIO
+
+            subgraph SecuritySubsystem [Cryptoprocessor]
+                Crypto[AES-256 / SHA-3 / ECDSA & TRNG]
+            end
+            TL_Bus <--> SecuritySubsystem
+        end
+
+        sys_clk[sys_clk 125-200MHz] --> TitanX_SoC
+        sys_rst_n[sys_rst_n] --> TitanX_SoC
+        pcie_phy[PCIe PHY x4] <--> PCIe
+        eth_phy[Dual RJ-45 PHY] <--> Eth
+        hdmi_con[HDMI Output / CSI Camera] <--> Video
+    ```
 *   **Simulation Check**:
     ```text
     ================================================================

@@ -12,6 +12,10 @@
 
 </div>
 
+<div class="visualizer-container" style="margin: 40px 0; width: 100%;">
+    <iframe src="soc_visualizer.html" width="100%" height="560px" style="border: none; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45); overflow: hidden; background: #07080d;" scrolling="no"></iframe>
+</div>
+
 ---
 
 ## What is SMVDU-TITAN-X?

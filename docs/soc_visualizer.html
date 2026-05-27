@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMVDU-TITAN-X Integrated SoC - Interactive Boot Visualizer</title>
+    
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #07080d;
+            --bg-card: rgba(16, 21, 35, 0.7);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #57657a;
+            
+            --color-cyan: #06b6d4;
+            --color-emerald: #10b981;
+            --color-royal: #6366f1;
+            --color-amber: #f59e0b;
+            --color-ruby: #f43f5e;
+            
+            --glow-cyan: 0 0 16px rgba(6, 182, 212, 0.35);
+            --glow-emerald: 0 0 16px rgba(16, 185, 129, 0.35);
+            --glow-royal: 0 0 16px rgba(99, 102, 241, 0.35);
+            --glow-amber: 0 0 16px rgba(245, 158, 11, 0.35);
+            --glow-ruby: 0 0 16px rgba(244, 63, 94, 0.35);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.06) 0px, transparent 50%);
+        }
+
+        .widget-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 880px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px) saturate(180%);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+
+        .widget-header h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin: 0;
+            background: linear-gradient(135deg, #fff, var(--color-cyan), var(--color-royal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .widget-header .subtitle {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .diagram-container {
+            background: rgba(8, 10, 16, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* -------------------------------------------------------------------------
+           SoC SVG Diagram Styling
+           ------------------------------------------------------------------------- */
+        #soc-diagram {
+            background: transparent;
+            user-select: none;
+        }
+
+        .soc-block {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .soc-block .block-bg {
+            fill: #0c0f1b;
+            stroke: #191f32;
+            stroke-width: 1.5px;
+            transition: all 0.35s ease;
+        }
+
+        .soc-block .block-title {
+            fill: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-anchor: middle;
+            letter-spacing: 0.5px;
+            transition: fill 0.3s ease;
+        }
+
+        .soc-block .block-status-val {
+            fill: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            font-size: 9px;
+            font-weight: 500;
+            text-anchor: middle;
+            transition: fill 0.3s ease;
+        }
+
+        .soc-block .sub-unit-bg, 
+        .soc-block .sub-core-bg, 
+        .soc-block .sub-cache-bg,
+        .soc-block .sub-rocc-bg {
+            fill: #101321;
+            stroke: #1f2537;
+            stroke-width: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .soc-block .sub-unit-text, 
+        .soc-block .sub-core-text,
+        .soc-block .sub-cache-text,
+        .soc-block .sub-rocc-text {
+            fill: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            text-anchor: middle;
+            transition: fill 0.3s ease;
+        }
+
+        .sub-periph-text {
+            fill: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            font-size: 9px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        /* glowing active classes */
+        .soc-block.active-cpu { filter: url(#glow-royal); }
+        .soc-block.active-cpu .block-bg { fill: #0f102a; stroke: var(--color-royal); stroke-width: 2px; }
+        .soc-block.active-cpu .block-title { fill: #c7d2fe; }
+        .soc-block.active-cpu .block-status-val { fill: #818cf8; }
+        .soc-block.active-cpu .sub-core-bg { fill: #171638; stroke: var(--color-royal); }
+        .soc-block.active-cpu .sub-core-text { fill: #a5b4fc; }
+        .soc-block.active-cpu .sub-cache-bg { fill: #171638; stroke: rgba(99, 102, 241, 0.4); }
+        .soc-block.active-cpu .sub-cache-text { fill: #a5b4fc; }
+        .soc-block.active-cpu .sub-rocc-bg { fill: #280d35; stroke: #d946ef; }
+        .soc-block.active-cpu .sub-rocc-text { fill: #f472b6; }
+
+        .soc-block.active-envm { filter: url(#glow-gold); }
+        .soc-block.active-envm .block-bg { fill: #201303; stroke: var(--color-amber); stroke-width: 2px; }
+        .soc-block.active-envm .block-title { fill: #fde68a; }
+        .soc-block.active-envm .block-status-val { fill: var(--color-amber); }
+        .soc-block.active-envm .sub-unit-bg { fill: #341402; stroke: var(--color-amber); }
+        .soc-block.active-envm .sub-unit-text { fill: #fcd34d; }
+
+        .soc-block.active-cache { filter: url(#glow-cyan); }
+        .soc-block.active-cache .block-bg { fill: #03212d; stroke: var(--color-cyan); stroke-width: 2px; }
+        .soc-block.active-cache .block-title { fill: #cffafe; }
+        .soc-block.active-cache .block-status-val { fill: var(--color-cyan); }
+        .soc-block.active-cache .sub-unit-bg { fill: #052432; stroke: var(--color-cyan); }
+        .soc-block.active-cache .sub-unit-text { fill: #67e8f9; }
+        .soc-block.active-cache #l2-bank-0.hit-flash,
+        .soc-block.active-cache #l2-bank-1.hit-flash { fill: #0b4356; stroke: #22d3ee; animation: flash-cyan 0.5s ease-out; }
+
+        .soc-block.active-pcie { filter: url(#glow-emerald); }
+        .soc-block.active-pcie .block-bg { fill: #012019; stroke: var(--color-emerald); stroke-width: 2px; }
+        .soc-block.active-pcie .block-title { fill: #d1fae5; }
+        .soc-block.active-pcie .block-status-val { fill: var(--color-emerald); }
+        .soc-block.active-pcie .sub-unit-bg { fill: #03382b; stroke: var(--color-emerald); }
+        .soc-block.active-pcie .sub-unit-text { fill: #6ee7b7; }
+
+        .soc-block.active-video { filter: url(#glow-cyan); }
+        .soc-block.active-video .block-bg { fill: #21053d; stroke: #a21caf; stroke-width: 2px; }
+        .soc-block.active-video .block-title { fill: #fdf4ff; }
+        .soc-block.active-video .block-status-val { fill: #e879f9; }
+        .soc-block.active-video .sub-unit-bg { fill: #360239; stroke: #d946ef; }
+        .soc-block.active-video .sub-unit-text { fill: #f472b6; }
+        .active-mipi { fill: #131036 !important; stroke: var(--color-cyan) !important; }
+        .active-hdmi { fill: #660a28 !important; stroke: var(--color-ruby) !important; }
+
+        .soc-block.active-plic { filter: url(#glow-red); }
+        .soc-block.active-plic .block-bg { fill: #370311; stroke: var(--color-ruby); stroke-width: 2px; }
+        .soc-block.active-plic .block-title { fill: #ffe4e6; }
+        .soc-block.active-plic .block-status-val { fill: var(--color-ruby); }
+        .soc-block.active-plic .sub-unit-bg { fill: #620c26; stroke: var(--color-ruby); }
+        .soc-block.active-plic .sub-unit-text { fill: #fda4af; }
+
+        .soc-block.active-periph { filter: url(#glow-cyan); }
+        .soc-block.active-periph .block-bg { fill: #08141d; stroke: #2563eb; stroke-width: 2px; }
+        .soc-block.active-periph .block-title { fill: #dbeafe; }
+        .soc-block.active-periph .block-status-val { fill: #3b82f6; }
+        .soc-block.active-periph .sub-periph-text { fill: #60a5fa; }
+
+        @keyframes bus-scroll {
+            0% { stroke-dashoffset: 200; }
+            100% { stroke-dashoffset: 0; }
+        }
+        .bus-pulsing-active {
+            animation: bus-scroll 4s linear infinite;
+            stroke-opacity: 1 !important;
+        }
+
+        @keyframes flash-cyan {
+            0% { fill: #22d3ee; }
+            100% { fill: #052432; }
+        }
+
+        /* -------------------------------------------------------------------------
+           Control Panel & Slider Scrubber Styling
+           ------------------------------------------------------------------------- */
+        .controls-pane {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 12px 18px;
+            border-radius: 12px;
+        }
+
+        .slider-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .timer-display {
+            font-size: 13px;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 6px;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .timer-display strong {
+            color: var(--color-cyan);
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+        }
+
+        /* Range slider styling */
+        .timeline-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .timeline-slider:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .timeline-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-cyan), var(--color-royal));
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+            transition: transform 0.15s ease;
+        }
+
+        .timeline-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .buttons-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        .play-btn {
+            background: linear-gradient(135deg, var(--color-cyan), var(--color-royal));
+            border: none;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+            min-width: 80px;
+        }
+
+        .play-btn:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.35);
+        }
+
+        .speed-selector {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .speed-selector select {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget-card">
+        
+        <!-- HEADER -->
+        <div class="widget-header">
+            <div>
+                <h1>SMVDU-TITAN-X</h1>
+                <span class="subtitle">Silicon Core Boot Sequence Visualizer</span>
+            </div>
+            <div class="timer-display">Time: <strong id="time-readout">0.0</strong> ns</div>
+        </div>
+
+        <!-- DIAGRAM VIEWPORT -->
+        <div class="diagram-container">
+            <!-- Inline SVG SoC Block Diagram -->
+            <svg id="soc-diagram" viewBox="0 0 800 480" width="100%" height="100%">
+                <defs>
+                    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                    <filter id="glow-emerald" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                    <filter id="glow-royal" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                    <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                    <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="6" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                    <linearGradient id="grad-bus" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.8"/>
+                        <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.8"/>
+                    </linearGradient>
+                </defs>
+                <rect x="5" y="5" width="790" height="470" rx="16" fill="none" stroke="#2a3347" stroke-width="2" stroke-dasharray="8 4" />
+                <text x="20" y="25" fill="#4b5563" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1">CHIP SILICON BOUNDARY (180nm CMOS)</text>
+
+                <!-- AMBA Interconnect -->
+                <g id="bus-interconnect">
+                    <rect x="180" y="220" width="460" height="24" rx="6" fill="#1e1b4b" stroke="#3730a3" stroke-width="1.5" />
+                    <path id="bus-pulsing" d="M 190,232 L 630,232" stroke="url(#grad-bus)" stroke-width="4" stroke-linecap="round" stroke-dasharray="20 180" />
+                    <text x="360" y="236" fill="#818cf8" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" letter-spacing="2">AMBA AXI4 SYSTEM INTERCONNECT</text>
+                </g>
+
+                <!-- CPU Core Complex -->
+                <g id="block-cpu" class="soc-block inactive">
+                    <rect x="30" y="90" width="220" height="150" rx="12" class="block-bg" />
+                    <rect x="40" y="100" width="95" height="45" rx="6" class="sub-core-bg" />
+                    <text x="87" y="128" class="sub-core-text">HART 0-3</text>
+                    <rect x="145" y="100" width="95" height="45" rx="6" class="sub-core-bg" />
+                    <text x="192" y="128" class="sub-core-text">HART 4</text>
+                    <rect x="40" y="155" width="200" height="30" rx="4" class="sub-cache-bg" />
+                    <text x="140" y="174" class="sub-cache-text">Coherent L1 Cache</text>
+                    <rect x="40" y="195" width="200" height="35" rx="4" class="sub-rocc-bg" />
+                    <text x="140" y="217" class="sub-rocc-text" id="rocc-label">RoCC Neural Accelerator</text>
+                    <text x="140" y="75" class="block-title">RISC-V CPU Core Complex</text>
+                    <text x="140" y="260" class="block-status-val" id="cpu-status">State: Power-off</text>
+                </g>
+
+                <!-- eNVM secure boot -->
+                <g id="block-envm" class="soc-block inactive">
+                    <rect x="30" y="290" width="130" height="110" rx="12" class="block-bg" />
+                    <rect x="42" y="325" width="106" height="30" rx="4" class="sub-unit-bg" />
+                    <text x="95" y="344" class="sub-unit-text">128KB eNVM</text>
+                    <rect x="42" y="360" width="106" height="30" rx="4" class="sub-unit-bg" stroke="#f59e0b" stroke-dasharray="2 2" />
+                    <text x="95" y="379" class="sub-unit-text" id="crypto-label">AES-256 Crypto</text>
+                    <text x="95" y="282" class="block-title">Secure Boot</text>
+                    <text x="95" y="420" class="block-status-val" id="envm-status">Signature: Unchecked</text>
+                </g>
+
+                <!-- L2 Cache coherence -->
+                <g id="block-cache" class="soc-block inactive">
+                    <rect x="290" y="60" width="220" height="110" rx="12" class="block-bg" />
+                    <rect x="305" y="95" width="90" height="40" rx="4" class="sub-unit-bg" id="l2-bank-0" />
+                    <text x="350" y="120" class="sub-unit-text">L2 Bank 0</text>
+                    <rect x="405" y="95" width="90" height="40" rx="4" class="sub-unit-bg" id="l2-bank-1" />
+                    <text x="450" y="120" class="sub-unit-text">L2 Bank 1</text>
+                    <text x="400" y="50" class="block-title">L2 Directory Coherent Cache</text>
+                    <text x="400" y="190" class="block-status-val" id="cache-status">Coherence: Idle</text>
+                </g>
+
+                <!-- PCIe Gen2 PIPE -->
+                <g id="block-pcie" class="soc-block inactive">
+                    <rect x="550" y="60" width="220" height="120" rx="12" class="block-bg" />
+                    <rect x="565" y="95" width="190" height="30" rx="4" class="sub-unit-bg" />
+                    <text x="660" y="114" class="sub-unit-text">Gen2 x4 Controller</text>
+                    <rect x="565" y="135" width="190" height="35" rx="4" class="sub-unit-bg" />
+                    <text x="660" y="157" class="sub-unit-text">PIPE Serial Transceiver</text>
+                    <text x="660" y="50" class="block-title">PCIe High-Speed I/O</text>
+                    <text x="660" y="200" class="block-status-val" id="pcie-status">LTSSM: Power-off</text>
+                </g>
+
+                <!-- Video Pipeline MIPI/HDMI -->
+                <g id="block-video" class="soc-block inactive">
+                    <rect x="510" y="270" width="260" height="130" rx="12" class="block-bg" />
+                    <rect x="525" y="305" width="105" height="40" rx="4" class="sub-unit-bg" id="mipi-sub" />
+                    <text x="577" y="330" class="sub-unit-text">MIPI CSI-2 Rx</text>
+                    <rect x="640" y="305" width="115" height="40" rx="4" class="sub-unit-bg" id="hdmi-sub" />
+                    <text x="697" y="330" class="sub-unit-text">HDMI TMDS Tx</text>
+                    <rect x="525" y="355" width="230" height="35" rx="4" class="sub-unit-bg" />
+                    <text x="640" y="377" class="sub-unit-text">Image Signal Processor (ISP)</text>
+                    <text x="640" y="260" class="block-title">Video Core Pipeline</text>
+                    <text x="640" y="420" class="block-status-val" id="video-status">Pipeline: Inactive</text>
+                </g>
+
+                <!-- PLIC -->
+                <g id="block-plic" class="soc-block inactive">
+                    <rect x="290" y="280" width="180" height="110" rx="12" class="block-bg" />
+                    <rect x="305" y="315" width="150" height="30" rx="4" class="sub-unit-bg" />
+                    <text x="380" y="334" class="sub-unit-text">186 Source PLIC Matrix</text>
+                    <rect x="305" y="350" width="150" height="30" rx="4" class="sub-unit-bg" />
+                    <text x="380" y="369" class="sub-unit-text">CLINT Vector Block</text>
+                    <text x="380" y="270" class="block-title">Interrupt Hub</text>
+                    <text x="380" y="410" class="block-status-val" id="plic-status">IRQ status: Idle</text>
+                </g>
+
+                <!-- Peripherals -->
+                <g id="block-periph" class="soc-block inactive">
+                    <rect x="180" y="290" width="90" height="110" rx="12" class="block-bg" />
+                    <text x="225" y="325" class="sub-periph-text">5x UART</text>
+                    <text x="225" y="345" class="sub-periph-text">2x SPI</text>
+                    <text x="225" y="365" class="sub-periph-text">2x I2C</text>
+                    <text x="225" y="385" class="sub-periph-text">2x CAN</text>
+                    <text x="225" y="282" class="block-title">Low-Speed</text>
+                    <text x="225" y="420" class="block-status-val" id="periph-status">Idle</text>
+                </g>
+
+                <path d="M 250,140 L 290,140" stroke="#334155" stroke-width="3" fill="none" />
+                <path d="M 140,240 L 140,265 A 15,15 0 0 0 155,280 L 190,280" stroke="#334155" stroke-width="3" fill="none" />
+                <path d="M 190,230 L 190,240" stroke="#334155" stroke-width="3" fill="none" />
+                <path id="irq-wire" d="M 290,300 L 270,300 L 270,180 L 250,180" stroke="#4b5563" stroke-width="2.5" stroke-dasharray="4 4" fill="none" />
+            </svg>
+        </div>
+
+        <!-- CONTROLS & TIMELINE SLIDER -->
+        <div class="controls-pane">
+            <div class="slider-section">
+                <button class="btn play-btn" id="btn-play">▶ Play</button>
+                <input type="range" class="timeline-slider" id="time-slider" min="0" max="450" step="1" value="0">
+            </div>
+            
+            <div class="buttons-section">
+                <button class="btn" id="btn-prev" title="Previous event">⏮ Event</button>
+                <button class="btn" id="btn-next" title="Next event">Event ⏭</button>
+                <div class="speed-selector">
+                    <span>Speed:</span>
+                    <select id="speed-val">
+                        <option value="1">1x</option>
+                        <option value="2.5" selected>2x</option>
+                        <option value="5">5x</option>
+                    </select>
+                </div>
+                <button class="btn" id="btn-reset" title="Reset timeline">🔄 Reset</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Embedded simulation transition traces data
+        const simWaves = {
+            "sys_rst_n": [[0, "0"], [50, "1"]],
+            "cpu_complex_ready": [[0, "0"], [125, "1"]],
+            "cpu_power_state": [[0, "000"], [55, "001"], [65, "010"], [75, "011"], [85, "100"], [95, "101"], [105, "110"], [115, "111"]],
+            "secure_boot_verified": [[0, "0"], [125, "1"]],
+            "pcie_link_up": [[0, "0"], [75, "1"]],
+            "pcie_ltssm_state": [[0, "0000"], [55, "0001"], [65, "0010"], [75, "0011"]],
+            "mipi_rx_active": [[0, "0"], [220, "1"]],
+            "hdmi_tx_active": [[0, "0"], [135, "1"]],
+            "plic_assert_irq": [[0, "0"], [350, "1"], [370, "0"]],
+            "l2_hit": [[0, "0"], [85, "1"], [95, "0"], [125, "1"], [135, "0"]],
+            "l2_bank_select": [[0, "00"], [55, "01"], [65, "10"], [75, "11"], [85, "00"], [95, "01"], [105, "10"], [115, "11"], [125, "00"], [135, "01"]]
+        };
+
+        const eventTimestamps = [0, 50, 55, 65, 75, 85, 95, 105, 115, 125, 135, 220, 340, 350, 370, 450];
+        
+        let currentTimeNs = 0.0;
+        let isPlaying = false;
+        let animationFrameId = null;
+
+        const elements = {
+            slider: document.getElementById("time-slider"),
+            timeReadout: document.getElementById("time-readout"),
+            btnPlay: document.getElementById("btn-play"),
+            btnPrev: document.getElementById("btn-prev"),
+            btnNext: document.getElementById("btn-next"),
+            btnReset: document.getElementById("btn-reset"),
+            speedVal: document.getElementById("speed-val"),
+            
+            // SVG parts
+            blockCpu: document.getElementById("block-cpu"),
+            blockEnvm: document.getElementById("block-envm"),
+            blockCache: document.getElementById("block-cache"),
+            blockPcie: document.getElementById("block-pcie"),
+            blockVideo: document.getElementById("block-video"),
+            blockPlic: document.getElementById("block-plic"),
+            blockPeriph: document.getElementById("block-periph"),
+            
+            statusCpu: document.getElementById("cpu-status"),
+            statusEnvm: document.getElementById("envm-status"),
+            statusCache: document.getElementById("cache-status"),
+            statusPcie: document.getElementById("pcie-status"),
+            statusVideo: document.getElementById("video-status"),
+            statusPlic: document.getElementById("plic-status"),
+            statusPeriph: document.getElementById("periph-status"),
+            roccLabel: document.getElementById("rocc-label"),
+            
+            busPulsing: document.getElementById("bus-pulsing"),
+            irqWire: document.getElementById("irq-wire"),
+            l2Bank0: document.getElementById("l2-bank-0"),
+            l2Bank1: document.getElementById("l2-bank-1"),
+            mipiSub: document.getElementById("mipi-sub"),
+            hdmiSub: document.getElementById("hdmi-sub")
+        };
+
+        function getSignalValueAt(name, timeNs) {
+            const trace = simWaves[name];
+            if (!trace) return "0";
+            let val = trace[0][1];
+            for (let i = 0; i < trace.length; i++) {
+                if (trace[i][0] <= timeNs) {
+                    val = trace[i][1];
+                } else {
+                    break;
+                }
+            }
+            return val;
+        }
+
+        // SoC Highlights updater
+        function updateSoCDiagram(timeNs) {
+            const rst = getSignalValueAt("sys_rst_n", timeNs);
+            const cpuReady = getSignalValueAt("cpu_complex_ready", timeNs);
+            const cpuPower = getSignalValueAt("cpu_power_state", timeNs);
+            const secureBoot = getSignalValueAt("secure_boot_verified", timeNs);
+            const pcieLink = getSignalValueAt("pcie_link_up", timeNs);
+            const pcieLtssm = getSignalValueAt("pcie_ltssm_state", timeNs);
+            const mipiRx = getSignalValueAt("mipi_rx_active", timeNs);
+            const hdmiTx = getSignalValueAt("hdmi_tx_active", timeNs);
+            const plicAssert = getSignalValueAt("plic_assert_irq", timeNs);
+            const l2Hit = getSignalValueAt("l2_hit", timeNs);
+            const l2Bank = getSignalValueAt("l2_bank_select", timeNs);
+
+            // AXI Interconnect pulsing
+            if (rst === "1") {
+                elements.busPulsing.classList.add("bus-pulsing-active");
+            } else {
+                elements.busPulsing.classList.remove("bus-pulsing-active");
+            }
+
+            // CPU Core Complex
+            elements.blockCpu.className.baseVal = "soc-block inactive";
+            if (cpuReady === "1") {
+                elements.blockCpu.classList.add("active-cpu");
+                elements.statusCpu.textContent = "State: 4x App & 1x Mon [ACTIVE]";
+                if (timeNs >= 340.0 && timeNs <= 370.0) {
+                    elements.roccLabel.textContent = "Acc0: 0x508 vs 0x508 [PASSED]";
+                    elements.roccLabel.style.fill = "#d946ef";
+                } else {
+                    elements.roccLabel.textContent = "RoCC Neural Accelerator";
+                    elements.roccLabel.style.fill = "";
+                }
+            } else {
+                const powerVal = parseInt(cpuPower, 2);
+                if (powerVal > 0) {
+                    elements.blockCpu.classList.add("active-cpu");
+                    elements.statusCpu.textContent = `Boot Sequence: Step ${powerVal}/7`;
+                } else {
+                    elements.statusCpu.textContent = "State: Reset Power-down";
+                }
+                elements.roccLabel.textContent = "RoCC Neural Accelerator";
+                elements.roccLabel.style.fill = "";
+            }
+
+            // Secure boot padlock
+            elements.blockEnvm.className.baseVal = "soc-block inactive";
+            if (secureBoot === "1") {
+                elements.blockEnvm.classList.add("active-envm");
+                elements.statusEnvm.textContent = "Boot Lock: [SECURED 🔐]";
+            } else if (rst === "1") {
+                elements.statusEnvm.textContent = "Decrypting ROM FSBL...";
+                elements.blockEnvm.classList.add("active-envm");
+            } else {
+                elements.statusEnvm.textContent = "Signature: Unverified";
+            }
+
+            // L2 Cache coherent snoop hits
+            elements.blockCache.className.baseVal = "soc-block inactive";
+            elements.l2Bank0.classList.remove("hit-flash");
+            elements.l2Bank1.classList.remove("hit-flash");
+            
+            if (l2Hit === "1") {
+                elements.blockCache.classList.add("active-cache");
+                elements.statusCache.textContent = "Cache: Coherent Directory HIT";
+                const bankVal = parseInt(l2Bank, 2);
+                if (bankVal === 0) elements.l2Bank0.classList.add("hit-flash");
+                else elements.l2Bank1.classList.add("hit-flash");
+            } else if (cpuReady === "1") {
+                elements.blockCache.classList.add("active-cache");
+                elements.statusCache.textContent = "Coherence: Shared Snooping...";
+            } else {
+                elements.statusCache.textContent = "Coherence: Power-off";
+            }
+
+            // PCIe controller training LTSSM
+            elements.blockPcie.className.baseVal = "soc-block inactive";
+            const ltssmVal = parseInt(pcieLtssm, 2);
+            
+            if (pcieLink === "1") {
+                elements.blockPcie.classList.add("active-pcie");
+                elements.statusPcie.textContent = "LTSSM State: L0 Active [LINK UP]";
+            } else if (ltssmVal > 0) {
+                elements.blockPcie.classList.add("active-pcie");
+                const stateNames = ["DETECT", "POLLING", "CONFIG", "L0"];
+                elements.statusPcie.textContent = `LTSSM State: ${stateNames[ltssmVal] || "TRAINING"}`;
+            } else {
+                elements.statusPcie.textContent = "LTSSM State: DETECT (Disabled)";
+            }
+
+            // Video streams
+            elements.blockVideo.className.baseVal = "soc-block inactive";
+            elements.mipiSub.classList.remove("active-mipi");
+            elements.hdmiSub.classList.remove("active-hdmi");
+            
+            if (mipiRx === "1" || hdmiTx === "1") {
+                elements.blockVideo.classList.add("active-video");
+                if (mipiRx === "1") elements.mipiSub.classList.add("active-mipi");
+                if (hdmiTx === "1") elements.hdmiSub.classList.add("active-hdmi");
+                
+                if (mipiRx === "1" && hdmiTx === "1") {
+                    elements.statusVideo.textContent = "MIPI CSI-2 Input -> HDMI Active";
+                } else {
+                    elements.statusVideo.textContent = "HDMI Serializer output Active";
+                }
+            } else {
+                elements.statusVideo.textContent = "Pipeline: Power Standby";
+            }
+
+            // PLIC interrupter wire
+            elements.blockPlic.className.baseVal = "soc-block inactive";
+            if (plicAssert === "1") {
+                elements.blockPlic.classList.add("active-plic");
+                elements.statusPlic.textContent = "PLIC Alert: UART Interrupt!";
+                elements.irqWire.style.stroke = "var(--color-ruby)";
+                elements.irqWire.style.strokeWidth = "3px";
+                elements.irqWire.style.strokeDasharray = "none";
+            } else {
+                elements.statusPlic.textContent = "PLIC Interrupter: Monitoring...";
+                elements.irqWire.style.stroke = "";
+                elements.irqWire.style.strokeWidth = "";
+                elements.irqWire.style.strokeDasharray = "";
+            }
+
+            // low speed peripherals assert
+            elements.blockPeriph.className.baseVal = "soc-block inactive";
+            if (timeNs >= 350.0 && timeNs <= 370.0) {
+                elements.blockPeriph.classList.add("active-periph");
+                elements.statusPeriph.textContent = "UART 1 RX Active";
+            } else if (cpuReady === "1") {
+                elements.statusPeriph.textContent = "Monitoring UART/SPI/I2C";
+            } else {
+                elements.statusPeriph.textContent = "Peripherals Standby";
+            }
+        }
+
+        function updateWidget(timeNs) {
+            currentTimeNs = Math.max(0.0, Math.min(timeNs, 450.0));
+            elements.slider.value = Math.round(currentTimeNs);
+            elements.timeReadout.textContent = currentTimeNs.toFixed(1);
+            updateSoCDiagram(currentTimeNs);
+        }
+
+        // Slider scrubbing
+        elements.slider.addEventListener("input", () => {
+            updateWidget(parseFloat(elements.slider.value));
+        });
+
+        // Play loop logic
+        function playLoop() {
+            if (!isPlaying) return;
+            const rate = parseFloat(elements.speedVal.value);
+            let next = currentTimeNs + (0.5 * rate);
+            if (next >= 450.0) next = 0.0;
+            updateWidget(next);
+            animationFrameId = requestAnimationFrame(playLoop);
+        }
+
+        elements.btnPlay.addEventListener("click", () => {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                elements.btnPlay.textContent = "⏸ Pause";
+                elements.btnPlay.style.background = "linear-gradient(135deg, var(--color-ruby), var(--color-royal))";
+                playLoop();
+            } else {
+                elements.btnPlay.textContent = "▶ Play";
+                elements.btnPlay.style.background = "";
+                cancelAnimationFrame(animationFrameId);
+            }
+        });
+
+        elements.btnPrev.addEventListener("click", () => {
+            let prev = 0.0;
+            for (let i = eventTimestamps.length - 1; i >= 0; i--) {
+                if (eventTimestamps[i] < currentTimeNs - 0.5) {
+                    prev = eventTimestamps[i];
+                    break;
+                }
+            }
+            updateWidget(prev);
+        });
+
+        elements.btnNext.addEventListener("click", () => {
+            let next = 450.0;
+            for (let i = 0; i < eventTimestamps.length; i++) {
+                if (eventTimestamps[i] > currentTimeNs + 0.5) {
+                    next = eventTimestamps[i];
+                    break;
+                }
+            }
+            updateWidget(next);
+        });
+
+        elements.btnReset.addEventListener("click", () => {
+            isPlaying = false;
+            elements.btnPlay.textContent = "▶ Play";
+            elements.btnPlay.style.background = "";
+            cancelAnimationFrame(animationFrameId);
+            updateWidget(0.0);
+        });
+
+        // Initial update
+        updateWidget(0.0);
+    </script>
+</body>
+</html>

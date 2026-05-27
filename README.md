@@ -22,6 +22,13 @@
 
 ---
 
+### 🖥️ Interactive Silicon Core Boot Sequence Visualizer
+> **[Interactive Live Demo: Experience the Live Silicon Boot Visualizer on GitHub Pages](https://anupamsarashwat1-cloud.github.io/smvdu-titan-x/soc_visualizer.html)**
+>
+> Scrub through the real-time boot timeline (0.0 to 450 ns) to visualize Hart power transitions, AXI interconnect active pulsing, Coherent L2 Cache snoop hits, PCIe Gen2 LTSSM state changes, MIPI-to-HDMI video routing, and active PLIC interrupt vectors.
+
+---
+
 ## 🚀 Overview
 
 **SMVDU-TITAN-X** is an advanced, production-grade 64-bit RISC-V Multicore System-on-Chip (SoC) design ecosystem. Engineered to bridge the gap between high-level computer architectures and physical silicon, the repository provides fully synthesizable, cycle-accurate RTL modules across five specialized development phases, culminating in a **Final Integration Phase** paired with a complete, industry-standard **Cadence ASIC Design Flow (Genus, Innovus, Xcelium)**.

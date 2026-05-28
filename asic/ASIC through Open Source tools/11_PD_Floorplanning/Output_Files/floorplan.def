@@ -1,0 +1,34 @@
+VERSION 5.8 ;
+NAMESCASESENSITIVE ON ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN titan_x_top ;
+UNITS DISTANCE MICRONS 1000 ;
+
+DIEAREA ( 0 0 ) ( 1000000 1000000 ) ;
+
+COMPONENTS 1 ;
+- u_sram sram_32x64_180nm + FIXED ( 580000 550000 ) N ;
+END COMPONENTS
+
+PINS 144 ;
+- sys_clk + NET sys_clk + DIRECTION INPUT + USE SIGNAL + PORT + LAYER metal3 ( -140 -140 140 140 ) + FIXED ( 20000 500000 ) O ;
+- sys_rst_n + NET sys_rst_n + DIRECTION INPUT + USE SIGNAL + PORT + LAYER metal3 ( -140 -140 140 140 ) + FIXED ( 20000 380000 ) O ;
+- ddr_clk + NET ddr_clk + DIRECTION OUTPUT + USE SIGNAL + PORT + LAYER metal4 ( -140 -140 140 140 ) + FIXED ( 500000 980000 ) N ;
+END PINS
+
+GROUPS 4 ;
+- cpu_complex_group cpu_power_state* cpu_complex_ready* secure_boot_verified* + REGION cpu_complex_region ;
+- memory_l2_group u_sram l2_bank_select* l2_hit* + REGION memory_l2_region ;
+- high_speed_io_group pcie_ltssm_state* pcie_link_up* mipi_rx_active* hdmi_tx_active* + REGION high_speed_io_region ;
+- peripherals_group plic_interrupt_lines* plic_assert_irq* + REGION peripherals_region ;
+END GROUPS
+
+REGIONS 4 ;
+- cpu_complex_region 80000 520000 450000 920000 ;
+- memory_l2_region 550000 520000 920000 920000 ;
+- high_speed_io_region 80000 80000 450000 450000 ;
+- peripherals_region 550000 80000 920000 450000 ;
+END REGIONS
+
+END DESIGN

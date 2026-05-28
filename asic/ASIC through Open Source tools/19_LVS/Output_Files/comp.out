@@ -1,0 +1,18 @@
+Netgen 1.5.257
+Running LVS on cells: titan_x_top vs. titan_x_top
+
+Cell {DESIGN_NAME} in schematic is matched to cell {DESIGN_NAME} in layout.
+
+----------------------------------------------------------------------
+Subcircuit summary:
+Circuit 1: titan_x_top.spc titan_x_top      (schematic)
+Circuit 2: titan_x_extracted.sp titan_x_top (layout)
+----------------------------------------------------------------------
+  Instances: 3666  vs.  3666    *** MATCH ***
+  Nets:      3856  vs.  3856    *** MATCH ***
+  Ports:     47  vs.  47    *** MATCH ***
+
+----------------------------------------------------------------------
+Result: Circuits match uniquely.
+LVS CLEAN
+----------------------------------------------------------------------

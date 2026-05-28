@@ -1,0 +1,2111 @@
+magic
+tech scmos
+timestamp 1779946463
+<< checkpaint >>
+rect -60 -60 9242 6058
+<< metal2 >>
+rect 1517 501 1523 3748
+rect 1535 2986 1541 3812
+rect 1549 2986 1555 4016
+rect 1563 2986 1569 4212
+rect 1577 2986 1583 4416
+rect 1591 2986 1597 4612
+rect 2456 1918 2462 2226
+rect 2667 1516 2673 2025
+rect 2681 667 2687 1117
+rect 2695 667 2701 1298
+rect 1506 495 1523 501
+rect 1517 304 1523 495
+<< metal3 >>
+rect 0 5938 9182 5998
+rect 120 5818 9062 5878
+rect 2781 5716 2817 5718
+rect 7353 5716 7389 5718
+rect 2781 5708 7389 5716
+rect 2781 5706 2817 5708
+rect 7353 5706 7389 5708
+rect 48 4760 1294 4772
+rect 7421 4760 9134 4772
+rect 168 4688 1512 4700
+rect 7375 4688 9014 4700
+rect 0 4598 1374 4610
+rect 1480 4609 1594 4615
+rect 0 4418 1374 4430
+rect 1480 4413 1580 4419
+rect 0 4198 1374 4210
+rect 1480 4209 1566 4215
+rect 0 4018 1374 4030
+rect 1480 4013 1552 4019
+rect 0 3798 1374 3810
+rect 1480 3809 1538 3815
+rect 1506 3744 1520 3752
+rect 1526 3708 1681 3720
+rect 1282 3604 1859 3616
+rect 48 3582 348 3594
+rect 7421 3582 9134 3594
+rect 168 3558 546 3570
+rect 7375 3558 9014 3570
+rect 1671 3502 1679 3510
+rect 1849 3398 1857 3406
+rect 1671 3294 1679 3302
+rect 1821 3188 1859 3200
+rect 1671 3086 1679 3094
+rect 1821 2980 1859 2992
+rect 1671 2878 1679 2886
+rect 1669 2668 1743 2680
+rect 1855 2564 1893 2576
+rect 1881 2544 2399 2556
+rect 1731 2460 2007 2472
+rect 1995 2440 2247 2452
+rect 168 2428 546 2440
+rect 7375 2428 9014 2440
+rect 48 2414 60 2416
+rect 48 2402 348 2414
+rect 7421 2404 9134 2416
+rect 1486 2356 1893 2368
+rect 2691 2336 2749 2348
+rect 2235 2272 2796 2284
+rect 802 2252 1743 2264
+rect 2387 2192 2703 2204
+rect 2691 2148 2749 2160
+rect 2781 2030 2817 2032
+rect 2781 2022 7365 2030
+rect 2781 2020 2817 2022
+rect 7287 1970 7433 1972
+rect 2741 1962 7433 1970
+rect 7287 1960 7433 1962
+rect 1506 1915 2459 1921
+rect 282 1843 2889 1849
+rect 2240 1769 2278 1781
+rect 2741 1735 7302 1743
+rect 2242 1571 2250 1579
+rect 1506 1513 2670 1519
+rect 2741 1482 7235 1490
+rect 2240 1369 2278 1381
+rect 2240 1356 2753 1358
+rect 2240 1348 7231 1356
+rect 2240 1346 2753 1348
+rect 168 1284 546 1296
+rect 1506 1295 2698 1301
+rect 48 1242 348 1254
+rect 336 1222 1498 1234
+rect 2741 1216 7231 1224
+rect 534 1202 814 1214
+rect 2741 1156 7235 1164
+rect 2949 1122 2957 1130
+rect 3085 1122 3093 1130
+rect 3192 1120 3231 1132
+rect 3357 1122 3365 1130
+rect 3493 1122 3501 1130
+rect 3629 1122 3637 1130
+rect 3734 1120 3775 1132
+rect 3899 1120 3961 1132
+rect 4037 1122 4045 1130
+rect 4173 1122 4181 1130
+rect 4282 1120 4319 1132
+rect 4445 1122 4453 1130
+rect 4581 1122 4589 1130
+rect 4717 1122 4725 1130
+rect 4824 1120 4863 1132
+rect 4987 1120 5049 1132
+rect 5125 1122 5133 1130
+rect 5261 1122 5269 1130
+rect 5372 1120 5407 1132
+rect 5533 1122 5541 1130
+rect 5669 1122 5677 1130
+rect 5805 1122 5813 1130
+rect 5914 1120 5951 1132
+rect 6026 1120 6087 1132
+rect 6213 1122 6221 1130
+rect 6349 1122 6357 1130
+rect 6462 1120 6495 1132
+rect 6621 1122 6629 1130
+rect 6757 1122 6765 1130
+rect 6893 1122 6901 1130
+rect 7004 1120 7039 1132
+rect 7116 1120 7175 1132
+rect 1506 1114 2684 1120
+rect 2741 988 7231 996
+rect 2741 906 7231 914
+rect 2741 842 7231 850
+rect 270 802 348 814
+rect 2154 806 2753 808
+rect 7219 806 7398 808
+rect 2154 798 7398 806
+rect 2154 796 2753 798
+rect 7219 796 7398 798
+rect 2741 732 7231 740
+rect 0 712 362 724
+rect 0 492 362 504
+rect 822 500 854 512
+rect 1486 464 1948 476
+rect 2810 466 2818 474
+rect 3682 466 3690 474
+rect 4500 464 4564 476
+rect 5424 464 5490 476
+rect 6298 466 6306 474
+rect 7168 464 7319 476
+rect 8040 464 9134 476
+rect 656 452 814 464
+rect 1800 356 1808 364
+rect 2018 356 2026 364
+rect 2236 356 2244 364
+rect 2454 356 2462 364
+rect 2672 356 2680 364
+rect 2890 356 2898 364
+rect 3108 356 3116 364
+rect 3326 356 3334 364
+rect 3544 356 3552 364
+rect 3762 356 3770 364
+rect 3980 356 3988 364
+rect 4198 356 4206 364
+rect 4416 356 4424 364
+rect 4634 356 4642 364
+rect 4852 356 4860 364
+rect 5070 356 5078 364
+rect 5288 356 5296 364
+rect 5506 356 5514 364
+rect 5724 356 5732 364
+rect 5942 356 5950 364
+rect 6160 356 6168 364
+rect 6378 356 6386 364
+rect 6596 356 6604 364
+rect 6814 356 6822 364
+rect 7032 356 7040 364
+rect 7250 356 7258 364
+rect 7468 356 7476 364
+rect 7686 356 7694 364
+rect 7904 356 7912 364
+rect 8122 356 8130 364
+rect 8340 356 8348 364
+rect 8558 356 8566 364
+rect 8776 356 8784 364
+rect 1520 301 1833 307
+rect 1936 264 2166 276
+rect 3028 266 3036 274
+rect 3846 264 3910 276
+rect 4772 266 4780 274
+rect 5557 264 5654 276
+rect 6514 264 6546 276
+rect 7386 264 9014 276
+rect 120 120 9062 180
+rect 0 0 9182 60
+<< metal4 >>
+rect 0 0 60 5998
+rect 120 120 180 5878
+rect 1282 3604 1294 4772
+rect 1500 3714 1512 4720
+rect 1526 3714 1538 3720
+rect 1500 3702 1538 3714
+rect 276 1846 288 2910
+rect 270 402 282 814
+rect 336 802 348 3594
+rect 534 1202 546 3570
+rect 1669 2668 1681 3720
+rect 1821 2980 1833 3200
+rect 1847 3188 1859 3616
+rect 1847 2980 1867 2992
+rect 656 396 668 820
+rect 802 402 814 2264
+rect 842 0 854 512
+rect 1486 464 1498 2368
+rect 1731 2252 1743 2680
+rect 1855 2356 1867 2980
+rect 1881 2544 1893 2576
+rect 1995 2440 2007 2472
+rect 2235 1781 2247 5830
+rect 2387 2192 2399 5950
+rect 2427 2249 2439 5595
+rect 2691 2252 2703 5592
+rect 2737 2034 2749 5950
+rect 2781 5706 2796 5718
+rect 3702 5706 3714 5830
+rect 5468 5706 5480 5830
+rect 7235 5706 7247 5830
+rect 7377 5716 7389 5718
+rect 2737 2022 2753 2034
+rect 2784 2032 2796 5706
+rect 7375 5704 7389 5716
+rect 7375 2048 7387 5704
+rect 2235 1769 2252 1781
+rect 2240 1346 2252 1581
+rect 2266 1369 2278 1781
+rect 1798 0 1810 366
+rect 1863 48 1875 476
+rect 1936 180 1948 276
+rect 1935 168 1948 180
+rect 2016 0 2028 366
+rect 2154 264 2166 808
+rect 2741 730 2753 2022
+rect 2781 2020 2796 2032
+rect 2767 796 2779 1745
+rect 2825 1733 2837 2032
+rect 7421 1960 7433 5950
+rect 2808 464 2820 742
+rect 2947 702 2959 1132
+rect 2945 690 2959 702
+rect 2234 0 2246 366
+rect 2452 0 2464 366
+rect 2670 0 2682 366
+rect 2888 0 2900 366
+rect 2945 0 2957 690
+rect 3026 264 3038 808
+rect 3083 702 3095 1132
+rect 3080 690 3095 702
+rect 3080 0 3092 690
+rect 3106 0 3118 366
+rect 3192 0 3204 1132
+rect 3355 702 3367 1132
+rect 3491 702 3503 1132
+rect 3627 702 3639 1132
+rect 3353 690 3367 702
+rect 3489 690 3503 702
+rect 3625 690 3639 702
+rect 3324 0 3336 366
+rect 3353 0 3365 690
+rect 3489 0 3501 690
+rect 3542 0 3554 366
+rect 3625 0 3637 690
+rect 3680 60 3692 742
+rect 3678 48 3692 60
+rect 3734 0 3746 1132
+rect 3760 0 3772 366
+rect 3846 264 3858 808
+rect 3898 168 3910 276
+rect 3949 0 3961 1132
+rect 4035 702 4047 1132
+rect 4171 702 4183 1132
+rect 4033 690 4047 702
+rect 4169 690 4183 702
+rect 3978 0 3990 366
+rect 4033 0 4045 690
+rect 4169 0 4181 690
+rect 4196 0 4208 366
+rect 4282 0 4294 1132
+rect 4443 702 4455 1132
+rect 4441 690 4455 702
+rect 4414 0 4426 366
+rect 4441 0 4453 690
+rect 4500 464 4512 742
+rect 4579 702 4591 1132
+rect 4715 702 4727 1132
+rect 4577 690 4591 702
+rect 4713 690 4727 702
+rect 4577 0 4589 690
+rect 4632 0 4644 366
+rect 4713 0 4725 690
+rect 4770 264 4782 808
+rect 4824 0 4836 1132
+rect 4850 0 4862 366
+rect 5037 0 5049 1132
+rect 5123 702 5135 1132
+rect 5259 702 5271 1132
+rect 5121 690 5135 702
+rect 5257 690 5271 702
+rect 5068 0 5080 366
+rect 5121 0 5133 690
+rect 5257 0 5269 690
+rect 5286 0 5298 366
+rect 5372 0 5384 1132
+rect 5445 464 5457 742
+rect 5531 702 5543 1132
+rect 5529 690 5543 702
+rect 5478 48 5490 476
+rect 5529 392 5541 690
+rect 5529 380 5543 392
+rect 5504 0 5516 366
+rect 5531 0 5543 380
+rect 5557 168 5569 276
+rect 5590 264 5602 808
+rect 5667 702 5679 1132
+rect 5803 702 5815 1132
+rect 5665 690 5679 702
+rect 5801 690 5815 702
+rect 5665 0 5677 690
+rect 5722 0 5734 366
+rect 5801 0 5813 690
+rect 5914 0 5926 1132
+rect 5940 0 5952 366
+rect 6026 0 6038 1132
+rect 6211 702 6223 1132
+rect 6209 690 6223 702
+rect 6158 0 6170 366
+rect 6209 0 6221 690
+rect 6296 464 6308 742
+rect 6347 702 6359 1132
+rect 6345 690 6359 702
+rect 6345 0 6357 690
+rect 6376 0 6388 366
+rect 6462 0 6474 1132
+rect 6534 264 6546 808
+rect 6619 702 6631 1132
+rect 6755 702 6767 1132
+rect 6891 702 6903 1132
+rect 6617 690 6631 702
+rect 6753 690 6767 702
+rect 6889 690 6903 702
+rect 6617 392 6629 690
+rect 6617 380 6632 392
+rect 6594 0 6606 366
+rect 6620 0 6632 380
+rect 6753 0 6765 690
+rect 6812 0 6824 366
+rect 6889 0 6901 690
+rect 7004 0 7016 1132
+rect 7030 0 7042 366
+rect 7116 0 7128 1132
+rect 7219 464 7231 742
+rect 7248 0 7260 366
+rect 7307 48 7319 476
+rect 7386 168 7398 808
+rect 7466 0 7478 366
+rect 7684 0 7696 366
+rect 7902 0 7914 366
+rect 8040 48 8052 476
+rect 8120 0 8132 366
+rect 8338 0 8350 366
+rect 8556 0 8568 366
+rect 8774 0 8786 366
+rect 9002 120 9062 5878
+rect 9122 0 9182 5998
+<< comment >>
+rect 0 0 9182 5998
+use sram_32x64_180nm_cr_35  sram_32x64_180nm_cr_35_0
+timestamp 1779946463
+transform 1 0 1534 0 1 670
+box 594 -304 7364 6
+use sram_32x64_180nm_cr_34  sram_32x64_180nm_cr_34_0
+timestamp 1779946463
+transform 1 0 1534 0 1 670
+box 378 -301 637 804
+use sram_32x64_180nm_data_dff  sram_32x64_180nm_data_dff_0
+timestamp 1779946463
+transform 1 0 1942 0 1 270
+box -4 -6 6976 206
+use sram_32x64_180nm_col_addr_dff  sram_32x64_180nm_col_addr_dff_0
+timestamp 1779946463
+transform 1 0 1724 0 1 270
+box -4 -6 222 206
+use sram_32x64_180nm_row_addr_dff  sram_32x64_180nm_row_addr_dff_0
+timestamp 1779946463
+transform 1 0 1288 0 1 3714
+box -6 -12 224 1012
+use sram_32x64_180nm_contact_29  sram_32x64_180nm_contact_29_1
+timestamp 1779946463
+transform 1 0 1516 0 1 3744
+box 0 0 8 8
+use sram_32x64_180nm_contact_29  sram_32x64_180nm_contact_29_0
+timestamp 1779946463
+transform 1 0 1516 0 1 300
+box 0 0 8 8
+use sram_32x64_180nm_control_logic_rw  sram_32x64_180nm_control_logic_rw_0
+timestamp 1779946463
+transform 1 0 276 0 1 408
+box -12 -12 1230 2628
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_306
+timestamp 1779946463
+transform 1 0 276 0 1 1840
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_305
+timestamp 1779946463
+transform 1 0 276 0 1 2904
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_304
+timestamp 1779946463
+transform 1 0 2016 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_303
+timestamp 1779946463
+transform 1 0 2234 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_302
+timestamp 1779946463
+transform 1 0 2452 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_301
+timestamp 1779946463
+transform 1 0 2670 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_300
+timestamp 1779946463
+transform 1 0 2888 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_299
+timestamp 1779946463
+transform 1 0 3106 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_298
+timestamp 1779946463
+transform 1 0 3324 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_297
+timestamp 1779946463
+transform 1 0 3542 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_296
+timestamp 1779946463
+transform 1 0 3760 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_295
+timestamp 1779946463
+transform 1 0 3978 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_294
+timestamp 1779946463
+transform 1 0 4196 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_293
+timestamp 1779946463
+transform 1 0 4414 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_292
+timestamp 1779946463
+transform 1 0 4632 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_291
+timestamp 1779946463
+transform 1 0 4850 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_290
+timestamp 1779946463
+transform 1 0 5068 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_289
+timestamp 1779946463
+transform 1 0 5286 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_288
+timestamp 1779946463
+transform 1 0 5504 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_287
+timestamp 1779946463
+transform 1 0 5722 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_286
+timestamp 1779946463
+transform 1 0 5940 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_285
+timestamp 1779946463
+transform 1 0 6158 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_284
+timestamp 1779946463
+transform 1 0 6376 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_283
+timestamp 1779946463
+transform 1 0 6594 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_282
+timestamp 1779946463
+transform 1 0 6812 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_281
+timestamp 1779946463
+transform 1 0 7030 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_280
+timestamp 1779946463
+transform 1 0 7248 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_279
+timestamp 1779946463
+transform 1 0 7466 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_278
+timestamp 1779946463
+transform 1 0 7684 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_277
+timestamp 1779946463
+transform 1 0 7902 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_276
+timestamp 1779946463
+transform 1 0 8120 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_275
+timestamp 1779946463
+transform 1 0 8338 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_274
+timestamp 1779946463
+transform 1 0 8556 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_273
+timestamp 1779946463
+transform 1 0 8774 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_272
+timestamp 1779946463
+transform 1 0 1798 0 1 354
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_271
+timestamp 1779946463
+transform 1 0 842 0 1 500
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_270
+timestamp 1779946463
+transform 1 0 2947 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_269
+timestamp 1779946463
+transform 1 0 3083 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_268
+timestamp 1779946463
+transform 1 0 3192 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_267
+timestamp 1779946463
+transform 1 0 3355 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_266
+timestamp 1779946463
+transform 1 0 3491 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_265
+timestamp 1779946463
+transform 1 0 3627 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_264
+timestamp 1779946463
+transform 1 0 3734 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_263
+timestamp 1779946463
+transform 1 0 3949 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_262
+timestamp 1779946463
+transform 1 0 4035 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_261
+timestamp 1779946463
+transform 1 0 4171 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_260
+timestamp 1779946463
+transform 1 0 4282 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_259
+timestamp 1779946463
+transform 1 0 4443 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_258
+timestamp 1779946463
+transform 1 0 4579 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_257
+timestamp 1779946463
+transform 1 0 4715 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_256
+timestamp 1779946463
+transform 1 0 4824 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_255
+timestamp 1779946463
+transform 1 0 5037 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_254
+timestamp 1779946463
+transform 1 0 5123 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_253
+timestamp 1779946463
+transform 1 0 5259 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_252
+timestamp 1779946463
+transform 1 0 5372 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_251
+timestamp 1779946463
+transform 1 0 5531 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_250
+timestamp 1779946463
+transform 1 0 5667 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_249
+timestamp 1779946463
+transform 1 0 5803 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_248
+timestamp 1779946463
+transform 1 0 5914 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_247
+timestamp 1779946463
+transform 1 0 6026 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_246
+timestamp 1779946463
+transform 1 0 6211 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_245
+timestamp 1779946463
+transform 1 0 6347 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_244
+timestamp 1779946463
+transform 1 0 6462 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_243
+timestamp 1779946463
+transform 1 0 6619 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_242
+timestamp 1779946463
+transform 1 0 6755 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_241
+timestamp 1779946463
+transform 1 0 6891 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_240
+timestamp 1779946463
+transform 1 0 7004 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_239
+timestamp 1779946463
+transform 1 0 7116 0 1 1120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_238
+timestamp 1779946463
+transform 1 0 0 0 1 5986
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_237
+timestamp 1779946463
+transform 1 0 0 0 1 5962
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_236
+timestamp 1779946463
+transform 1 0 0 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_235
+timestamp 1779946463
+transform 1 0 24 0 1 5986
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_234
+timestamp 1779946463
+transform 1 0 24 0 1 5962
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_233
+timestamp 1779946463
+transform 1 0 24 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_232
+timestamp 1779946463
+transform 1 0 48 0 1 5986
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_231
+timestamp 1779946463
+transform 1 0 48 0 1 5962
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_230
+timestamp 1779946463
+transform 1 0 48 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_229
+timestamp 1779946463
+transform 1 0 9122 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_228
+timestamp 1779946463
+transform 1 0 9122 0 1 24
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_227
+timestamp 1779946463
+transform 1 0 9122 0 1 0
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_226
+timestamp 1779946463
+transform 1 0 9146 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_225
+timestamp 1779946463
+transform 1 0 9146 0 1 24
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_224
+timestamp 1779946463
+transform 1 0 9146 0 1 0
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_223
+timestamp 1779946463
+transform 1 0 9170 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_222
+timestamp 1779946463
+transform 1 0 9170 0 1 24
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_221
+timestamp 1779946463
+transform 1 0 9170 0 1 0
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_220
+timestamp 1779946463
+transform 1 0 9122 0 1 5986
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_219
+timestamp 1779946463
+transform 1 0 9122 0 1 5962
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_218
+timestamp 1779946463
+transform 1 0 9122 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_217
+timestamp 1779946463
+transform 1 0 9146 0 1 5986
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_216
+timestamp 1779946463
+transform 1 0 9146 0 1 5962
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_215
+timestamp 1779946463
+transform 1 0 9146 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_214
+timestamp 1779946463
+transform 1 0 9170 0 1 5986
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_213
+timestamp 1779946463
+transform 1 0 9170 0 1 5962
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_212
+timestamp 1779946463
+transform 1 0 9170 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_211
+timestamp 1779946463
+transform 1 0 0 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_210
+timestamp 1779946463
+transform 1 0 0 0 1 24
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_209
+timestamp 1779946463
+transform 1 0 0 0 1 0
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_208
+timestamp 1779946463
+transform 1 0 24 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_207
+timestamp 1779946463
+transform 1 0 24 0 1 24
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_206
+timestamp 1779946463
+transform 1 0 24 0 1 0
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_205
+timestamp 1779946463
+transform 1 0 48 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_204
+timestamp 1779946463
+transform 1 0 48 0 1 24
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_203
+timestamp 1779946463
+transform 1 0 48 0 1 0
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_202
+timestamp 1779946463
+transform 1 0 120 0 1 5866
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_201
+timestamp 1779946463
+transform 1 0 120 0 1 5842
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_200
+timestamp 1779946463
+transform 1 0 120 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_199
+timestamp 1779946463
+transform 1 0 144 0 1 5866
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_198
+timestamp 1779946463
+transform 1 0 144 0 1 5842
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_197
+timestamp 1779946463
+transform 1 0 144 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_196
+timestamp 1779946463
+transform 1 0 168 0 1 5866
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_195
+timestamp 1779946463
+transform 1 0 168 0 1 5842
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_194
+timestamp 1779946463
+transform 1 0 168 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_193
+timestamp 1779946463
+transform 1 0 9002 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_192
+timestamp 1779946463
+transform 1 0 9002 0 1 144
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_191
+timestamp 1779946463
+transform 1 0 9002 0 1 120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_190
+timestamp 1779946463
+transform 1 0 9026 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_189
+timestamp 1779946463
+transform 1 0 9026 0 1 144
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_188
+timestamp 1779946463
+transform 1 0 9026 0 1 120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_187
+timestamp 1779946463
+transform 1 0 9050 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_186
+timestamp 1779946463
+transform 1 0 9050 0 1 144
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_185
+timestamp 1779946463
+transform 1 0 9050 0 1 120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_184
+timestamp 1779946463
+transform 1 0 9002 0 1 5866
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_183
+timestamp 1779946463
+transform 1 0 9002 0 1 5842
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_182
+timestamp 1779946463
+transform 1 0 9002 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_181
+timestamp 1779946463
+transform 1 0 9026 0 1 5866
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_180
+timestamp 1779946463
+transform 1 0 9026 0 1 5842
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_179
+timestamp 1779946463
+transform 1 0 9026 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_178
+timestamp 1779946463
+transform 1 0 9050 0 1 5866
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_177
+timestamp 1779946463
+transform 1 0 9050 0 1 5842
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_176
+timestamp 1779946463
+transform 1 0 9050 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_175
+timestamp 1779946463
+transform 1 0 120 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_174
+timestamp 1779946463
+transform 1 0 120 0 1 144
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_173
+timestamp 1779946463
+transform 1 0 120 0 1 120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_172
+timestamp 1779946463
+transform 1 0 144 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_171
+timestamp 1779946463
+transform 1 0 144 0 1 144
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_170
+timestamp 1779946463
+transform 1 0 144 0 1 120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_169
+timestamp 1779946463
+transform 1 0 168 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_168
+timestamp 1779946463
+transform 1 0 168 0 1 144
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_167
+timestamp 1779946463
+transform 1 0 168 0 1 120
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_166
+timestamp 1779946463
+transform 1 0 7219 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_165
+timestamp 1779946463
+transform 1 0 7219 0 1 730
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_164
+timestamp 1779946463
+transform 1 0 2741 0 1 730
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_163
+timestamp 1779946463
+transform 1 0 2741 0 1 904
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_162
+timestamp 1779946463
+transform 1 0 4500 0 1 730
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_161
+timestamp 1779946463
+transform 1 0 4500 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_160
+timestamp 1779946463
+transform 1 0 3680 0 1 730
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_159
+timestamp 1779946463
+transform 1 0 3680 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_158
+timestamp 1779946463
+transform 1 0 6296 0 1 730
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_157
+timestamp 1779946463
+transform 1 0 6296 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_156
+timestamp 1779946463
+transform 1 0 2808 0 1 730
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_155
+timestamp 1779946463
+transform 1 0 2808 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_154
+timestamp 1779946463
+transform 1 0 5445 0 1 730
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_153
+timestamp 1779946463
+transform 1 0 5445 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_152
+timestamp 1779946463
+transform 1 0 2741 0 1 904
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_151
+timestamp 1779946463
+transform 1 0 2741 0 1 1214
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_150
+timestamp 1779946463
+transform 1 0 2741 0 1 1214
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_149
+timestamp 1779946463
+transform 1 0 2741 0 1 1346
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_148
+timestamp 1779946463
+transform 1 0 3680 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_147
+timestamp 1779946463
+transform 1 0 3678 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_146
+timestamp 1779946463
+transform 1 0 5478 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_145
+timestamp 1779946463
+transform 1 0 5478 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_144
+timestamp 1779946463
+transform 1 0 7307 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_143
+timestamp 1779946463
+transform 1 0 7307 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_142
+timestamp 1779946463
+transform 1 0 2240 0 1 1346
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_141
+timestamp 1779946463
+transform 1 0 2240 0 1 1569
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_140
+timestamp 1779946463
+transform 1 0 2741 0 1 1346
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_139
+timestamp 1779946463
+transform 1 0 2741 0 1 1960
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_138
+timestamp 1779946463
+transform 1 0 2741 0 1 1960
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_137
+timestamp 1779946463
+transform 1 0 2737 0 1 2336
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_136
+timestamp 1779946463
+transform 1 0 2691 0 1 2336
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_135
+timestamp 1779946463
+transform 1 0 2737 0 1 2148
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_134
+timestamp 1779946463
+transform 1 0 7421 0 1 1960
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_133
+timestamp 1779946463
+transform 1 0 2691 0 1 2192
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_132
+timestamp 1779946463
+transform 1 0 2387 0 1 2192
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_131
+timestamp 1779946463
+transform 1 0 7421 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_130
+timestamp 1779946463
+transform 1 0 2387 0 1 2544
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_129
+timestamp 1779946463
+transform 1 0 1881 0 1 2544
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_128
+timestamp 1779946463
+transform 1 0 1881 0 1 2564
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_127
+timestamp 1779946463
+transform 1 0 1855 0 1 2564
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_126
+timestamp 1779946463
+transform 1 0 1855 0 1 2356
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_125
+timestamp 1779946463
+transform 1 0 1855 0 1 2564
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_124
+timestamp 1779946463
+transform 1 0 1847 0 1 2980
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_123
+timestamp 1779946463
+transform 1 0 1821 0 1 2980
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_122
+timestamp 1779946463
+transform 1 0 1821 0 1 3188
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_121
+timestamp 1779946463
+transform 1 0 1847 0 1 3188
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_120
+timestamp 1779946463
+transform 1 0 1847 0 1 3396
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_119
+timestamp 1779946463
+transform 1 0 1847 0 1 3396
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_118
+timestamp 1779946463
+transform 1 0 1847 0 1 3604
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_117
+timestamp 1779946463
+transform 1 0 1282 0 1 3604
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_116
+timestamp 1779946463
+transform 1 0 2387 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_115
+timestamp 1779946463
+transform 1 0 1486 0 1 2356
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_114
+timestamp 1779946463
+transform 1 0 1486 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_113
+timestamp 1779946463
+transform 1 0 1863 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_112
+timestamp 1779946463
+transform 1 0 1863 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_111
+timestamp 1779946463
+transform 1 0 8040 0 1 48
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_110
+timestamp 1779946463
+transform 1 0 8040 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_109
+timestamp 1779946463
+transform 1 0 2737 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_108
+timestamp 1779946463
+transform 1 0 1486 0 1 1222
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_107
+timestamp 1779946463
+transform 1 0 336 0 1 1222
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_106
+timestamp 1779946463
+transform 1 0 336 0 1 1242
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_105
+timestamp 1779946463
+transform 1 0 48 0 1 1242
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_104
+timestamp 1779946463
+transform 1 0 336 0 1 2402
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_103
+timestamp 1779946463
+transform 1 0 48 0 1 2404
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_102
+timestamp 1779946463
+transform 1 0 336 0 1 802
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_101
+timestamp 1779946463
+transform 1 0 270 0 1 802
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_100
+timestamp 1779946463
+transform 1 0 336 0 1 3582
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_99
+timestamp 1779946463
+transform 1 0 48 0 1 3582
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_98
+timestamp 1779946463
+transform 1 0 1282 0 1 4760
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_97
+timestamp 1779946463
+transform 1 0 48 0 1 4760
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_96
+timestamp 1779946463
+transform 1 0 9122 0 1 464
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_95
+timestamp 1779946463
+transform 1 0 7421 0 1 2404
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_94
+timestamp 1779946463
+transform 1 0 9122 0 1 2404
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_93
+timestamp 1779946463
+transform 1 0 7421 0 1 4760
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_92
+timestamp 1779946463
+transform 1 0 9122 0 1 4760
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_91
+timestamp 1779946463
+transform 1 0 7421 0 1 3582
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_90
+timestamp 1779946463
+transform 1 0 9122 0 1 3582
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_89
+timestamp 1779946463
+transform 1 0 7421 0 1 5938
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_88
+timestamp 1779946463
+transform 1 0 168 0 1 2428
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_87
+timestamp 1779946463
+transform 1 0 534 0 1 2428
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_86
+timestamp 1779946463
+transform 1 0 534 0 1 1202
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_85
+timestamp 1779946463
+transform 1 0 802 0 1 1202
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_84
+timestamp 1779946463
+transform 1 0 802 0 1 452
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_83
+timestamp 1779946463
+transform 1 0 656 0 1 452
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_82
+timestamp 1779946463
+transform 1 0 534 0 1 1284
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_81
+timestamp 1779946463
+transform 1 0 168 0 1 1284
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_80
+timestamp 1779946463
+transform 1 0 534 0 1 3558
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_79
+timestamp 1779946463
+transform 1 0 168 0 1 3558
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_78
+timestamp 1779946463
+transform 1 0 802 0 1 2252
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_77
+timestamp 1779946463
+transform 1 0 1731 0 1 2252
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_76
+timestamp 1779946463
+transform 1 0 1731 0 1 2460
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_75
+timestamp 1779946463
+transform 1 0 1731 0 1 2460
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_74
+timestamp 1779946463
+transform 1 0 1731 0 1 2668
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_73
+timestamp 1779946463
+transform 1 0 1669 0 1 2668
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_72
+timestamp 1779946463
+transform 1 0 1669 0 1 2876
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_71
+timestamp 1779946463
+transform 1 0 1669 0 1 2876
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_70
+timestamp 1779946463
+transform 1 0 1669 0 1 3084
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_69
+timestamp 1779946463
+transform 1 0 1669 0 1 3084
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_68
+timestamp 1779946463
+transform 1 0 1669 0 1 3292
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_67
+timestamp 1779946463
+transform 1 0 1669 0 1 3292
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_66
+timestamp 1779946463
+transform 1 0 1669 0 1 3500
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_65
+timestamp 1779946463
+transform 1 0 1669 0 1 3500
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_64
+timestamp 1779946463
+transform 1 0 1669 0 1 3708
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_63
+timestamp 1779946463
+transform 1 0 1526 0 1 3708
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_62
+timestamp 1779946463
+transform 1 0 1995 0 1 2460
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_61
+timestamp 1779946463
+transform 1 0 1995 0 1 2440
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_60
+timestamp 1779946463
+transform 1 0 2235 0 1 2440
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_59
+timestamp 1779946463
+transform 1 0 2235 0 1 2272
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_58
+timestamp 1779946463
+transform 1 0 2427 0 1 2272
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_57
+timestamp 1779946463
+transform 1 0 2427 0 1 2272
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_56
+timestamp 1779946463
+transform 1 0 2784 0 1 2272
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_55
+timestamp 1779946463
+transform 1 0 2781 0 1 5706
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_54
+timestamp 1779946463
+transform 1 0 2781 0 1 2020
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_53
+timestamp 1779946463
+transform 1 0 7377 0 1 5706
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_52
+timestamp 1779946463
+transform 1 0 5468 0 1 5706
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_51
+timestamp 1779946463
+transform 1 0 5468 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_50
+timestamp 1779946463
+transform 1 0 7235 0 1 5706
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_49
+timestamp 1779946463
+transform 1 0 7235 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_48
+timestamp 1779946463
+transform 1 0 3702 0 1 5706
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_47
+timestamp 1779946463
+transform 1 0 3702 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_46
+timestamp 1779946463
+transform 1 0 2825 0 1 2020
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_45
+timestamp 1779946463
+transform 1 0 2825 0 1 1733
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_44
+timestamp 1779946463
+transform 1 0 2767 0 1 1733
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_43
+timestamp 1779946463
+transform 1 0 2767 0 1 1480
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_42
+timestamp 1779946463
+transform 1 0 2767 0 1 1480
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_41
+timestamp 1779946463
+transform 1 0 2767 0 1 1154
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_40
+timestamp 1779946463
+transform 1 0 2767 0 1 1154
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_39
+timestamp 1779946463
+transform 1 0 2767 0 1 986
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_38
+timestamp 1779946463
+transform 1 0 2767 0 1 986
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_37
+timestamp 1779946463
+transform 1 0 2767 0 1 840
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_36
+timestamp 1779946463
+transform 1 0 2767 0 1 840
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_35
+timestamp 1779946463
+transform 1 0 2767 0 1 796
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_34
+timestamp 1779946463
+transform 1 0 2235 0 1 5818
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_33
+timestamp 1779946463
+transform 1 0 2240 0 1 1769
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_32
+timestamp 1779946463
+transform 1 0 2266 0 1 1769
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_31
+timestamp 1779946463
+transform 1 0 2266 0 1 1369
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_30
+timestamp 1779946463
+transform 1 0 4770 0 1 796
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_29
+timestamp 1779946463
+transform 1 0 4770 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_28
+timestamp 1779946463
+transform 1 0 6534 0 1 796
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_27
+timestamp 1779946463
+transform 1 0 6534 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_26
+timestamp 1779946463
+transform 1 0 3026 0 1 796
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_25
+timestamp 1779946463
+transform 1 0 3026 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_24
+timestamp 1779946463
+transform 1 0 5590 0 1 796
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_23
+timestamp 1779946463
+transform 1 0 5590 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_22
+timestamp 1779946463
+transform 1 0 5557 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_21
+timestamp 1779946463
+transform 1 0 5557 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_20
+timestamp 1779946463
+transform 1 0 3846 0 1 796
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_19
+timestamp 1779946463
+transform 1 0 3846 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_18
+timestamp 1779946463
+transform 1 0 3898 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_17
+timestamp 1779946463
+transform 1 0 3898 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_16
+timestamp 1779946463
+transform 1 0 7386 0 1 796
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_15
+timestamp 1779946463
+transform 1 0 7386 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_14
+timestamp 1779946463
+transform 1 0 7386 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_13
+timestamp 1779946463
+transform 1 0 7386 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_12
+timestamp 1779946463
+transform 1 0 2154 0 1 796
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_11
+timestamp 1779946463
+transform 1 0 2154 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_10
+timestamp 1779946463
+transform 1 0 1936 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_9
+timestamp 1779946463
+transform 1 0 1935 0 1 168
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_8
+timestamp 1779946463
+transform 1 0 9002 0 1 264
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_7
+timestamp 1779946463
+transform 1 0 1500 0 1 4688
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_6
+timestamp 1779946463
+transform 1 0 168 0 1 4688
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_5
+timestamp 1779946463
+transform 1 0 7375 0 1 2428
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_4
+timestamp 1779946463
+transform 1 0 9002 0 1 2428
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_3
+timestamp 1779946463
+transform 1 0 7375 0 1 3558
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_2
+timestamp 1779946463
+transform 1 0 9002 0 1 3558
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_1
+timestamp 1779946463
+transform 1 0 7375 0 1 4688
+box 0 0 12 12
+use sram_32x64_180nm_contact_22  sram_32x64_180nm_contact_22_0
+timestamp 1779946463
+transform 1 0 9002 0 1 4688
+box 0 0 12 12
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_94
+timestamp 1779946463
+transform 1 0 1502 0 1 1113
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_93
+timestamp 1779946463
+transform 1 0 2680 0 1 1113
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_92
+timestamp 1779946463
+transform 1 0 1502 0 1 1294
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_91
+timestamp 1779946463
+transform 1 0 2694 0 1 1294
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_90
+timestamp 1779946463
+transform 1 0 1502 0 1 1512
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_89
+timestamp 1779946463
+transform 1 0 2666 0 1 1512
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_88
+timestamp 1779946463
+transform 1 0 1502 0 1 1914
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_87
+timestamp 1779946463
+transform 1 0 2455 0 1 1914
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_86
+timestamp 1779946463
+transform 1 0 278 0 1 2906
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_85
+timestamp 1779946463
+transform 1 0 1476 0 1 3808
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_84
+timestamp 1779946463
+transform 1 0 1534 0 1 3808
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_83
+timestamp 1779946463
+transform 1 0 1476 0 1 4012
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_82
+timestamp 1779946463
+transform 1 0 1548 0 1 4012
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_81
+timestamp 1779946463
+transform 1 0 1476 0 1 4208
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_80
+timestamp 1779946463
+transform 1 0 1562 0 1 4208
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_79
+timestamp 1779946463
+transform 1 0 1476 0 1 4412
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_78
+timestamp 1779946463
+transform 1 0 1576 0 1 4412
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_77
+timestamp 1779946463
+transform 1 0 1476 0 1 4608
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_76
+timestamp 1779946463
+transform 1 0 1590 0 1 4608
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_75
+timestamp 1779946463
+transform 1 0 352 0 1 494
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_74
+timestamp 1779946463
+transform 1 0 352 0 1 714
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_73
+timestamp 1779946463
+transform 1 0 824 0 1 502
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_72
+timestamp 1779946463
+transform 1 0 2018 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_71
+timestamp 1779946463
+transform 1 0 2236 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_70
+timestamp 1779946463
+transform 1 0 2454 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_69
+timestamp 1779946463
+transform 1 0 2672 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_68
+timestamp 1779946463
+transform 1 0 2890 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_67
+timestamp 1779946463
+transform 1 0 3108 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_66
+timestamp 1779946463
+transform 1 0 3326 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_65
+timestamp 1779946463
+transform 1 0 3544 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_64
+timestamp 1779946463
+transform 1 0 3762 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_63
+timestamp 1779946463
+transform 1 0 3980 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_62
+timestamp 1779946463
+transform 1 0 4198 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_61
+timestamp 1779946463
+transform 1 0 4416 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_60
+timestamp 1779946463
+transform 1 0 4634 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_59
+timestamp 1779946463
+transform 1 0 4852 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_58
+timestamp 1779946463
+transform 1 0 5070 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_57
+timestamp 1779946463
+transform 1 0 5288 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_56
+timestamp 1779946463
+transform 1 0 5506 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_55
+timestamp 1779946463
+transform 1 0 5724 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_54
+timestamp 1779946463
+transform 1 0 5942 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_53
+timestamp 1779946463
+transform 1 0 6160 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_52
+timestamp 1779946463
+transform 1 0 6378 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_51
+timestamp 1779946463
+transform 1 0 6596 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_50
+timestamp 1779946463
+transform 1 0 6814 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_49
+timestamp 1779946463
+transform 1 0 7032 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_48
+timestamp 1779946463
+transform 1 0 7250 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_47
+timestamp 1779946463
+transform 1 0 7468 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_46
+timestamp 1779946463
+transform 1 0 7686 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_45
+timestamp 1779946463
+transform 1 0 7904 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_44
+timestamp 1779946463
+transform 1 0 8122 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_43
+timestamp 1779946463
+transform 1 0 8340 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_42
+timestamp 1779946463
+transform 1 0 8558 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_41
+timestamp 1779946463
+transform 1 0 8776 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_40
+timestamp 1779946463
+transform 1 0 2949 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_39
+timestamp 1779946463
+transform 1 0 3085 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_38
+timestamp 1779946463
+transform 1 0 3221 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_37
+timestamp 1779946463
+transform 1 0 3357 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_36
+timestamp 1779946463
+transform 1 0 3493 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_35
+timestamp 1779946463
+transform 1 0 3629 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_34
+timestamp 1779946463
+transform 1 0 3765 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_33
+timestamp 1779946463
+transform 1 0 3901 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_32
+timestamp 1779946463
+transform 1 0 4037 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_31
+timestamp 1779946463
+transform 1 0 4173 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_30
+timestamp 1779946463
+transform 1 0 4309 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_29
+timestamp 1779946463
+transform 1 0 4445 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_28
+timestamp 1779946463
+transform 1 0 4581 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_27
+timestamp 1779946463
+transform 1 0 4717 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_26
+timestamp 1779946463
+transform 1 0 4853 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_25
+timestamp 1779946463
+transform 1 0 4989 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_24
+timestamp 1779946463
+transform 1 0 5125 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_23
+timestamp 1779946463
+transform 1 0 5261 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_22
+timestamp 1779946463
+transform 1 0 5397 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_21
+timestamp 1779946463
+transform 1 0 5533 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_20
+timestamp 1779946463
+transform 1 0 5669 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_19
+timestamp 1779946463
+transform 1 0 5805 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_18
+timestamp 1779946463
+transform 1 0 5941 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_17
+timestamp 1779946463
+transform 1 0 6077 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_16
+timestamp 1779946463
+transform 1 0 6213 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_15
+timestamp 1779946463
+transform 1 0 6349 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_14
+timestamp 1779946463
+transform 1 0 6485 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_13
+timestamp 1779946463
+transform 1 0 6621 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_12
+timestamp 1779946463
+transform 1 0 6757 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_11
+timestamp 1779946463
+transform 1 0 6893 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_10
+timestamp 1779946463
+transform 1 0 7029 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_9
+timestamp 1779946463
+transform 1 0 7165 0 1 1122
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_8
+timestamp 1779946463
+transform 1 0 1800 0 1 356
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_7
+timestamp 1779946463
+transform 1 0 1364 0 1 3800
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_6
+timestamp 1779946463
+transform 1 0 1364 0 1 4020
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_5
+timestamp 1779946463
+transform 1 0 1364 0 1 4200
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_4
+timestamp 1779946463
+transform 1 0 1364 0 1 4420
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_3
+timestamp 1779946463
+transform 1 0 1364 0 1 4600
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_2
+timestamp 1779946463
+transform 1 0 2242 0 1 1571
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_1
+timestamp 1779946463
+transform 1 0 2242 0 1 1771
+box 0 0 8 8
+use sram_32x64_180nm_contact_19  sram_32x64_180nm_contact_19_0
+timestamp 1779946463
+transform 1 0 2242 0 1 1371
+box 0 0 8 8
+use sram_32x64_180nm_contact_18  sram_32x64_180nm_contact_18_2
+timestamp 1779946463
+transform 1 0 2242 0 1 1571
+box 0 0 8 8
+use sram_32x64_180nm_contact_18  sram_32x64_180nm_contact_18_1
+timestamp 1779946463
+transform 1 0 2242 0 1 1771
+box 0 0 8 8
+use sram_32x64_180nm_contact_18  sram_32x64_180nm_contact_18_0
+timestamp 1779946463
+transform 1 0 2242 0 1 1371
+box 0 0 8 8
+use sram_32x64_180nm_bank  sram_32x64_180nm_bank_0
+timestamp 1779946463
+transform 1 0 1534 0 1 670
+box 0 0 5917 5064
+<< labels >>
+rlabel metal3 6 498 6 498 4 csb0
+rlabel metal3 6 718 6 718 4 web0
+rlabel metal4 848 6 848 6 4 clk0
+rlabel metal4 2022 6 2022 6 4 din0[0]
+rlabel metal4 2240 6 2240 6 4 din0[1]
+rlabel metal4 2458 6 2458 6 4 din0[2]
+rlabel metal4 2676 6 2676 6 4 din0[3]
+rlabel metal4 2894 6 2894 6 4 din0[4]
+rlabel metal4 3112 6 3112 6 4 din0[5]
+rlabel metal4 3330 6 3330 6 4 din0[6]
+rlabel metal4 3548 6 3548 6 4 din0[7]
+rlabel metal4 3766 6 3766 6 4 din0[8]
+rlabel metal4 3984 6 3984 6 4 din0[9]
+rlabel metal4 4202 6 4202 6 4 din0[10]
+rlabel metal4 4420 6 4420 6 4 din0[11]
+rlabel metal4 4638 6 4638 6 4 din0[12]
+rlabel metal4 4856 6 4856 6 4 din0[13]
+rlabel metal4 5074 6 5074 6 4 din0[14]
+rlabel metal4 5292 6 5292 6 4 din0[15]
+rlabel metal4 5510 6 5510 6 4 din0[16]
+rlabel metal4 5728 6 5728 6 4 din0[17]
+rlabel metal4 5946 6 5946 6 4 din0[18]
+rlabel metal4 6164 6 6164 6 4 din0[19]
+rlabel metal4 6382 6 6382 6 4 din0[20]
+rlabel metal4 6600 6 6600 6 4 din0[21]
+rlabel metal4 6818 6 6818 6 4 din0[22]
+rlabel metal4 7036 6 7036 6 4 din0[23]
+rlabel metal4 7254 6 7254 6 4 din0[24]
+rlabel metal4 7472 6 7472 6 4 din0[25]
+rlabel metal4 7690 6 7690 6 4 din0[26]
+rlabel metal4 7908 6 7908 6 4 din0[27]
+rlabel metal4 8126 6 8126 6 4 din0[28]
+rlabel metal4 8344 6 8344 6 4 din0[29]
+rlabel metal4 8562 6 8562 6 4 din0[30]
+rlabel metal4 8780 6 8780 6 4 din0[31]
+rlabel metal4 2951 6 2951 6 4 dout0[0]
+rlabel metal4 3086 6 3086 6 4 dout0[1]
+rlabel metal4 3198 6 3198 6 4 dout0[2]
+rlabel metal4 3359 6 3359 6 4 dout0[3]
+rlabel metal4 3495 6 3495 6 4 dout0[4]
+rlabel metal4 3631 6 3631 6 4 dout0[5]
+rlabel metal4 3740 6 3740 6 4 dout0[6]
+rlabel metal4 3955 6 3955 6 4 dout0[7]
+rlabel metal4 4039 6 4039 6 4 dout0[8]
+rlabel metal4 4175 6 4175 6 4 dout0[9]
+rlabel metal4 4288 6 4288 6 4 dout0[10]
+rlabel metal4 4447 6 4447 6 4 dout0[11]
+rlabel metal4 4583 6 4583 6 4 dout0[12]
+rlabel metal4 4719 6 4719 6 4 dout0[13]
+rlabel metal4 4830 6 4830 6 4 dout0[14]
+rlabel metal4 5043 6 5043 6 4 dout0[15]
+rlabel metal4 5127 6 5127 6 4 dout0[16]
+rlabel metal4 5263 6 5263 6 4 dout0[17]
+rlabel metal4 5378 6 5378 6 4 dout0[18]
+rlabel metal4 5537 6 5537 6 4 dout0[19]
+rlabel metal4 5671 6 5671 6 4 dout0[20]
+rlabel metal4 5807 6 5807 6 4 dout0[21]
+rlabel metal4 5920 6 5920 6 4 dout0[22]
+rlabel metal4 6032 6 6032 6 4 dout0[23]
+rlabel metal4 6215 6 6215 6 4 dout0[24]
+rlabel metal4 6351 6 6351 6 4 dout0[25]
+rlabel metal4 6468 6 6468 6 4 dout0[26]
+rlabel metal4 6626 6 6626 6 4 dout0[27]
+rlabel metal4 6759 6 6759 6 4 dout0[28]
+rlabel metal4 6895 6 6895 6 4 dout0[29]
+rlabel metal4 7010 6 7010 6 4 dout0[30]
+rlabel metal4 7122 6 7122 6 4 dout0[31]
+rlabel metal4 1804 6 1804 6 4 addr0[0]
+rlabel metal3 6 3804 6 3804 4 addr0[1]
+rlabel metal3 6 4024 6 4024 4 addr0[2]
+rlabel metal3 6 4204 6 4204 4 addr0[3]
+rlabel metal3 6 4424 6 4424 4 addr0[4]
+rlabel metal3 6 4604 6 4604 4 addr0[5]
+rlabel metal4 30 2999 30 2999 4 vdd
+rlabel metal3 4591 5968 4591 5968 4 vdd
+rlabel metal4 9152 2999 9152 2999 4 vdd
+rlabel metal3 4591 30 4591 30 4 vdd
+rlabel metal3 4591 5848 4591 5848 4 gnd
+rlabel metal4 9032 2999 9032 2999 4 gnd
+rlabel metal3 4591 150 4591 150 4 gnd
+rlabel metal4 150 2999 150 2999 4 gnd
+<< end >>

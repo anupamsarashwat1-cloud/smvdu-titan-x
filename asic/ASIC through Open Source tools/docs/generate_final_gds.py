@@ -113,7 +113,7 @@ class GdsWriter:
         """Writes a GDSII TEXT element."""
         self.write_record(0x0c, 0x00) # text start
         self.write_record(0x0d, 0x02, struct.pack('>H', layer))
-        self.write_record(0x0e, 0x02, struct.pack('>H', texttype))
+        self.write_record(0x16, 0x02, struct.pack('>H', texttype))
         # Presentation (0x17), coordinates (0x10), and string (0x19)
         self.write_record(0x17, 0x01, b'\x00\x00')
         self.write_record(0x10, 0x03, struct.pack('>ii', int(x), int(y)))

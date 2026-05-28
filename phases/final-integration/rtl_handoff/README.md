@@ -1,11 +1,12 @@
 # 📦 SMVDU-TITAN-X — RTL Handoff Package v2.0
 
 > **Physical Design Team Handoff — SCL 180nm CMOS Target**
-> Revision 2.0 | All LVS failures from Gap Report resolved | iverilog compilation: **0 errors**
+> Revision 2.0 | All LVS failures from [PD Gap Report](../TITAN_X_SoC_Design_Gap_Report.md) resolved | iverilog compilation: **0 errors**
 
 ---
 
 ## ⚡ Quick Start (Simulation)
+
 
 ```bash
 # Compile all 36 RTL files + testbench

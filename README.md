@@ -458,7 +458,8 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
     ================================================================
     ```
 *   **RTL Handoff Deliverables (v2.0 — Hierarchical, PD-Ready)**:
-    For standalone logic verification and physical design synthesis, we provide a fully-packed, self-contained hierarchical RTL suite. The PD-team LVS failure (unconnected `sram_32x64_180nm.dout0`) has been resolved.
+    For standalone logic verification and physical design synthesis, we provide a fully-packed, self-contained hierarchical RTL suite. The PD-team LVS failure (unconnected `sram_32x64_180nm.dout0`) has been resolved in response to the formal [PD Gap Report](phases/final-integration/TITAN_X_SoC_Design_Gap_Report.md).
+    *   **📋 PD Gap Report** *(triggered v2.0)*: [TITAN_X_SoC_Design_Gap_Report.md](phases/final-integration/TITAN_X_SoC_Design_Gap_Report.md)
     *   **Handoff Guide & Specs**: [RTL Handoff of Final Integrated chip and Testbench.md](phases/final-integration/RTL%20Handoff%20of%20Final%20Integrated%20chip%20and%20Testbench.md)
     *   **Structural SoC Top** *(replaces behavioral stub)*: [titan_x_top.v](phases/final-integration/rtl_handoff/rtl/titan_x_top.v)
     *   **SRAM Macro Stub** *(LVS fix — dout0 connected)*: [sram_32x64_180nm.v](phases/final-integration/rtl_handoff/rtl/common/sram_32x64_180nm.v)
@@ -470,6 +471,7 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
     *   **SystemVerilog Testbench**: [tb_titan_x_top.sv](phases/final-integration/rtl_handoff/tb_titan_x_top.sv)
     *   **Simulation Script** *(iverilog, 0 errors)*: [run_sim.sh](phases/final-integration/rtl_handoff/run_sim.sh)
     *   **Full RTL Package**: [rtl_handoff/rtl/](phases/final-integration/rtl_handoff/rtl)
+
 
 ---
 

@@ -457,12 +457,19 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
       FINAL INTEGRATION VERIFICATION METRICS: 100% SUCCESS
     ================================================================
     ```
-*   **RTL Handoff Deliverables**:
-    For standalone logic verification and physical design synthesis on separate environments, we have prepared a fully packed, self-contained handoff:
+*   **RTL Handoff Deliverables (v2.0 — Hierarchical, PD-Ready)**:
+    For standalone logic verification and physical design synthesis, we provide a fully-packed, self-contained hierarchical RTL suite. The PD-team LVS failure (unconnected `sram_32x64_180nm.dout0`) has been resolved.
     *   **Handoff Guide & Specs**: [RTL Handoff of Final Integrated chip and Testbench.md](phases/final-integration/RTL%20Handoff%20of%20Final%20Integrated%20chip%20and%20Testbench.md)
-    *   **Synthesizable Verilog RTL**: [titan_x_final_top.v](phases/final-integration/rtl_handoff/titan_x_final_top.v)
-    *   **SystemVerilog Testbench (GTKWave VCD dump)**: [tb_titan_x_final.sv](phases/final-integration/rtl_handoff/tb_titan_x_final.sv)
-    *   **Simulation Script**: [run_sim.sh](phases/final-integration/rtl_handoff/run_sim.sh)
+    *   **Structural SoC Top** *(replaces behavioral stub)*: [titan_x_top.v](phases/final-integration/rtl_handoff/rtl/titan_x_top.v)
+    *   **SRAM Macro Stub** *(LVS fix — dout0 connected)*: [sram_32x64_180nm.v](phases/final-integration/rtl_handoff/rtl/common/sram_32x64_180nm.v)
+    *   **CPU Complex** *(5× RV64I pipeline + PLIC + CLINT)*: [cpu_complex/](phases/final-integration/rtl_handoff/rtl/cpu_complex)
+    *   **Memory Subsystem** *(L2 Cache + DDR4 Controller)*: [memory_subsystem/](phases/final-integration/rtl_handoff/rtl/memory_subsystem)
+    *   **Interconnect** *(AXI4 5M×8S Crossbar + Bridges)*: [interconnect/](phases/final-integration/rtl_handoff/rtl/interconnect)
+    *   **Peripherals** *(UART, GPIO, SPI, I2C, WDT)*: [peripherals/](phases/final-integration/rtl_handoff/rtl/peripherals)
+    *   **Security** *(AES-128, SHA-256, TRNG)*: [security/](phases/final-integration/rtl_handoff/rtl/security)
+    *   **SystemVerilog Testbench**: [tb_titan_x_top.sv](phases/final-integration/rtl_handoff/tb_titan_x_top.sv)
+    *   **Simulation Script** *(iverilog, 0 errors)*: [run_sim.sh](phases/final-integration/rtl_handoff/run_sim.sh)
+    *   **Full RTL Package**: [rtl_handoff/rtl/](phases/final-integration/rtl_handoff/rtl)
 
 ---
 
@@ -495,57 +502,115 @@ To avoid "reinventing the wheel" and to guarantee layout timing success, we inte
 
 ```text
 smvdu-titan-x/
-├── phases/                  # Five-Phase Development Sandboxes
-│   ├── phase1-bare-metal/   # Phase 1: Single-core + UART bare-metal
-│   ├── phase2-boot-infra/   # Phase 2: BootROM, SPI Flash, GPIO peripherals
-│   ├── phase3-linux-boot/   # Phase 3: Quad-Core SMP Cluster + coherent L2 + LiteDRAM/LiteETH
-│   ├── phase4-high-speed-io/# Phase 4: Dual-Core + PCIe Gen2 x4, USB 2.0, HDMI TMDS
-│   ├── phase5-acceleration/ # Phase 5: RoCC AI/ML Systolic Array + HBM2 + Crypto Engine
-│   └── final-integration/   # Unified Silicon-Ready 5-Hart Coherent SoC
-├── hardware/                # Hardware Microarchitecture Design & RTL
-│   ├── rtl/top/             # Integrated SoC RTL stubs & Physical Memory Maps
-│   │   ├── titan_x_top.v    # Golden top-level synthesizable integration RTL
-│   │   └── memory_map.md    # SoC physical memory and MMIO address allocation
-│   ├── chipyard/            # UCB Chipyard generator framework core submodule
-│   └── constraints/         # Physical pin & FPGA target mapping parameters
-├── verification/            # Verification & Cycle-Accurate Emulation
-│   ├── cocotb/uart/         # Python-based testbenches using the Cocotb co-simulation framework
-│   └── riscv-tests/         # RISC-V ISA compatibility and hardware compliance suite
-├── fpga/                    # Rapid FPGA Prototyping Targets
-│   └── litex_targets/       # LiteX board level wrappers and rapid synthesis targets
-├── software/                # System Software Stack & Firmware
-│   ├── firmware/            # First-Stage Bootloader and Assembly tests
-│   │   ├── hello_uart/      # Serial boot banner print program
-│   │   └── exit_test/       # Core register compliance smoke test
-│   └── opensbi/             # OpenSBI Machine-Mode supervisor runtime submodule
-├── asic/                    # Silicon-Ready ASIC Physical CAD Flow
-│   ├── openlane/            # Open-source RTL-to-GDSII flow scripts & constraints
-│   │   ├── config.json      # OpenLane environment configuration parameters
-│   │   └── run_openlane_flow.sh # Shell wrapper to synthesize standard cell layouts
-│   └── cadence/             # Industrial logical synthesis & P&R automation scripts
-│       ├── synthesis_genus.tcl # Cadence Genus multi-corner logical mapping recipe
-│       ├── physical_innovus.tcl # Cadence Innovus floorplanning, placement & NanoRoute routing
-│       ├── titan_x_constraints.sdc # Synopsys Design Constraints timing file
-│       ├── functional_verification/ # UVM/SystemVerilog RTL simulations
-│       │   └── run_xcelium.sh  # Cadence Xcelium simulation runner
-│       ├── code_coverage/       # Statement, Branch, Expression, & Toggle Coverage
-│       │   └── run_coverage.sh # Xcelium & IMC coverage report generator
-│       ├── dft_atpg/            # Design for Testability & ATPG
-│       │   └── run_dft_modus.tcl # Modus Scan insertion & ATPG generation
-│       ├── lec/                 # Logical Equivalence Checking
+├── phases/                        # Five-Phase Development Sandboxes
+│   ├── phase1-bare-metal/         # Phase 1: Single-core + UART bare-metal
+│   ├── phase2-boot-infra/         # Phase 2: BootROM, SPI Flash, GPIO peripherals
+│   ├── phase3-linux-boot/         # Phase 3: Quad-Core SMP + coherent L2 + LiteDRAM/LiteETH
+│   ├── phase4-high-speed-io/      # Phase 4: Dual-Core + PCIe Gen2 x4, USB 2.0, HDMI TMDS
+│   ├── phase5-acceleration/       # Phase 5: RoCC AI/ML Systolic Array + HBM2 + Crypto
+│   └── final-integration/         # ★ Unified Silicon-Ready 5-Hart Coherent SoC
+│       ├── README.md              # Phase overview and results
+│       ├── RESULTS.md             # Simulation results and metrics
+│       ├── STRUCTURE.md           # Detailed hierarchy documentation
+│       ├── RTL Handoff of Final Integrated chip and Testbench.md
+│       ├── config/                # Chipyard SoC configuration files
+│       ├── docs/                  # Architecture diagrams and specs
+│       ├── firmware/              # Phase-specific firmware
+│       ├── verification/          # Phase-level testbenches
+│       └── rtl_handoff/           # ★★ PD-Ready RTL Package (v2.0)
+│           ├── README.md          # RTL handoff guide & usage
+│           ├── run_sim.sh         # Icarus Verilog compile + simulation script
+│           ├── tb_titan_x_top.sv  # System-level testbench (GTKWave VCD)
+│           └── rtl/               # 36 synthesizable Verilog files
+│               ├── titan_x_top.v  # ★ Structural SoC top (fully instantiated)
+│               ├── common/        # Shared primitives
+│               │   ├── reset_sync.v          # 2-stage reset synchronizer
+│               │   ├── cdc_sync.v            # Clock-domain crossing sync
+│               │   ├── fifo_sync.v           # Synchronous FIFO
+│               │   ├── fifo_async.v          # Async FIFO (Gray-code CDC)
+│               │   └── sram_32x64_180nm.v    # ★ SRAM macro stub (LVS fix)
+│               ├── cpu_complex/   # 5-Hart RISC-V CPU Cluster
+│               │   ├── clint.v               # Core-Local Interruptor
+│               │   ├── plic.v                # Platform-Level Interrupt Controller
+│               │   ├── cpu_complex_top.v     # CPU cluster top
+│               │   └── rv_core/              # RV64I 5-stage pipeline
+│               │       ├── rv_fetch.v        # Instruction fetch
+│               │       ├── rv_decode.v       # Decode + register file
+│               │       ├── rv_execute.v      # ALU + branch resolution
+│               │       ├── rv_mem.v          # Memory access (AXI4-Lite)
+│               │       ├── rv_writeback.v    # Writeback + forwarding
+│               │       └── rv_core_top.v     # Pipeline top wrapper
+│               ├── memory_subsystem/         # Cache + DRAM
+│               │   ├── l2_tag_array.v        # L2 tag RAM (register-based)
+│               │   ├── l2_data_array.v       # L2 data RAM (2x SRAM macros)
+│               │   ├── l2_cache_ctrl.v       # Cache FSM controller
+│               │   ├── l2_cache_top.v        # L2 cache top
+│               │   └── ddr_ctrl/             # DDR4 Controller
+│               │       ├── ddr_phy_if.v      # PHY interface
+│               │       ├── ddr_scheduler.v   # Bank scheduler
+│               │       └── ddr_ctrl_top.v    # DDR4 controller top
+│               ├── interconnect/             # AXI4 Bus fabric
+│               │   ├── axi4_crossbar.v       # 5-Master × 8-Slave crossbar
+│               │   ├── axi4_to_ahb.v         # AXI4 → AHB3-Lite bridge
+│               │   └── ahb_to_apb.v          # AHB3 → APB4 bridge
+│               ├── ethernet/                 # Networking
+│               │   └── gem_ethernet.v        # GEM Gigabit Ethernet MAC (RGMII)
+│               ├── pcie/                     # PCIe Gen3 x4
+│               │   └── pcie_top.v            # PCIe wrapper (link training FSM)
+│               ├── peripherals/              # Low-speed I/O
+│               │   ├── uart_16550.v          # UART 16550-compatible
+│               │   ├── gpio_ctrl.v           # 32-bit GPIO controller
+│               │   ├── spi_master.v          # SPI master
+│               │   ├── i2c_master.v          # I2C master (open-drain)
+│               │   └── watchdog_timer.v      # Watchdog (unlock key, W1C)
+│               └── security/                 # Crypto engines
+│                   ├── aes_engine.v          # AES-128 (FIPS-197, 10 rounds)
+│                   ├── sha256_engine.v       # SHA-256 (FIPS-180-4, 64 rounds)
+│                   └── trng.v                # TRNG (ring-osc + LFSR whitener)
+├── hardware/                      # Hardware Microarchitecture Design & RTL
+│   ├── rtl/top/                   # Integrated SoC RTL stubs & Physical Memory Maps
+│   │   ├── titan_x_top.v          # Golden top-level synthesizable integration RTL
+│   │   └── memory_map.md          # SoC physical memory and MMIO address allocation
+│   ├── chipyard/                  # UCB Chipyard generator framework core submodule
+│   └── constraints/               # Physical pin & FPGA target mapping parameters
+├── verification/                  # Verification & Cycle-Accurate Emulation
+│   ├── cocotb/uart/               # Python-based testbenches (Cocotb co-simulation)
+│   └── riscv-tests/               # RISC-V ISA compatibility and compliance suite
+├── fpga/                          # Rapid FPGA Prototyping Targets
+│   └── litex_targets/             # LiteX board-level wrappers and synthesis targets
+├── software/                      # System Software Stack & Firmware
+│   ├── firmware/                  # First-Stage Bootloader and Assembly tests
+│   │   ├── hello_uart/            # Serial boot banner print program
+│   │   └── exit_test/             # Core register compliance smoke test
+│   └── opensbi/                   # OpenSBI Machine-Mode supervisor runtime
+├── asic/                          # Silicon-Ready ASIC Physical CAD Flow
+│   ├── openlane/                  # Open-source RTL-to-GDSII flow scripts
+│   │   ├── config.json            # OpenLane environment configuration
+│   │   └── run_openlane_flow.sh   # Shell wrapper for standard-cell synthesis
+│   └── cadence/                   # Industrial synthesis & P&R automation
+│       ├── synthesis_genus.tcl    # Cadence Genus multi-corner logical mapping
+│       ├── physical_innovus.tcl   # Cadence Innovus floorplan, place & route
+│       ├── titan_x_constraints.sdc# Synopsys Design Constraints timing file
+│       ├── functional_verification/# UVM/SystemVerilog RTL simulations
+│       │   └── run_xcelium.sh     # Cadence Xcelium simulation runner
+│       ├── code_coverage/         # Statement, Branch, Expression & Toggle coverage
+│       │   └── run_coverage.sh    # Xcelium & IMC coverage report generator
+│       ├── dft_atpg/              # Design for Testability & ATPG
+│       │   └── run_dft_modus.tcl  # Modus scan insertion & ATPG generation
+│       ├── lec/                   # Logical Equivalence Checking
 │       │   └── run_conformal_lec.tcl # Conformal LEC formal verification
-│       └── gls/                 # Gate-Level Sim with timing parasitics
-│           └── run_gls.sh      # Xcelium gate-level simulator with SDF
-├── scripts/                 # System Automation & Toolchain Setup
-│   ├── setup/               # Conda, RISC-V GNU compilers, and Chipyard environment setup
-│   └── sim/                 # Cycle-accurate Verilator, Spike, and Cocotb simulators wrappers
-├── docs/                    # MkDocs-based web pages and system architecture spec sheets
-├── .github/                 # GitHub Actions continuous integration & linting workflows
-├── CHANGELOG.md             # Repository version bump logs
-├── CONTRIBUTING.md          # Collaborative logic contribution guidelines
-├── LICENSE                  # Apache 2.0 open-source licensing agreement
-├── mkdocs.yml               # MkDocs static site layout template settings
-└── walkthrough.md           # Unified step-by-step verification log and walkthrough
+│       └── gls/                   # Gate-Level Sim with timing parasitics
+│           └── run_gls.sh         # Xcelium gate-level simulator with SDF
+├── scripts/                       # System Automation & Toolchain Setup
+│   ├── setup/                     # Conda, RISC-V GNU compiler, Chipyard env setup
+│   └── sim/                       # Verilator, Spike, Cocotb simulator wrappers
+├── docs/                          # MkDocs web pages and architecture spec sheets
+├── .github/                       # GitHub Actions CI & linting workflows
+├── CHANGELOG.md                   # Repository version bump logs
+├── CONTRIBUTING.md                # Contribution guidelines
+├── LICENSE                        # Apache 2.0 open-source license
+├── mkdocs.yml                     # MkDocs static site layout settings
+└── walkthrough.md                 # Step-by-step verification log and walkthrough
 ```
 
 ---

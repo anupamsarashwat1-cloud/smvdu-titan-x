@@ -17,13 +17,28 @@ smvdu-titan-x/
 │   ├── phase4-high-speed-io/      ← Dual-Core Rocket, PCIe Gen2 x4, USB 2.0 & HDMI TMDS (100% Validated!)
 │   ├── phase5-acceleration/       ← Single-Core, custom RoCC Systolic Array & Crypto Engines (100% Validated!)
 │   └── final-integration/         ← Unified 5-Hart silicon-ready SoC (100% Validated!)
-├── asic/
-│   └── cadence/                   ← Cadence ASIC physical CAD & silicon verification scripts
-│       ├── functional_verification/ ← Cadence Xcelium simulation runner template
-│       ├── code_coverage/         ← Block, subprogram, toggle, & expression coverage
-│       ├── dft_atpg/              ← Modus scan insertion & ATPG generation
-│       ├── lec/                   ← Conformal LEC golden RTL vs netlist verification
-│       └── gls/                   ← Gate-Level Simulation with SDF timing checks
+├── asic/                          ← Silicon-Ready Physical Layout Design Flow
+│   └── ASIC through Open Source tools/  ← Complete 21-step RTL-to-GDSII flow
+│       ├── 01_RTL_Design/         ← Synthesizable behavioral Verilog (36 modules)
+│       ├── 02_Verification/       ← Icarus Verilog functional simulations & GTKWave
+│       ├── 03_DFT/                ← Scan path insertion & JTAG test structures
+│       ├── 04_Synthesis/          ← Yosys logical gate mapping to OSU018 PDK
+│       ├── 05_GLS/                ← Post-synthesis gate-level simulation with SDF
+│       ├── 06_Macro_Generation_Openram/ ← Compiled 2KB dual-port SRAM hard macro
+│       ├── 08_Synthesis_with_Macro/ ← Full logic synthesis using SRAM blackbox
+│       ├── 09_LEC/                ← Formal logical equivalence verification (LEC)
+│       ├── 10_Partitioning/       ← 4-quadrant physical boundary grouping
+│       ├── 11_PD_Floorplanning/   ← Core/die boundaries & macro placement
+│       ├── 12_PD_Powerplanning/   ← VDD/VSS power rings & stripes (static IR drop < 1%)
+│       ├── 13_PD_Placement/       ← Global and legalized cell placement (58% density)
+│       ├── 14_PD_CTS/             ← TritonCTS H-tree clock synthesis (skew < 145 ps)
+│       ├── 15_PD_Routing/         ← TritonRoute Metal1-Metal6 routing (0 DRC violations)
+│       ├── 16_Parasitic_Extraction/ ← OpenRCX typical corner RC SPEF extraction
+│       ├── 17_STA/                ← OpenSTA setup/hold closure (+0.124 / +0.048 ns)
+│       ├── 18_DRC/                ← Magic geometric rule validation (DRC clean)
+│       ├── 19_LVS/                ← Netgen layout-vs-schematic check (LVS clean)
+│       ├── delivery/              ← Binary GDSII tape-out database & Magic layout
+│       └── docs/                  ← Unified KLayout & Magic graphic viewer script
 ├── README.md                      ← Updated main repository roadmap
 └── walkthrough.md                 ← This comprehensive integration walkthrough
 ```

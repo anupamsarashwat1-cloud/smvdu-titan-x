@@ -1,7 +1,7 @@
 # Step 12: Power Planning
 
 ## 1. Overview
-Power planning establishes a robust Power Delivery Network (PDN) to distribute VDD (3.3V) and VSS (0V) evenly across the **TITAN-X SoC** layout, preventing physical damage from electromigration and ensuring minimal voltage drop (IR drop). For SCL 180nm, with a peak chip-level estimated power of **~850mW**, a solid 2-D metal grid structure is implemented.
+Power planning establishes a robust Power Delivery Network (PDN) to distribute VDD (3.3V) and VSS (0V) evenly across the **TITAN-X SoC** layout, preventing physical damage from electromigration and ensuring minimal voltage drop (IR drop). For OSU018 180nm, with a peak chip-level estimated power of **~850mW**, a solid 2-D metal grid structure is implemented.
 
 ## 2. Power Delivery Network Specifications
 - **Voltage rails**: VDD = 3.3 V, VSS = 0.0 V.

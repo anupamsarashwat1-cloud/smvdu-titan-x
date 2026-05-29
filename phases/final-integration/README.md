@@ -4,7 +4,7 @@
 [![ISA](https://img.shields.io/badge/ISA-RV64GC_/_RV64IMAC-blue.svg)](#overview)
 [![Node](https://img.shields.io/badge/Fabrication_Node-SCL_180nm-orange.svg)](#overview)
 
-This sandbox directory contains the completely integrated, silicon-ready, synthesizable **SMVDU-TITAN-X** System-on-Chip (SoC) microarchitecture. It merges all components developed across prior phases into a single unified multicore design, optimized for physical semiconductor implementation on the **6-Metal Layer SCL 180nm CMOS technology node**.
+This sandbox directory contains the completely integrated, silicon-ready, synthesizable **SMVDU-TITAN-X** System-on-Chip (SoC) microarchitecture. It merges all components developed across prior phases into a single unified multicore design, optimized for physical semiconductor implementation on the **6-Metal Layer OSU018 180nm CMOS technology node**.
 
 ---
 
@@ -90,7 +90,7 @@ graph TD
 | Specification | Target Parameter |
 | :--- | :--- |
 | **Architecture** | 64-bit RISC-V Multicore SoC |
-| **Fabrication Node** | SCL 180nm CMOS (6-Metal Layer) |
+| **Fabrication Node** | OSU018 180nm CMOS (6-Metal Layer) |
 | **Operating Frequency**| 125 MHz – 200 MHz (constrained by physical limits) |
 | **Application Cores** | **4x RV64GC** (SiFive U54 equivalent) with branch prediction, ALU, and FPU |
 | **Monitor Core** | **1x RV64IMAC** (SiFive E51 equivalent) with DTIM scratchpads |

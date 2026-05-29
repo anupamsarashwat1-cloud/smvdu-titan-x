@@ -1,4 +1,4 @@
-# Step 04: Synthesis Script for SMVDU-TITAN-X SoC (SCL 180nm)
+# Step 04: Synthesis Script for SMVDU-TITAN-X SoC (OSU018 180nm)
 
 # 1. Read Verilog design files (Hierarchical Submodules)
 read_verilog titan_x_soc/01_RTL_Design/Input_Files/rtl/common/sram_32x64_180nm.v

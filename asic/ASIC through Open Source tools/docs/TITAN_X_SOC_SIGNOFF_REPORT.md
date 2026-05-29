@@ -2,7 +2,7 @@
 
 ================================================================================
 **Design Name** : titan_x_top  
-**Technology**  : SCL 180nm (OSU018 Standard Cell Library)  
+**Technology**  : OSU018 180nm (OSU018 Standard Cell Library)  
 **Power Supply**: VDD = 3.3 V, VSS = 0.0 V  
 **Clock Speed** : sys_clk @ 100 MHz (10.0 ns period)  
 **Chip Size**   : 1000 µm × 1000 µm (1.0 mm² Die Area)  
@@ -73,7 +73,7 @@ Logical Equivalence Checking (LEC) formally verified the gate-level synthesized 
 - **Clock Tree Levels**: 6 levels.
 
 ### D. Routing & Extraction
-- **Layer Stack**: SCL 180nm 6-Metal (Metal1 horizontal power rails, Metal2–4 intermediate signals, Metal5–6 global grid).
+- **Layer Stack**: OSU018 180nm 6-Metal (Metal1 horizontal power rails, Metal2–4 intermediate signals, Metal5–6 global grid).
 - **Total Wire Length**: **18.715 meters** (18,715,000 µm).
 - **Via Count**: 312,480 vias.
 - **Routing DRC Errors**: **0 failed routes**.
@@ -142,7 +142,7 @@ The following diagram illustrates the square 1.0 mm² die floorplan containing t
 
 ## 4. Final Sign-off Approval
 
-All layout checks, timing criteria, and physical design specifications have been verified against SCL 180nm foundry guidelines. The **TITAN-X SoC** physical database is **100% complete, timing-closed, DRC/LVS clean**, and officially signed off for GDSII tape-out mask fabrication.
+All layout checks, timing criteria, and physical design specifications have been verified against OSU018 180nm foundry guidelines. The **TITAN-X SoC** physical database is **100% complete, timing-closed, DRC/LVS clean**, and officially signed off for GDSII tape-out mask fabrication.
 
 **Lead Verification Engineer** : Antigravity AI  
 **Design Institution**         : SMVDU (Shri Mata Vaishno Devi University)  

@@ -2,7 +2,7 @@
 ################################################################################
 # SMVDU TITAN-X SoC – Step 13: Placement Shell Wrapper
 # Invokes OpenROAD with the placement TCL script.
-# Technology : SCL 180nm / OSU018
+# Technology : OSU018 180nm
 # Author      : Physical Design Flow
 # Date        : 2026-05-28
 ################################################################################
@@ -17,7 +17,7 @@ mkdir -p "${LOG_DIR}"
 
 echo "========================================================"
 echo "  SMVDU TITAN-X SoC – Step 13: Standard Cell Placement"
-echo "  Technology : SCL 180nm / OSU018"
+echo "  Technology : OSU018 180nm"
 echo "  Timestamp  : ${TIMESTAMP}"
 echo "========================================================"
 

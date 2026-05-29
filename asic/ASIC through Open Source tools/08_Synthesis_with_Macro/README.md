@@ -5,7 +5,7 @@ This directory contains the logic synthesis flow incorporating the OpenRAM memor
 ## 🎯 Step Description
 In structural ASIC design, physical memory macros (like SRAMs) are treated as **hard blackboxes**. During synthesis:
 1. **Blackbox Elaboration**: Yosys reads the behavioral interface of the memory macro (`sram_32x64_180nm.v`) as a read-only library block (`read_verilog -lib`).
-2. **Logic Mapping**: Standard cells and logic blocks (the L2 Cache controller, CPU core, PLIC, PCIe, etc.) are fully synthesized and mapped to standard cells (`AND`, `OR`, `DFFSR`) of the SCL 180nm CMOS PDK.
+2. **Logic Mapping**: Standard cells and logic blocks (the L2 Cache controller, CPU core, PLIC, PCIe, etc.) are fully synthesized and mapped to standard cells (`AND`, `OR`, `DFFSR`) of the OSU018 180nm CMOS PDK.
 3. **Macro Boundary Retention**: The synthesis compiler preserves the exact port directions and boundaries of the `sram_32x64_180nm` memory macros without attempts to split them into random gate registers, ensuring that their GDSII physical layouts can be integrated cleanly in the floorplanning step.
 
 ---

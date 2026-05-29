@@ -1,7 +1,7 @@
 #!/bin/bash
 # =============================================================================
 # Step 15: Detailed Signal & Power Routing - SMVDU TITAN-X SoC
-# Technology: SCL 180nm / OSU018 Standard Cells
+# Technology: OSU018 180nm Standard Cells
 # Router: OpenROAD TritonRoute (detailed maze router)
 # =============================================================================
 # Usage: ./route.sh [--gui] [--verbose]
@@ -37,7 +37,7 @@ CLOCK_NAME="clk"
 CLOCK_PERIOD_NS="10.0"   # 100 MHz target clock
 CORE_UTIL="0.65"
 
-# ---- Routing Layer Settings (SCL 180nm OSU018 6-metal stack) -----------------
+# ---- Routing Layer Settings (OSU018 180nm OSU018 6-metal stack) -----------------
 # M1  : Horizontal  (local routing, cell pins)
 # M2  : Vertical    (short connections)
 # M3  : Horizontal  (medium connections)
@@ -65,7 +65,7 @@ ROUTING_TCL="${STEP_DIR}/route.tcl"
 # ---- Banner ------------------------------------------------------------------
 echo "============================================================"
 echo "  SMVDU TITAN-X SoC - Step 15: Detailed Routing"
-echo "  Technology : SCL 180nm / OSU018"
+echo "  Technology : OSU018 180nm"
 echo "  Design     : ${DESIGN_NAME}"
 echo "  Date       : $(date)"
 echo "============================================================"

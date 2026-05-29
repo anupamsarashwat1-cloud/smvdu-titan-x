@@ -4,7 +4,7 @@
 Detailed Routing is the step that connects all placed pins and instances with physical metal tracks according to the logical netlist. The routing of the **TITAN-X SoC** is implemented using global and detailed routing across **Metal1 to Metal6 layers** in a timing-driven, grid-based maze routing flow.
 
 ## 2. Routing Specifications
-- **Technology stack**: SCL 180nm / OSU018 (6 Metal Layers)
+- **Technology stack**: OSU018 180nm (6 Metal Layers)
   - **Metal1**: Local cell routing and power rails.
   - **Metal2 - Metal4**: Intermediate horizontal and vertical signal routes.
   - **Metal5 - Metal6**: Global clock, power grid, and low-resistance pins.

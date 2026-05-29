@@ -202,7 +202,7 @@ This log serves as a single source of truth for the ASIC design flow of the **Ti
 - **Current Status**: **Success**
 
 ### Step 08: Logic Synthesis with Memory Macro
-- **Description**: Synthesize the integrated top-level RTL design incorporating the `sram_32x64_180nm` OpenRAM memory macro, treating the macro as a hard blackbox while mapping the standard logic gates to SCL 180nm library.
+- **Description**: Synthesize the integrated top-level RTL design incorporating the `sram_32x64_180nm` OpenRAM memory macro, treating the macro as a hard blackbox while mapping the standard logic gates to OSU018 180nm library.
 - **Command(s) Executed**:
   ```bash
   # Execute Yosys synthesis using modified synth_macro.tcl script

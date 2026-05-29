@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 SMVDU TITAN-X SoC – Static Timing Analysis Engine
-Step 17: Netlist-driven timing estimation for SCL 180nm / OSU018
+Step 17: Netlist-driven timing estimation for OSU018 180nm
 
 Methodology:
   1. Parse the Yosys gate-level netlist to extract gate counts per type
@@ -27,7 +27,7 @@ Reference timing (OSU018 stdcells @ 1.8V, 25°C, typical corner):
   DFFPOSX1   : t_clk2q = 0.210 ns, t_setup = 0.080 ns, t_hold = 0.040 ns
   DFFSR      : t_clk2q = 0.240 ns, t_setup = 0.100 ns, t_hold = 0.050 ns
 
-Wire RC (SCL 180nm, average net):
+Wire RC (OSU018 180nm, average net):
   Cap/unit   : 0.12 fF/µm (M1), 0.10 fF/µm (M2)
   Res/unit   : 0.08 Ω/µm  (M1), 0.05 Ω/µm  (M2)
   Avg wire delay per hop: 0.040 ns (short) – 0.150 ns (long, >50 fanout)
@@ -449,7 +449,7 @@ def write_setup_report(paths_by_clock, output_path):
     with open(output_path, 'w') as f:
         f.write("=" * 80 + "\n")
         f.write("  SMVDU TITAN-X SoC – Setup Timing Report\n")
-        f.write("  Technology : SCL 180nm / OSU018 Stdcells (Typical Corner)\n")
+        f.write("  Technology : OSU018 180nm Stdcells (Typical Corner)\n")
         f.write(f"  Generated  : {now}\n")
         f.write("  Tool       : OpenSTA (analytical model via Python engine)\n")
         f.write("=" * 80 + "\n\n")
@@ -557,7 +557,7 @@ def write_hold_report(paths_by_clock, output_path):
     with open(output_path, 'w') as f:
         f.write("=" * 80 + "\n")
         f.write("  SMVDU TITAN-X SoC – Hold Timing Report\n")
-        f.write("  Technology : SCL 180nm / OSU018 Stdcells (Typical Corner)\n")
+        f.write("  Technology : OSU018 180nm Stdcells (Typical Corner)\n")
         f.write(f"  Generated  : {now}\n")
         f.write("  Tool       : OpenSTA (analytical model via Python engine)\n")
         f.write("=" * 80 + "\n\n")
@@ -613,7 +613,7 @@ def write_timing_summary(setup_paths_by_clk, hold_paths_by_clk,
     with open(output_path, 'w') as f:
         f.write("=" * 80 + "\n")
         f.write("  SMVDU TITAN-X SoC – Timing Summary Report\n")
-        f.write("  Technology : SCL 180nm / OSU018 (Typical Corner, 1.8V, 25°C)\n")
+        f.write("  Technology : OSU018 180nm (Typical Corner, 1.8V, 25°C)\n")
         f.write(f"  Generated  : {now}\n")
         f.write("=" * 80 + "\n\n")
 
@@ -726,7 +726,7 @@ def write_clock_domain_report(setup_paths_by_clk, timing_stats,
     with open(output_path, 'w') as f:
         f.write("=" * 80 + "\n")
         f.write("  SMVDU TITAN-X SoC – Clock Domain Analysis Report\n")
-        f.write("  Technology : SCL 180nm / OSU018 Stdcells\n")
+        f.write("  Technology : OSU018 180nm Stdcells\n")
         f.write(f"  Generated  : {now}\n")
         f.write("=" * 80 + "\n\n")
 
@@ -853,7 +853,7 @@ def write_log(log_lines, output_path):
         f.write(f"  Run Date   : {now}\n")
         f.write("  Step       : 17_STA\n")
         f.write("  Netlist    : 04_Synthesis/Output_Files/titan_x_synth_netlist.v\n")
-        f.write("  Technology : SCL 180nm / OSU018\n")
+        f.write("  Technology : OSU018 180nm\n")
         f.write("=" * 80 + "\n\n")
         for line in log_lines:
             f.write(line + "\n")
@@ -879,7 +879,7 @@ def main():
 
     log("=" * 78)
     log("  SMVDU TITAN-X SoC — Step 17: Static Timing Analysis")
-    log("  Technology: SCL 180nm / OSU018 Standard Cell Library")
+    log("  Technology: OSU018 180nm Standard Cell Library")
     log("  Clocks: sys_clk(100 MHz), eth_clk(125 MHz), pcie_refclk(100 MHz)")
     log("=" * 78)
     log("")

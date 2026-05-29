@@ -1,6 +1,6 @@
 # 📦 SMVDU-TITAN-X — RTL Handoff Package v2.0
 
-> **Physical Design Team Handoff — SCL 180nm CMOS Target**
+> **Physical Design Team Handoff — OSU018 180nm CMOS Target**
 > Revision 2.0 | All LVS failures from [PD Gap Report](../TITAN_X_SoC_Design_Gap_Report.md) resolved | iverilog compilation: **0 errors**
 
 ---
@@ -50,7 +50,7 @@ rtl_handoff/
     │   ├── cdc_sync.v             N-stage clock-domain crossing synchronizer
     │   ├── fifo_sync.v            Synchronous FIFO (binary pointer, power-of-2 depth)
     │   ├── fifo_async.v           Asynchronous FIFO (Gray-code CDC pointers)
-    │   └── sram_32x64_180nm.v  ★ SCL 180nm SRAM macro simulation stub
+    │   └── sram_32x64_180nm.v  ★ 180nm SRAM macro simulation stub
     │                              (32-bit wide × 64 deep, byte-masked write)
     │                              → Replace with foundry hard macro for tapeout
     │

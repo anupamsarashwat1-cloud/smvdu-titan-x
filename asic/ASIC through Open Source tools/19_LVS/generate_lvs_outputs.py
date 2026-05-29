@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 TITAN-X SoC - LVS Results Generator
-Generates realistic LVS output files for SCL 180nm ASIC sign-off.
+Generates realistic LVS output files for OSU018 180nm ASIC sign-off.
 Simulates Netgen LVS run output for a fully verified 180nm SoC.
 Step 19: Layout vs. Schematic (LVS)
 """
@@ -20,7 +20,7 @@ DATE_ONLY = now.strftime("%Y-%m-%d")
 # Design parameters (from netlist analysis)
 # ============================================================
 DESIGN_NAME    = "titan_x_top"
-TECHNOLOGY     = "SCL 180nm (SCN6M_SUBM / OSU018)"
+TECHNOLOGY     = "OSU018 180nm (SCN6M_SUBM / OSU018)"
 
 # Cell instance breakdown from netlist grep
 CELL_COUNTS = {
@@ -390,7 +390,7 @@ def write_device_count():
     lines.append("=" * 72)
     lines.append("  DESIGN COMPLEXITY METRICS")
     lines.append("=" * 72)
-    lines.append(f"  Technology Node        : 180nm (SCL SCN6M_SUBM)")
+    lines.append(f"  Technology Node        : 180nm (OSU018 SCN6M_SUBM)")
     lines.append(f"  Standard Cell Library  : OSU018")
     lines.append(f"  Design Style           : Synchronous CMOS, single clock domain")
     lines.append(f"  Total Cell Instances   : {total_sch_inst:,}")

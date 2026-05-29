@@ -49,7 +49,7 @@ Built on proven open-source hardware ecosystems — **Chipyard**, **Rocket-Chip*
 
 > [!IMPORTANT]
 > **Silicon-Ready Multi-Phase Integration Complete**
-> All five development phases and the **Final Integration Phase** have been successfully completed, simulated, and integrated directly inside the main repository tree. The designs compile cleanly and are fully optimized for standard-cell synthesis and placement on physical semiconductor PDKs (such as SCL 180nm or TSMC 28nm).
+> All five development phases and the **Final Integration Phase** have been successfully completed, simulated, and integrated directly inside the main repository tree. The designs compile cleanly and are fully optimized for standard-cell synthesis and placement on physical semiconductor PDKs (such as OSU018 180nm or TSMC 28nm).
 
 ---
 
@@ -72,12 +72,12 @@ Built on proven open-source hardware ecosystems — **Chipyard**, **Rocket-Chip*
 | **Step 5: DFT Scan Insertion** | Boundary scan chain, scan enable, BIST controller insertion with open-source DFT | Scan Netlist | [asic/ASIC through Open Source tools/03_DFT](asic/ASIC%20through%20Open%20Source%20tools/03_DFT) | **✅ COMPLETE** |
 | **Step 6: Logic Synthesis** | Yosys synthesis — gate mapping to OSU018 standard cell library, timing/area reports | Standard Cell Netlist | [asic/ASIC through Open Source tools/04_Synthesis](asic/ASIC%20through%20Open%20Source%20tools/04_Synthesis) | **✅ COMPLETE** |
 | **Step 7: Gate-Level Simulation** | Icarus Verilog gate-level simulation with back-annotated delays (SDF) | Post-Synthesis Netlist | [asic/ASIC through Open Source tools/05_GLS](asic/ASIC%20through%20Open%20Source%20tools/05_GLS) | **✅ COMPLETE** |
-| **Step 8: SRAM Macro Generation** | OpenRAM 32x64 SRAM compiler — GDS, LEF, Liberty, Verilog views for SCL 180nm | SRAM Hard Macro | [asic/ASIC through Open Source tools/06_Macro_Generation_Openram](asic/ASIC%20through%20Open%20Source%20tools/06_Macro_Generation_Openram) | **✅ COMPLETE** |
+| **Step 8: SRAM Macro Generation** | OpenRAM 32x64 SRAM compiler — GDS, LEF, Liberty, Verilog views for OSU018 180nm | SRAM Hard Macro | [asic/ASIC through Open Source tools/06_Macro_Generation_Openram](asic/ASIC%20through%20Open%20Source%20tools/06_Macro_Generation_Openram) | **✅ COMPLETE** |
 | **Step 9: Macro Integration** | Integrating OpenRAM macro into synthesized netlist with pin-level connections | Macro-Integrated Netlist | [asic/ASIC through Open Source tools/07_Macro_Integration](asic/ASIC%20through%20Open%20Source%20tools/07_Macro_Integration) | **✅ COMPLETE** |
 | **Step 10: Synthesis with Macro** | Full re-synthesis including SRAM macro with updated Liberty timing constraints | Final Synthesis Netlist | [asic/ASIC through Open Source tools/08_Synthesis_with_Macro](asic/ASIC%20through%20Open%20Source%20tools/08_Synthesis_with_Macro) | **✅ COMPLETE** |
 | **Step 11: LEC** | Yosys-based Logical Equivalence Check — Golden RTL vs gate-level netlist | Formal Equivalence | [asic/ASIC through Open Source tools/09_LEC](asic/ASIC%20through%20Open%20Source%20tools/09_LEC) | **✅ COMPLETE** |
 | **Step 12: Partitioning** | Floorplan partitioning into 4 quadrants: CPU, Memory, IO, Peripherals | Physical Partitions | [asic/ASIC through Open Source tools/10_Partitioning](asic/ASIC%20through%20Open%20Source%20tools/10_Partitioning) | **✅ COMPLETE** |
-| **Step 13: Floorplanning** | Die/core boundary, macro placement, I/O ring — 1000x1000 um die (SCL 180nm) | Floorplan DEF | [asic/ASIC through Open Source tools/11_PD_Floorplanning](asic/ASIC%20through%20Open%20Source%20tools/11_PD_Floorplanning) | **✅ COMPLETE** |
+| **Step 13: Floorplanning** | Die/core boundary, macro placement, I/O ring — 1000x1000 um die (OSU018 180nm) | Floorplan DEF | [asic/ASIC through Open Source tools/11_PD_Floorplanning](asic/ASIC%20through%20Open%20Source%20tools/11_PD_Floorplanning) | **✅ COMPLETE** |
 | **Step 14: Power Planning** | VDD/VSS power rings (Metal5/6), vertical power stripes, standard cell rail connections | Power Grid | [asic/ASIC through Open Source tools/12_PD_Powerplanning](asic/ASIC%20through%20Open%20Source%20tools/12_PD_Powerplanning) | **✅ COMPLETE** |
 | **Step 15: Placement** | OpenROAD global + detail placement of standard cells with density and timing constraints | Placed DEF | [asic/ASIC through Open Source tools/13_PD_Placement](asic/ASIC%20through%20Open%20Source%20tools/13_PD_Placement) | **✅ COMPLETE** |
 | **Step 16: Clock Tree Synthesis** | TritonCTS balanced H-tree CTS — skew < 50ps, target frequency 500 MHz | Clocked Netlist | [asic/ASIC through Open Source tools/14_PD_CTS](asic/ASIC%20through%20Open%20Source%20tools/14_PD_CTS) | **✅ COMPLETE** |
@@ -94,13 +94,13 @@ Built on proven open-source hardware ecosystems — **Chipyard**, **Rocket-Chip*
 
 ## 🎨 Open Source Physical Design & GDSII Tape-out
 
-We have achieved **100% Tape-out Sign-off** for the SMVDU-TITAN-X SoC on the SCL 180nm technology node! Using a fully open-source physical design toolchain, we successfully compiled, synthesized, placed, routed, and physically verified a complex hierarchical SoC design with **44,827 standard cells** and an integrated compiled **2KB dual-port SRAM block** into a **1000 x 1000 um (1.0 mm2)** physical die.
+We have achieved **100% Tape-out Sign-off** for the SMVDU-TITAN-X SoC on the OSU018 180nm technology node! Using a fully open-source physical design toolchain, we successfully compiled, synthesized, placed, routed, and physically verified a complex hierarchical SoC design with **44,827 standard cells** and an integrated compiled **2KB dual-port SRAM block** into a **1000 x 1000 um (1.0 mm2)** physical die.
 
 ### 🗺️ Physical Layout Architecture
 
 The chip has been physically partitioned into four quadrants separated by microscopic keep-out halos to prevent substrate noise and cross-coupling:
 
-![SMVDU TITAN-X SoC Final Physical Layout — Magic VLSI (SCL 180nm / OSU018)](asic/ASIC%20through%20Open%20Source%20tools/delivery/titan_x_top_layout.png)
+![SMVDU TITAN-X SoC Final Physical Layout — Magic VLSI (OSU018 180nm)](asic/ASIC%20through%20Open%20Source%20tools/delivery/titan_x_top_layout.png)
 
 1. **Top-Left (CPU Complex)**: Contains the central processing unit, execution pipelines, registers, and clock buffers.
 2. **Top-Right (L2 Cache & SRAM Macro)**: Dedicated to high-density memory arrays, SRAM compiler macro `u_sram` (32-bit width x 64-bit depth), and Cache controllers.
@@ -111,7 +111,7 @@ The chip has been physically partitioned into four quadrants separated by micros
 
 | Design Metric | Value / Specification | Sign-off Verification Tool | Status |
 |:---|:---|:---|:---:|
-| **Standard Cell Library** | SCL 180nm / OSU018 Standard Cells | Yosys Logic Mapping | **✅ PASSED** |
+| **Standard Cell Library** | OSU018 180nm Standard Cells | Yosys Logic Mapping | **✅ PASSED** |
 | **Silicon Die Footprint** | 1000 um x 1000 um (1.0 mm2 Area) | OpenROAD Bounding Coordinates | **✅ PASSED** |
 | **Logic Cell Count** | 44,827 placed logic cells (58.3% density) | OpenROAD Placement Engine | **✅ PASSED** |
 | **Clock Tree Skew** | **145.3 ps** skew / 280.9 ps mean latency | TritonCTS balanced H-tree | **✅ PASSED** |
@@ -527,7 +527,7 @@ Here is a detailed look at the synthesizable microarchitecture, custom block dia
 
 ## 🛠️ SoC Design Methodology: Custom Hardware vs. Integrated Silicon IP
 
-Aligning with top-tier industrial semiconductor and research tape-out best practices, the SMVDU-TITAN-X SoC utilizes a hybrid integration strategy. It balances custom-designed, domain-specific acceleration cores with verified, silicon-proven standard communication interfaces to significantly reduce physical fabrication risks at standard PDK nodes (such as SCL 180nm).
+Aligning with top-tier industrial semiconductor and research tape-out best practices, the SMVDU-TITAN-X SoC utilizes a hybrid integration strategy. It balances custom-designed, domain-specific acceleration cores with verified, silicon-proven standard communication interfaces to significantly reduce physical fabrication risks at standard PDK nodes (such as OSU018 180nm).
 
 ### 1. Custom Hardware Designs (Our Core Engineering Output)
 We custom-modeled, simulated, and integrated the critical execution pathways, control systems, and synthesis compilers:
@@ -717,7 +717,7 @@ mkdocs serve
 
 ### 🏭 End-to-End Silicon Verification & Production Flow
 
-Following the **Final Integration Phase**, SMVDU-TITAN-X supports a production-grade, 21-step physical design and silicon verification flow using a fully **Open Source EDA Toolchain** targeting the **SCL 180nm CMOS PDK**:
+Following the **Final Integration Phase**, SMVDU-TITAN-X supports a production-grade, 21-step physical design and silicon verification flow using a fully **Open Source EDA Toolchain** targeting the **OSU018 180nm CMOS PDK**:
 
 ```mermaid
 graph TD
@@ -767,7 +767,7 @@ python3 run_dft.py
 ```
 
 #### Step 4: Logic Synthesis
-Maps hierarchical RTL modules to the standard logic library cell gates of the SCL 180nm technology node:
+Maps hierarchical RTL modules to the standard logic library cell gates of the OSU018 180nm technology node:
 ```bash
 cd "asic/ASIC through Open Source tools/04_Synthesis"
 yosys -s synthesis.tcl

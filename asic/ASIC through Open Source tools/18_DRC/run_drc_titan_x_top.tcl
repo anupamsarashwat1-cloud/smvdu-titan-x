@@ -1,7 +1,7 @@
 ################################################################################
 # TITAN-X SoC - Full-Chip DRC Runner Script
-# Tool       : Magic VLSI Layout Tool v8.3 (SCL 180nm / OSU018)
-# Technology : SCL 180nm (SCN6M_SUBM) - 6-Metal Process
+# Tool       : Magic VLSI Layout Tool v8.3 (OSU018 180nm)
+# Technology : OSU018 180nm (SCN6M_SUBM) - 6-Metal Process
 # Project    : SMVDU TITAN-X SoC
 # Step       : 18 - Design Rule Checking (DRC)
 # Date       : 2026-05-28
@@ -26,7 +26,7 @@ file mkdir ${OUTPUT_DIR}
 
 puts "=== TITAN-X SoC Full-Chip DRC Runner ==="
 puts "Design   : ${DESIGN_NAME}"
-puts "Tech     : SCN6M_SUBM.10 (SCL 180nm)"
+puts "Tech     : SCN6M_SUBM.10 (OSU018 180nm)"
 puts "Outputs  : ${OUTPUT_DIR}"
 puts "========================================\n"
 
@@ -104,7 +104,7 @@ puts ""
 puts "========================================="
 puts " DRC RESULTS for ${DESIGN_NAME}"
 puts "========================================="
-puts " Technology   : SCN6M_SUBM.10 (SCL 180nm)"
+puts " Technology   : SCN6M_SUBM.10 (OSU018 180nm)"
 puts " DRC Style    : drc(full)"
 puts " Total Errors : ${dcount}"
 if {$dcount == 0} {

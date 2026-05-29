@@ -1,6 +1,6 @@
 ================================================================================
 SMVDU TITAN-X SoC — Step 10: Physical Partitioning Report
-Technology  : SCL 180nm
+Technology  : OSU018 180nm
 Library     : OSU018 Standard Cells + Hard SRAM Macro
 Generated   : 2026-05-28
 ================================================================================

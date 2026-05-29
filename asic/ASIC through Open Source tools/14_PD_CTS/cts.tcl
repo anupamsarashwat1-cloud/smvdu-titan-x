@@ -1,6 +1,6 @@
 ################################################################################
 # SMVDU TITAN-X SoC – Step 14: Clock Tree Synthesis (CTS)
-# Technology : SCL 180nm / OSU018 Standard Cell Library
+# Technology : OSU018 180nm Standard Cell Library
 # Tool        : OpenROAD – TritonCTS 2.0
 # Clock       : sys_clk  @ 100 MHz (period = 10 ns)
 # Skew target : < 200 ps
@@ -48,7 +48,7 @@ set_wire_rc \
     -clock \
     -resistance 0.038 \
     -capacitance 0.110
-# R in ohm/µm, C in fF/µm for SCL 180nm Metal2 (typical clock layer)
+# R in ohm/µm, C in fF/µm for OSU018 180nm Metal2 (typical clock layer)
 
 # --------------------------------------------------------------------------- #
 # 4. Configure TritonCTS

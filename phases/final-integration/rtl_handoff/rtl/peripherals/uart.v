@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // SMVDU-TITAN-X SoC — 16550-Compatible UART with 16-deep TX/RX FIFOs
-// Synthesizable RTL — SCL 180nm CMOS
+// Synthesizable RTL — OSU018 180nm CMOS
 
 module uart #(
     parameter DATA_BITS = 8

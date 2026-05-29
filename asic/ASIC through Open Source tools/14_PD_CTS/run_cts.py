@@ -2,7 +2,7 @@
 """
 SMVDU TITAN-X SoC – Step 14: Clock Tree Synthesis Estimator
 ============================================================
-Generates physically realistic CTS analysis for a SCL 180nm SoC
+Generates physically realistic CTS analysis for a OSU018 180nm SoC
 when OpenROAD/TritonCTS is not installed.  All numbers derived from:
   - OSU018 buffer library characterisation
   - Placed cell count from Step 13
@@ -24,7 +24,7 @@ random.seed(137)
 # Design Parameters
 # ───────────────────────────────────────────────────────────────────────────
 DESIGN_NAME     = "titan_x_top"
-TECHNOLOGY      = "SCL 180nm"
+TECHNOLOGY      = "OSU018 180nm"
 STD_CELL_LIB    = "OSU018"
 
 # Clock specification
@@ -50,7 +50,7 @@ BUF_LIBRARY = {
     "BUFX8": {"drive": 8, "intrinsic_delay_ps": 46,  "out_cap_fF": 17.4, "in_cap_fF": 7.2,  "max_load_fF": 320},
 }
 
-# Wire RC (metal2 in SCL 180nm)
+# Wire RC (metal2 in OSU018 180nm)
 WIRE_R_OHM_PER_UM  = 0.038
 WIRE_C_FF_PER_UM   = 0.110
 

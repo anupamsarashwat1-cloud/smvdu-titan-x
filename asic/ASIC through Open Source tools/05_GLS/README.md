@@ -1,6 +1,6 @@
 # Step 05: Gate-Level Simulation (GLS)
 
-This directory contains the timing-accurate functional Gate-Level Simulation (GLS) flow for the **SMVDU-TITAN-X SoC** design mapped to the SCL 180nm PDK.
+This directory contains the timing-accurate functional Gate-Level Simulation (GLS) flow for the **SMVDU-TITAN-X SoC** design mapped to the OSU018 180nm PDK.
 
 ## 🎯 Step Description
 Gate-Level Simulation (GLS) is a critical sign-off verification step in the physical design flow. It compiles the synthesized structural gate-level netlist along with the behavioral standard cell models to ensure that:

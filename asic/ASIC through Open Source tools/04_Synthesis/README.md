@@ -48,7 +48,7 @@ read_verilog titan_x_soc/01_RTL_Design/Input_Files/rtl/titan_x_top.v
 hierarchy -top titan_x_top
 synth -top titan_x_top
 
-# Map to SCL 180nm standard cells library
+# Map to OSU018 180nm standard cells library
 dfflibmap -liberty /home/anupam-sarashwat/vsdflow/library/osu018_stdcells.lib
 abc -liberty /home/anupam-sarashwat/vsdflow/library/osu018_stdcells.lib
 clean
@@ -62,7 +62,7 @@ write_verilog -noattr titan_x_soc/04_Synthesis/titan_x_synth_netlist.v
 ## 📈 Key Results & Metrics
 * **Top Stitching Status**: **SUCCESSFUL** (Exit Code 0).
 * **Netlist File Size**: Approximately **2.2 MB** (Stitched structural netlist).
-* **Gate Mapping**: Successfully mapped to DFFs and combinational logic cells of the SCL 180nm PDK.
+* **Gate Mapping**: Successfully mapped to DFFs and combinational logic cells of the OSU018 180nm PDK.
 * **Resolved Issues**: Fixed the multiple-driver `s7_bready_x` synthesis error by commenting out the duplicate `assign s7_bready_x = 1'b1` in the top wrapper `titan_x_top.v`, letting it be driven cleanly by `u_xbar.s7_bready`.
 
 ---

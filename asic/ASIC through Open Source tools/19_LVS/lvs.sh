@@ -2,7 +2,7 @@
 ################################################################################
 # TITAN-X SoC - Layout vs. Schematic (LVS) Verification Script
 # Tool       : Netgen 1.5.257 (Open-Source LVS) + Calibre-LVS (reference flow)
-# Technology : SCL 180nm (SCN6M_SUBM) - OSU018 Standard Cell Library
+# Technology : OSU018 180nm (SCN6M_SUBM) - OSU018 Standard Cell Library
 # Project    : SMVDU TITAN-X SoC
 # Step       : 19 - Layout vs. Schematic (LVS)
 # Date       : 2026-05-28
@@ -67,7 +67,7 @@ mkdir -p "${OUTPUT_DIR}"
 cat <<'BANNER'
 ╔══════════════════════════════════════════════════════════════════════╗
 ║         TITAN-X SoC  -  LVS Verification  (Step 19)                 ║
-║         Tool: Netgen 1.5.257   Technology: SCL 180nm OSU018          ║
+║         Tool: Netgen 1.5.257   Technology: OSU018 180nm OSU018          ║
 ╚══════════════════════════════════════════════════════════════════════╝
 BANNER
 
@@ -185,7 +185,7 @@ cat <<RESULT
 ╔══════════════════════════════════════════════════════════════════════╗
 ║  LVS VERIFICATION RESULT                                             ║
 ║  Design    : ${DESIGN_NAME}
-║  Technology: SCL 180nm (SCN6M_SUBM / OSU018)                        ║
+║  Technology: OSU018 180nm (SCN6M_SUBM / OSU018)                        ║
 ║  Status    : ${LVS_STATUS}
 ╚══════════════════════════════════════════════════════════════════════╝
 RESULT

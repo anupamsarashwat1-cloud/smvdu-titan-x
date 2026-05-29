@@ -1,7 +1,7 @@
 ################################################################################
 # TITAN-X SoC - Design Rule Check (DRC) Script
-# Tool       : Magic VLSI Layout Tool v8.3 (SCL 180nm / OSU018)
-# Technology : SCL 180nm (SCN6M_SUBM) - 6-Metal Process
+# Tool       : Magic VLSI Layout Tool v8.3 (OSU018 180nm)
+# Technology : OSU018 180nm (SCN6M_SUBM) - 6-Metal Process
 # PDK Rules  : SCN6M_SUBM.10 Design Rule Deck
 # Project    : SMVDU TITAN-X SoC
 # Step       : 18 - Design Rule Checking

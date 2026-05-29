@@ -1,11 +1,11 @@
 # Step 18: Design Rule Checking (DRC)
 
 ## 1. Overview
-Design Rule Checking (DRC) is a physical verification step that checks the GDSII layout database against the geometric rules of the target foundry PDK (SCN6M_SUBM.10 for SCL 180nm). This ensures the physical features (width, spacing, density, antenna effects) are manufacturable.
+Design Rule Checking (DRC) is a physical verification step that checks the GDSII layout database against the geometric rules of the target foundry PDK (SCN6M_SUBM.10 for OSU018 180nm). This ensures the physical features (width, spacing, density, antenna effects) are manufacturable.
 
 ## 2. DRC Specifications
 - **Tool**: Magic VLSI Layout Tool v8.3 / Calibre DRC
-- **PDK Ruleset**: SCN6M_SUBM.10 (SCL 180nm / TSMC 180nm rules compatible)
+- **PDK Ruleset**: SCN6M_SUBM.10 (OSU018 180nm / TSMC 180nm rules compatible)
 - **Minimum Metal Spacing**: 0.28 µm
 - **Minimum Metal Width**: 0.23 µm
 - **Total Rules Checked**: 1,248 rules

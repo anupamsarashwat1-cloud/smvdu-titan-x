@@ -2,7 +2,7 @@
 ### Formal Communication to RTL Design Team
 #### From: Physical Design (PD) Team
 #### Date: 2026-05-28
-#### Project: SMVDU-TITAN-X | Technology: SCL 180nm CMOS 6-Metal Layer
+#### Project: SMVDU-TITAN-X | Technology: OSU018 180nm CMOS 6-Metal Layer
 #### Severity: 🔴 CRITICAL — Physical Design Cannot Proceed
 
 > **Status: RESOLVED** — RTL v2.0 delivered in response to this report.

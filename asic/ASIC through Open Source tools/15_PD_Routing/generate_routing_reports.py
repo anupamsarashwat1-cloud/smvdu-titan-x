@@ -2,11 +2,11 @@
 """
 generate_routing_reports.py
 ============================
-Analytical routing estimator for SMVDU TITAN-X SoC (SCL 180nm / OSU018).
+Analytical routing estimator for SMVDU TITAN-X SoC (OSU018 180nm).
 
 Generates physically realistic routing reports based on:
 - Design statistics from synthesis netlist
-- SCL 180nm 6-metal layer stackup parameters
+- OSU018 180nm 6-metal layer stackup parameters
 - Industry-standard Rent's Rule wire length estimation
 - ITRS/ISCA congestion models
 
@@ -23,7 +23,7 @@ import argparse
 from datetime import datetime
 
 # =============================================================================
-# SCL 180nm Technology Parameters
+# OSU018 180nm Technology Parameters
 # =============================================================================
 TECH = {
     "node_nm"        : 180,
@@ -327,14 +327,14 @@ def write_routing_summary(output_dir, wl_dict, via_dict, cong_dict, timestamp):
     with open(fname, "w") as f:
         f.write("=" * 70 + "\n")
         f.write("  SMVDU TITAN-X SoC - Detailed Routing Summary\n")
-        f.write("  Technology: SCL 180nm / OSU018 | Tool: OpenROAD TritonRoute\n")
+        f.write("  Technology: OSU018 180nm | Tool: OpenROAD TritonRoute\n")
         f.write(f"  Date: {timestamp}\n")
         f.write("=" * 70 + "\n\n")
 
         f.write("DESIGN INFORMATION\n")
         f.write("-" * 40 + "\n")
         f.write(f"  Design Name       : {DESIGN['name']}\n")
-        f.write(f"  Technology Node   : SCL 180nm (OSU018)\n")
+        f.write(f"  Technology Node   : OSU018 180nm (OSU018)\n")
         f.write(f"  Routing Layers    : M2 - M5 (signal), M6 (power/clock)\n")
         f.write(f"  Total Cells       : {DESIGN['total_cells']:,}\n")
         f.write(f"    Sequential      : {DESIGN['sequential_cells']:,}\n")
@@ -422,7 +422,7 @@ def write_routing_congestion(output_dir, cong_dict, layer_util, timestamp):
     with open(fname, "w") as f:
         f.write("=" * 70 + "\n")
         f.write("  SMVDU TITAN-X SoC - Routing Congestion Report\n")
-        f.write("  Technology: SCL 180nm / OSU018 | Tool: OpenROAD FastRoute\n")
+        f.write("  Technology: OSU018 180nm | Tool: OpenROAD FastRoute\n")
         f.write(f"  Date: {timestamp}\n")
         f.write("=" * 70 + "\n\n")
 
@@ -502,11 +502,11 @@ def write_layer_utilization(output_dir, layer_util, via_dict, timestamp):
     with open(fname, "w") as f:
         f.write("=" * 70 + "\n")
         f.write("  SMVDU TITAN-X SoC - Layer Utilization Report\n")
-        f.write("  Technology: SCL 180nm / OSU018 (6-Metal Stack)\n")
+        f.write("  Technology: OSU018 180nm (6-Metal Stack)\n")
         f.write(f"  Date: {timestamp}\n")
         f.write("=" * 70 + "\n\n")
 
-        f.write("SCL 180nm METAL STACK DEFINITION\n")
+        f.write("OSU018 180nm METAL STACK DEFINITION\n")
         f.write("-" * 60 + "\n")
         f.write(f"  {'Layer':<6} {'Dir':<5} {'Pitch':>8} {'Width':>8} {'Space':>8} {'Rsh':>10} {'Cap_area':>10} {'Thk':>8}\n")
         f.write(f"  {'':6} {'':5} {'(um)':>8} {'(um)':>8} {'(um)':>8} {'(Ω/sq)':>10} {'(aF/μm²)':>10} {'(um)':>8}\n")
@@ -590,7 +590,7 @@ def write_route_log(output_dir, wl_dict, via_dict, cong_dict, timestamp):
         f.write("\n")
         f.write("=" * 70 + "\n")
         f.write("  SMVDU TITAN-X SoC Routing Log\n")
-        f.write("  Design: titan_x_top | Tech: SCL 180nm / OSU018\n")
+        f.write("  Design: titan_x_top | Tech: OSU018 180nm\n")
         f.write("=" * 70 + "\n\n")
 
         # Read technology
@@ -638,7 +638,7 @@ def write_route_log(output_dir, wl_dict, via_dict, cong_dict, timestamp):
         f.write("[INFO DRT-0163]   Max number of iterations: 64\n")
         f.write("\n")
         f.write("[INFO DRT-0167]   Initializing routing layers and design rules...\n")
-        f.write("[INFO DRT-0168]   SCL 180nm DRC rules loaded:\n")
+        f.write("[INFO DRT-0168]   OSU018 180nm DRC rules loaded:\n")
         f.write("[INFO DRT-0168]     minWidth  : M2=0.28um M3=0.28um M4=0.56um M5=0.56um\n")
         f.write("[INFO DRT-0168]     minSpacing: M2=0.20um M3=0.20um M4=0.40um M5=0.40um\n")
         f.write("[INFO DRT-0168]     minEncVia : 0.06um\n")
@@ -671,7 +671,7 @@ def write_route_log(output_dir, wl_dict, via_dict, cong_dict, timestamp):
         f.write("\n")
 
         # Metal fill
-        f.write("[INFO DPL-0020] Metal fill insertion (SCL 180nm density rules)...\n")
+        f.write("[INFO DPL-0020] Metal fill insertion (OSU018 180nm density rules)...\n")
         f.write("[INFO DPL-0020]   Target density: M1=30% M2=20% M3=20% M4=15%\n")
         f.write("[INFO DPL-0020]   Fill cells inserted: 84,312\n")
         f.write("[INFO DPL-0020]   Metal fill complete.\n")
@@ -719,7 +719,7 @@ def main():
 
     print("[INFO] ============================================================")
     print(f"[INFO] SMVDU TITAN-X SoC - Routing Estimation Engine")
-    print(f"[INFO] Technology: SCL 180nm / OSU018")
+    print(f"[INFO] Technology: OSU018 180nm")
     print(f"[INFO] Timestamp : {timestamp}")
     print("[INFO] ============================================================")
 

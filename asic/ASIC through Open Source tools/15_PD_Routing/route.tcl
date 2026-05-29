@@ -1,6 +1,6 @@
 ###############################################################################
 # route.tcl - OpenROAD TritonRoute Script for SMVDU TITAN-X SoC
-# Technology: SCL 180nm / OSU018  |  Target: 100 MHz
+# Technology: OSU018 180nm  |  Target: 100 MHz
 # Invoked by: route.sh
 ###############################################################################
 
@@ -26,7 +26,7 @@ set INPUT_NETLIST "${SYNTH_DIR}/titan_x_synth_netlist.v"
 
 puts "INFO: ============================================================"
 puts "INFO: OpenROAD Detailed Routing - SMVDU TITAN-X SoC"
-puts "INFO: Technology : SCL 180nm / OSU018"
+puts "INFO: Technology : OSU018 180nm"
 puts "INFO: ============================================================"
 
 # ---------------------------------------------------------------------------

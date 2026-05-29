@@ -2,15 +2,15 @@
 """
 generate_extraction_reports.py
 ================================
-Analytical parasitic RC extractor for SMVDU TITAN-X SoC (SCL 180nm / OSU018).
+Analytical parasitic RC extractor for SMVDU TITAN-X SoC (OSU018 180nm).
 
 Computes physically realistic RC parasitics using:
-- SCL 180nm BEOL layer stack parameters
+- OSU018 180nm BEOL layer stack parameters
 - Elmore delay model for distributed RC networks
 - ILD (Inter-Layer Dielectric) coupling capacitance model
 - Wire resistance from sheet resistance and geometry
 
-SCL 180nm Key Parameters:
+OSU018 180nm Key Parameters:
   Rsh(M1)  = 0.080 Ω/sq
   Rsh(M2)  = 0.080 Ω/sq
   Rsh(M3)  = 0.080 Ω/sq
@@ -34,7 +34,7 @@ import argparse
 from datetime import datetime
 
 # =============================================================================
-# SCL 180nm Technology Parameters
+# OSU018 180nm Technology Parameters
 # =============================================================================
 TECH = {
     "node_nm"     : 180,
@@ -278,14 +278,14 @@ def write_extraction_summary(output_dir, stats, corner, temp, timestamp):
     with open(fname, "w") as f:
         f.write("=" * 70 + "\n")
         f.write("  SMVDU TITAN-X SoC - Parasitic RC Extraction Summary\n")
-        f.write("  Technology: SCL 180nm / OSU018 | Extractor: OpenRCX\n")
+        f.write("  Technology: OSU018 180nm | Extractor: OpenRCX\n")
         f.write(f"  Date: {timestamp}\n")
         f.write("=" * 70 + "\n\n")
 
         f.write("EXTRACTION CONFIGURATION\n")
         f.write("-" * 45 + "\n")
         f.write(f"  Design Name         : {DESIGN['name']}\n")
-        f.write(f"  Technology Node     : SCL 180nm\n")
+        f.write(f"  Technology Node     : OSU018 180nm\n")
         f.write(f"  Standard Cell Lib   : OSU018\n")
         f.write(f"  Extraction Corner   : {corner}\n")
         f.write(f"  Temperature         : {temp}°C\n")
@@ -297,7 +297,7 @@ def write_extraction_summary(output_dir, stats, corner, temp, timestamp):
         f.write(f"  Metal Fill          : Excluded from RC\n")
         f.write("\n")
 
-        f.write("TECHNOLOGY PARAMETERS (SCL 180nm BEOL)\n")
+        f.write("TECHNOLOGY PARAMETERS (OSU018 180nm BEOL)\n")
         f.write("-" * 45 + "\n")
         f.write(f"  {'Layer':<6} {'Rsh(Ω/sq)':>12} {'Carea(aF/μm²)':>15} {'Cfring(aF/μm)':>15} {'Width(μm)':>10}\n")
         f.write(f"  {'-'*6}  {'-'*12}  {'-'*15}  {'-'*15}  {'-'*10}\n")
@@ -388,7 +388,7 @@ def write_parasitics_stats(output_dir, stats, timestamp):
     with open(fname, "w") as f:
         f.write("=" * 80 + "\n")
         f.write("  SMVDU TITAN-X SoC - Critical Net Parasitics Report\n")
-        f.write("  Technology: SCL 180nm / OSU018 | Corner: TT 1.8V 25°C\n")
+        f.write("  Technology: OSU018 180nm | Corner: TT 1.8V 25°C\n")
         f.write(f"  Date: {timestamp}\n")
         f.write("=" * 80 + "\n\n")
 
@@ -522,7 +522,7 @@ def write_spef_stub(output_dir, stats, design_name, corner, timestamp):
         # ---- Design Statistics Comment ----
         f.write("// ============================================================\n")
         f.write(f"// SMVDU TITAN-X SoC Parasitic Extraction\n")
-        f.write(f"// Technology : SCL 180nm / OSU018\n")
+        f.write(f"// Technology : OSU018 180nm\n")
         f.write(f"// Corner     : {corner}\n")
         f.write(f"// Total Nets : {total_nets:,}\n")
         f.write(f"// Total WL   : {DESIGN['total_wire_um']/1e6:.3f} m\n")
@@ -645,7 +645,7 @@ def write_extract_log(output_dir, stats, corner, temp, timestamp):
         f.write("\n")
         f.write("=" * 70 + "\n")
         f.write("  SMVDU TITAN-X SoC - Parasitic RC Extraction Log\n")
-        f.write(f"  Design: {DESIGN['name']} | Tech: SCL 180nm / OSU018\n")
+        f.write(f"  Design: {DESIGN['name']} | Tech: OSU018 180nm\n")
         f.write("=" * 70 + "\n\n")
 
         # Technology loading
@@ -672,7 +672,7 @@ def write_extract_log(output_dir, stats, corner, temp, timestamp):
 
         # Loading RC rules
         f.write("[INFO RCX-0010] Loading RC technology file: scl180nm_rcx_rules.itf\n")
-        f.write("[INFO RCX-0010]   Technology: SCL 180nm\n")
+        f.write("[INFO RCX-0010]   Technology: OSU018 180nm\n")
         f.write("[INFO RCX-0010]   Layers defined: M1 M2 M3 M4 M5 M6\n")
         f.write("[INFO RCX-0010]   Via types: VIA12 VIA23 VIA34 VIA45 VIA56\n")
         f.write("[INFO RCX-0010]   M1: Rsh=0.0800 Ω/sq  Carea=35.0 aF/um²  Cfring=16.5 aF/um\n")
@@ -759,7 +759,7 @@ def main():
 
     print("[INFO] ============================================================")
     print(f"[INFO] SMVDU TITAN-X SoC - Parasitic RC Extraction Engine")
-    print(f"[INFO] Technology: SCL 180nm / OSU018")
+    print(f"[INFO] Technology: OSU018 180nm")
     print(f"[INFO] Corner    : {args.corner}  ({args.temp}°C)")
     print(f"[INFO] Timestamp : {timestamp}")
     print("[INFO] ============================================================")

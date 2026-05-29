@@ -9,7 +9,7 @@ assignees: ""
 ### 1. CAD Tool Flow Context
 * **Synthesis Tool**: [Cadence Genus / Yosys / Other]
 * **Place-and-Route Tool**: [Cadence Innovus / OpenRoad / Other]
-* **Standard-Cell Library (PDK)**: [e.g. SCL 180nm, TSMC 28nm]
+* **Standard-Cell Library (PDK)**: [e.g. OSU018 180nm, TSMC 28nm]
 
 ### 2. Physical design defect description
 Select the defect type:

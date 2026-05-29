@@ -2,7 +2,7 @@
 
 ================================================================================
 **Design Name**      : SMVDU TITAN-X SoC (`titan_x_top`)  
-**Technology Node**  : SCL 180nm / OSU018 Standard Cell Library  
+**Technology Node**  : OSU018 180nm Standard Cell Library  
 **Database Unit**    : 1 nanometer (1e-9 meters) | **User Unit**: 1 micron  
 **Die Area**         : 1000 µm × 1000 µm (1 mm²)  
 **Physical Status**  : **TIMING CLOSED / DRC CLEAN / LVS CLEAN**  
@@ -13,9 +13,9 @@
 
 ## Layout Preview
 
-![SMVDU TITAN-X SoC Final Physical Layout — Magic VLSI (SCL 180nm / OSU018)](titan_x_top_layout.png)
+![SMVDU TITAN-X SoC Final Physical Layout — Magic VLSI (OSU018 180nm)](titan_x_top_layout.png)
 
-*Final physical layout of the SMVDU TITAN-X SoC rendered in Magic VLSI 8.3 with the OSU018/SCN6M_SUBM technology. Colors correspond to SCL 180nm process layers: **purple** = Metal6 (power rings + bonding pads), **teal/cyan** = Metal5/Metal3 (core boundary, quadrant outlines), **magenta/pink** = CPU complex standard cell rows, **dark teal** = SRAM memory array, **gray standard cell rows** (bottom-left) = peripheral IP blocks, **dark purple** rectangles (bottom-right) = high-speed IO bonding pads.*
+*Final physical layout of the SMVDU TITAN-X SoC rendered in Magic VLSI 8.3 with the OSU018/SCN6M_SUBM technology. Colors correspond to 180nm process layers: **purple** = Metal6 (power rings + bonding pads), **teal/cyan** = Metal5/Metal3 (core boundary, quadrant outlines), **magenta/pink** = CPU complex standard cell rows, **dark teal** = SRAM memory array, **gray standard cell rows** (bottom-left) = peripheral IP blocks, **dark purple** rectangles (bottom-right) = high-speed IO bonding pads.*
 
 ---
 
@@ -56,7 +56,7 @@ The script automatically:
 
 ---
 
-## SCL 180nm Layer Mapping (OSU018 / SCN6M_SUBM)
+## OSU018 180nm Layer Mapping (OSU018 / SCN6M_SUBM)
 
 All layers use the standard OSU018 GDSII layer numbering from `SCN6M_SUBM.10.tech`:
 

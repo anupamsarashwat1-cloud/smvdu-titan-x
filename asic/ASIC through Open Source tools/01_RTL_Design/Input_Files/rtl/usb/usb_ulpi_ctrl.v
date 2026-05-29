@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // SMVDU-TITAN-X SoC — USB 2.0 OTG ULPI Controller
-// Synthesizable RTL — SCL 180nm CMOS
+// Synthesizable RTL — OSU018 180nm CMOS
 
 module usb_ulpi_ctrl (
     // System clock & reset

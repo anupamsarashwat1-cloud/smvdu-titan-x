@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 SMVDU TITAN-X SoC — Step 12: Power Planning Analysis
-Technology  : SCL 180nm (OSU018)
+Technology  : OSU018 180nm (OSU018)
 Supply      : VDD = 3.3 V
 Estimated Power: ~850 mW (chip-level)
 
@@ -23,7 +23,7 @@ import os
 # ─────────────────────────────────────────────────────────────────────────────
 
 DESIGN_NAME        = "titan_x_top"
-TECHNOLOGY         = "SCL 180nm"
+TECHNOLOGY         = "OSU018 180nm"
 CELL_LIB           = "OSU018"
 VDD                = 3.3          # V
 VSS                = 0.0          # V
@@ -36,7 +36,7 @@ DIE_HEIGHT_UM      = 3600.0       # µm
 UTILIZATION        = 0.65         # 65%
 CELL_HEIGHT_UM     = 7.2          # OSU018 standard cell row height (µm)
 
-# Metal layer parameters (SCL 180nm typical)
+# Metal layer parameters (OSU018 180nm typical)
 # (sheet resistance in mΩ/sq)
 METAL_PARAMS = {
     "metal1": {"rsh": 70.0,  "min_width": 0.23, "min_space": 0.23, "thickness": 0.53},
@@ -586,7 +586,7 @@ drc_lines.append(f"{'#'*80}")
 drc_lines.append(f"#  SMVDU TITAN-X SoC — Power Rail DRC Check Report")
 drc_lines.append(f"#  Generated  : {TS}")
 drc_lines.append(f"#  Technology : {TECHNOLOGY}")
-drc_lines.append(f"#  DRC Rule Deck: SCL 180nm design rules (OSU018 compatible)")
+drc_lines.append(f"#  DRC Rule Deck: OSU018 180nm design rules (OSU018 compatible)")
 drc_lines.append(f"{'#'*80}")
 
 drc_lines.append(fmt_hdr("DRC RULE DEFINITIONS"))
@@ -619,7 +619,7 @@ drc_lines.append(f"  PASS             : {pass_count}")
 drc_lines.append(f"  FAIL             : {fail_count}")
 drc_lines.append(f"  Overall DRC      : {'CLEAN — ALL PASS ✓' if all_pass else 'VIOLATIONS EXIST ✗'}")
 
-drc_lines.append(fmt_hdr("DESIGN RULE REFERENCE (SCL 180nm)"))
+drc_lines.append(fmt_hdr("DESIGN RULE REFERENCE (OSU018 180nm)"))
 for layer, params in METAL_PARAMS.items():
     drc_lines.append(
         f"  {layer:<8}  min_width={params['min_width']:.2f} µm   "
@@ -709,7 +709,7 @@ log_lines.append("      [DONE]")
 log_lines.append("")
 log_lines.append("INFO: Inserting via connections (M1↔M2↔M3↔M4↔M5↔M6) ...")
 log_lines.append("      - Via cuts added at all mesh intersections")
-log_lines.append("      - Via enclosure rules satisfied (SCL 180nm DRC)")
+log_lines.append("      - Via enclosure rules satisfied (OSU018 180nm DRC)")
 log_lines.append("      [DONE]")
 log_lines.append("")
 log_lines.append("INFO: Creating macro power rings ...")

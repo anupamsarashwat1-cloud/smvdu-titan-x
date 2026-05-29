@@ -1,6 +1,6 @@
 ###############################################################################
 # extract.tcl - StarRC/OpenRCX Parasitic Extraction Script
-# SMVDU TITAN-X SoC | SCL 180nm / OSU018 | Step 16
+# SMVDU TITAN-X SoC | OSU018 180nm | Step 16
 #
 # Supported extraction flows:
 #   (A) StarRC   - Synopsys parasitic extractor (licensed)
@@ -31,7 +31,7 @@ set LEF_FILE       "/usr/local/share/qflow/tech/osu018/osu018_stdcells.lef"
 set TECH_LEF       "/usr/local/share/qflow/tech/osu018/osu018.tech.lef"
 set LIB_FILE       "/usr/local/share/qflow/tech/osu018/osu018_stdcells.lib"
 
-# SCL 180nm process corner (Typical-Typical at 25°C)
+# 180nm process corner (Typical-Typical at 25°C)
 set CORNER_NAME    "tt_1v8_25c"
 set TEMP_CELSIUS   25
 set VDD_VOLTAGE    1.8
@@ -46,7 +46,7 @@ set OUTPUT_SPEF    "${OUTPUT_DIR}/${DESIGN_NAME}.spef"
 
 puts "INFO: ============================================================"
 puts "INFO: SMVDU TITAN-X SoC - Step 16: Parasitic RC Extraction"
-puts "INFO: Technology : SCL 180nm / OSU018"
+puts "INFO: Technology : OSU018 180nm"
 puts "INFO: Corner     : $CORNER_NAME  ($TEMP_CELSIUS°C, ${VDD_VOLTAGE}V)"
 puts "INFO: ============================================================"
 
@@ -92,7 +92,7 @@ puts "INFO: Configuring OpenRCX (OpenROAD built-in extractor)"
 puts "INFO: ============================================================"
 
 # Load process-specific extraction rules (RC technology file)
-# For SCL 180nm: Rsh(M1)=0.08 Ω/sq, C(M1-M2)=35 aF/μm²
+# For OSU018 180nm: Rsh(M1)=0.08 Ω/sq, C(M1-M2)=35 aF/μm²
 define_process_corner -ext_model_index 0 ${CORNER_NAME}
 
 # ===========================================================================

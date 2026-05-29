@@ -2,7 +2,7 @@
 """
 SMVDU TITAN-X SoC – Step 13: Placement Estimator
 ==================================================
-Generates physically realistic placement analysis for a SCL 180nm SoC
+Generates physically realistic placement analysis for a OSU018 180nm SoC
 when OpenROAD is not available.  All numbers are derived from:
   - OSU018 standard cell dimensions
   - Actual synthesis netlist statistics
@@ -24,7 +24,7 @@ random.seed(42)
 # Design Parameters (from synthesis netlist + floorplan)
 # ───────────────────────────────────────────────────────────────────────────
 DESIGN_NAME      = "titan_x_top"
-TECHNOLOGY_NODE  = "SCL 180nm"
+TECHNOLOGY_NODE  = "OSU018 180nm"
 STD_CELL_LIB     = "OSU018"
 
 # Die / Core dimensions (from floorplan.tcl)

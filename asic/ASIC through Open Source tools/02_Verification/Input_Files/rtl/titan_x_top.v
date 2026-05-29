@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // =============================================================================
 // SMVDU-TITAN-X SoC — Structural Top Level
-// Target: SCL 180nm CMOS
+// Target: OSU018 180nm CMOS
 // Revision: 2.0 (Hierarchical RTL — PD team handoff)
 //
 // Hierarchy:

@@ -1,6 +1,6 @@
 # SMVDU TITAN-X SoC — ASIC through Open Source Tools
 
-Welcome to the physical implementation and verification workspace of the **SMVDU TITAN-X SoC** using an end-to-end, open-source EDA toolchain. This directory contains the scripts, constraints, inputs, logs, and verification reports for the **19-step digital ASIC design flow** targeting the **SCL 180nm technology node** using the **OSU018 PDK**.
+Welcome to the physical implementation and verification workspace of the **SMVDU TITAN-X SoC** using an end-to-end, open-source EDA toolchain. This directory contains the scripts, constraints, inputs, logs, and verification reports for the **19-step digital ASIC design flow** targeting the **OSU018 180nm technology node** using the **OSU018 PDK**.
 
 ---
 
@@ -98,7 +98,7 @@ Here is the exhaustive documentation of the processes, scripts, commands, and re
 ---
 
 ### Step 07: Macro Generation (OpenRAM)
-- **Description**: Compiles a dual-port 2KB SRAM register file memory macro block tailored to SCL 180nm rules.
+- **Description**: Compiles a dual-port 2KB SRAM register file memory macro block tailored to OSU018 180nm rules.
 - **Command(s)**:
   ```bash
   openram sram_32x64_180nm.py
@@ -248,7 +248,7 @@ Here is the exhaustive documentation of the processes, scripts, commands, and re
 ---
 
 ### Step 18: Design Rule Checking (DRC)
-- **Description**: Magic geometric check of layout database against TSMC/SCL 180nm SCN6M_SUBM.10 rules.
+- **Description**: Magic geometric check of layout database against TSMC/OSU018 180nm SCN6M_SUBM.10 rules.
 - **Command(s)**:
   ```bash
   python3 titan_x_soc/18_DRC/generate_drc_outputs.py
@@ -280,7 +280,7 @@ Below is the consolidated specification sheet for the physical database:
 
 | Design Metric | Value / Specification | Status |
 |:---|:---|:---:|
-| **Technology Node** | SCL 180nm / OSU018 Standard Cells | **✓ SIGNED OFF** |
+| **Technology Node** | OSU018 180nm Standard Cells | **✓ SIGNED OFF** |
 | **Silicon Area** | 1000 µm × 1000 µm (1.0 mm² Die Area) | **✓ SIGNED OFF** |
 | **Logic gate count** | 44,827 cells placed (whitespace: 41.7%) | **✓ SIGNED OFF** |
 | **Clock speed** | 100 MHz (10.0 ns period) | **✓ SIGNED OFF** |

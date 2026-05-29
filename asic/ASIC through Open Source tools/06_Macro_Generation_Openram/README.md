@@ -67,4 +67,4 @@ The following ports have been fully generated and verified:
 ---
 
 ## 🚀 Impact on Downstream Flow
-By incorporating the 4-bit `wmask0` port, we have successfully resolved the port mismatch error that previously blocked hierarchical synthesis. The physical boundaries defined in the LEF file align perfectly with standard cell rows in the SCL 180nm node, enabling clean LVS comparison and routing without dangling logical nets.
+By incorporating the 4-bit `wmask0` port, we have successfully resolved the port mismatch error that previously blocked hierarchical synthesis. The physical boundaries defined in the LEF file align perfectly with standard cell rows in the 180nm node, enabling clean LVS comparison and routing without dangling logical nets.

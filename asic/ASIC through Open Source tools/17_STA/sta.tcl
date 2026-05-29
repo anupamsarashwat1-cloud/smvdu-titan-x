@@ -1,6 +1,6 @@
 ################################################################################
 # Step 17: Static Timing Analysis – SMVDU TITAN-X SoC
-# Technology : SCL 180nm / OSU018 Standard Cell Library
+# Technology : OSU018 180nm Standard Cell Library
 # Tool        : OpenSTA (sta)
 # Target Freq : sys_clk  100 MHz (10 ns period)
 #               eth_clk  125 MHz ( 8 ns period)
@@ -67,7 +67,7 @@ create_clock -name eth_clk \
              [get_ports eth_clk]
 
 # PCIe reference clock – 100 MHz (differential)
-# In SCL 180nm the differential pair is treated as a single-ended port
+# In OSU018 180nm the differential pair is treated as a single-ended port
 # after IOB instantiation; constrain the positive leg.
 create_clock -name pcie_refclk \
              -period 10.000 \
@@ -137,7 +137,7 @@ set_input_delay  -max 2.000 -clock pcie_refclk $pcie_inputs
 set_output_delay -max 2.000 -clock pcie_refclk $pcie_outputs
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 7. Operating Conditions (SCL 180nm – Typical Corner)
+# 7. Operating Conditions (OSU018 180nm – Typical Corner)
 # ─────────────────────────────────────────────────────────────────────────────
 if {$lib_loaded} {
     set_operating_conditions -analysis_type bc_wc

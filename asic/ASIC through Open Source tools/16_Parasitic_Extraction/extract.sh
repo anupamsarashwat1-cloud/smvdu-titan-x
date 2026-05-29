@@ -1,14 +1,14 @@
 #!/bin/bash
 # =============================================================================
 # Step 16: Parasitic RC Extraction - SMVDU TITAN-X SoC
-# Technology: SCL 180nm / OSU018
+# Technology: OSU018 180nm
 # Extractor: OpenROAD OpenRCX (preferred) / StarRC / Magic (fallback)
 # =============================================================================
 # Usage: ./extract.sh [--corner <tt|ff|ss>] [--temp <25|0|125>] [--verbose]
 #
 # Extraction Flow:
 #   1. Read routed DEF (post Step 15)
-#   2. Load SCL 180nm RC technology rules
+#   2. Load OSU018 180nm RC technology rules
 #   3. Run 3D field-solver based RC extraction (coupling + ground)
 #   4. Generate SPEF (Standard Parasitic Exchange Format)
 #   5. Write RC statistics and critical net reports
@@ -44,7 +44,7 @@ EXTRACT_TCL="${STEP_DIR}/extract.tcl"
 # ---- Banner ------------------------------------------------------------------
 echo "============================================================"
 echo "  SMVDU TITAN-X SoC - Step 16: Parasitic RC Extraction"
-echo "  Technology : SCL 180nm / OSU018"
+echo "  Technology : OSU018 180nm"
 echo "  Corner     : ${CORNER}"
 echo "  Date       : $(date)"
 echo "============================================================"

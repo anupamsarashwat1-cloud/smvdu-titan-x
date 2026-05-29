@@ -4,7 +4,7 @@
 Parasitic Extraction (PEX) translates the physical metal layout shapes (wires, vias, and adjacent spacing) into electrical models comprising resistance (R), ground capacitance (C), and coupling capacitance (Cc). This is crucial for back-annotating physical delays into Static Timing Analysis.
 
 ## 2. Extraction Specifications
-- **Technology Node**: SCL 180nm / OSU018
+- **Technology Node**: OSU018 180nm
 - **Extraction Engine**: StarRC / OpenRCX (PEX corner: typical `tt_1v8_25c`)
 - **Total Nets Extracted**: 19,236 nets
 - **P PDK Sheet Resistance Values**:

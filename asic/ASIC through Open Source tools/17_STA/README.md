@@ -1,5 +1,5 @@
 # Step 17 – Static Timing Analysis (STA)
-## SMVDU TITAN-X SoC | SCL 180nm / OSU018
+## SMVDU TITAN-X SoC | OSU018 180nm
 
 ---
 
@@ -35,7 +35,7 @@ gate-level netlist of the TITAN-X SoC to:
 |-----------|-------|
 | **EDA Tool** | OpenSTA (script: `sta.tcl`) |
 | **Simulation Engine** | Python 3 analytical model (`run_sta_analysis.py`) |
-| **Technology** | SCL 180nm (OSU018 standard cell library) |
+| **Technology** | OSU018 180nm (OSU018 standard cell library) |
 | **Corner** | Typical (1.8V, 25°C) |
 | **Wire-load model** | `wl10` (integrated in OSU018 liberty) |
 

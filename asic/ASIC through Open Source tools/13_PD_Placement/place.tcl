@@ -1,6 +1,6 @@
 ################################################################################
 # SMVDU TITAN-X SoC – Step 13: Standard Cell Placement
-# Technology : SCL 180nm / OSU018 Standard Cell Library
+# Technology : OSU018 180nm Standard Cell Library
 # Tool        : OpenROAD (open_sta + replace + resizer flow)
 # Author      : Physical Design Flow Script
 # Date        : 2026-05-28

@@ -1,13 +1,13 @@
 ###############################################################################
 # SMVDU TITAN-X SoC — Step 12: Power Planning
-# Technology  : SCL 180nm (OSU018 standard cell library)
+# Technology  : OSU018 180nm (OSU018 standard cell library)
 # Supply      : VDD = 3.3 V,  VSS = 0.0 V
 # Estimated Power : ~850 mW (chip-level)
 # Tool        : OpenROAD (script reference; Python simulation used for output)
 # Author      : Physical Design Team, SMVDU
 # Date        : 2026-05-28
 ###############################################################################
-# DESIGN PARAMETERS (SCL 180nm)
+# DESIGN PARAMETERS (OSU018 180nm)
 #   Metal stack  : M1–M6 (M1 local routes, M2–M4 intermediate, M5–M6 global)
 #   Min wire width (M1) : 0.23 µm
 #   Min wire width (M3) : 0.28 µm   [used for horizontal stripes]

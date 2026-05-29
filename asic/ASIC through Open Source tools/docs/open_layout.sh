@@ -1,7 +1,7 @@
 #!/bin/bash
 # =============================================================================
 # SMVDU TITAN-X SoC — Magic VLSI Layout Viewer
-# Technology : SCL 180nm / OSU018 (scmos-compatible)
+# Technology : OSU018 180nm (scmos-compatible)
 # Usage      : bash open_layout.sh
 # =============================================================================
 #
@@ -26,7 +26,7 @@ TECH="/usr/local/share/qflow/tech/osu018/SCN6M_SUBM.10.tech"
 
 echo "============================================================"
 echo "  SMVDU TITAN-X SoC — Magic VLSI Layout Viewer"
-echo "  Technology: SCL 180nm / OSU018"
+echo "  Technology: OSU018 180nm"
 echo "============================================================"
 echo ""
 echo "  GDS source : $GDS_FILE"

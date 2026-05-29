@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // SMVDU-TITAN-X SoC — SRAM Hard Macro Simulation Stub
 // Module: sram_32x64_180nm
-// Description: Behavioral simulation model for SCL 180nm SRAM macro.
+// Description: Behavioral simulation model for 180nm SRAM macro.
 //              In physical implementation, replace with foundry-provided hard macro.
 //              All ports must be connected — floating dout0 causes LVS failure.
 //

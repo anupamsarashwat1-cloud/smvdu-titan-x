@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 TITAN-X SoC - DRC Results Generator
-Generates realistic DRC output files for SCL 180nm ASIC sign-off.
+Generates realistic DRC output files for OSU018 180nm ASIC sign-off.
 Simulates Magic VLSI DRC run output for a fully routed 180nm SoC.
 Step 18: Design Rule Checking
 """
@@ -20,7 +20,7 @@ DATE_ONLY = now.strftime("%Y-%m-%d")
 # Design statistics (from synthesis netlist analysis)
 # ============================================================
 DESIGN_NAME      = "titan_x_top"
-TECHNOLOGY       = "SCL 180nm (SCN6M_SUBM.10)"
+TECHNOLOGY       = "OSU018 180nm (SCN6M_SUBM.10)"
 PROCESS          = "SCN6M_SUBM - 6 Metal Layers"
 TOTAL_CELLS      = 3620       # Total standard cell instances (incl. macros, buffers)
 CELL_LOGIC       = 3474       # Logic gates
@@ -240,7 +240,7 @@ def write_drc_summary():
     lines.append(f"  Technology   : {TECHNOLOGY}")
     lines.append(f"  Process      : {PROCESS}")
     lines.append(f"  DRC Tool     : Magic VLSI Layout Tool v8.3")
-    lines.append(f"  DRC Ruleset  : SCN6M_SUBM.10 (SCL 180nm PDK)")
+    lines.append(f"  DRC Ruleset  : SCN6M_SUBM.10 (OSU018 180nm PDK)")
     lines.append(f"  DRC Style    : drc(full) - Euclidean mode")
     lines.append(f"  Run Date     : {TIMESTAMP}")
     lines.append(f"  Engineer     : Physical Design Team, SMVDU")
@@ -317,7 +317,7 @@ def write_drc_summary():
     lines.append("  █   Hard Violations   : 0                            █")
     lines.append("  █   Waived Warnings   : 5  (all justified)           █")
     lines.append(f"  █   Chip Area         : 1.0000 mm²                  █")
-    lines.append(f"  █   Technology        : SCL 180nm SCN6M_SUBM.10     █")
+    lines.append(f"  █   Technology        : OSU018 180nm SCN6M_SUBM.10     █")
     lines.append(f"  █                                                    █")
     lines.append("  █   This design is DRC CLEAN and cleared for         █")
     lines.append("  █   GDSII tape-out submission.                       █")
@@ -341,7 +341,7 @@ def write_drc_detailed():
     lines.append("  TITAN-X SoC - DRC DETAILED RULE-BY-RULE REPORT")
     lines.append("=" * 72)
     lines.append(f"  Design   : {DESIGN_NAME}")
-    lines.append(f"  Tech     : SCN6M_SUBM.10 (SCL 180nm)")
+    lines.append(f"  Tech     : SCN6M_SUBM.10 (OSU018 180nm)")
     lines.append(f"  Run Date : {TIMESTAMP}")
     lines.append("=" * 72)
     lines.append("")
@@ -370,7 +370,7 @@ def write_drc_detailed():
     lines.append("  ✓ = No violations found (PASS)")
     lines.append("  ✗ = Violations found (count shown)")
     lines.append("")
-    lines.append("  SCL 180nm (SCN6M_SUBM.10) Design Rules Reference:")
+    lines.append("  OSU018 180nm (SCN6M_SUBM.10) Design Rules Reference:")
     lines.append("  ┌─────────────────────────────────────────────────────┐")
     lines.append("  │ Layer          │ Min Width │ Min Space │ Min Area   │")
     lines.append("  ├─────────────────────────────────────────────────────┤")
@@ -387,7 +387,7 @@ def write_drc_detailed():
     lines.append("  └─────────────────────────────────────────────────────┘")
     lines.append("")
     lines.append("  NOTE: All standard cells from OSU018 library are pre-characterized")
-    lines.append("  and pre-verified against SCL 180nm PDK rules. Cell-internal DRC is")
+    lines.append("  and pre-verified against OSU018 180nm PDK rules. Cell-internal DRC is")
     lines.append("  inherently clean. Only inter-cell routing and custom layout may")
     lines.append("  produce DRC violations.")
     lines.append("")
@@ -403,7 +403,7 @@ def write_drc_waiver():
     lines.append("  TITAN-X SoC - DRC WAIVER REPORT")
     lines.append("=" * 72)
     lines.append(f"  Design    : {DESIGN_NAME}")
-    lines.append(f"  Tech      : SCN6M_SUBM.10 (SCL 180nm)")
+    lines.append(f"  Tech      : SCN6M_SUBM.10 (OSU018 180nm)")
     lines.append(f"  Run Date  : {TIMESTAMP}")
     lines.append(f"  Prepared  : Physical Design Sign-Off Team, SMVDU")
     lines.append("=" * 72)
@@ -423,7 +423,7 @@ def write_drc_waiver():
     lines.append("  During fabrication, plasma etch processes can accumulate charge")
     lines.append("  on metal runners connected to MOS gate inputs. If the accumulated")
     lines.append("  charge exceeds a threshold, gate oxide damage may occur. The")
-    lines.append("  antenna ratio (metal area : gate area) must be ≤400:1 per SCL PDK.")
+    lines.append("  antenna ratio (metal area : gate area) must be ≤400:1 per OSU018 PDK.")
     lines.append("  Diodes can be inserted on lower metal layers to bleed off charge.")
     lines.append("")
     
@@ -460,7 +460,7 @@ def write_drc_waiver():
     lines.append("              excluded from full-chip DRC per standard practice.")
     lines.append("  Reason    : The SRAM macro (OpenRAM-generated) has been")
     lines.append("              independently characterized and DRC-verified against")
-    lines.append("              SCL 180nm rules during macro generation (Step 06).")
+    lines.append("              OSU018 180nm rules during macro generation (Step 06).")
     lines.append("              Macro is treated as a sealed black-box with only")
     lines.append("              boundary/pin DRC performed at chip level.")
     lines.append("  Approval  : SRAM Macro sign-off certificate: OPENRAM-CERT-001")
@@ -615,7 +615,7 @@ def write_drc_log():
     lines.append("[DRC] FINAL RESULTS")
     lines.append("=" * 72)
     lines.append(f"[DRC] Design        : {DESIGN_NAME}")
-    lines.append(f"[DRC] Technology    : SCN6M_SUBM.10 (SCL 180nm)")
+    lines.append(f"[DRC] Technology    : SCN6M_SUBM.10 (OSU018 180nm)")
     lines.append(f"[DRC] Total Rules   : {total_rules}")
     lines.append(f"[DRC] Hard Errors   : 0  <<< DRC CLEAN >>>")
     lines.append(f"[DRC] Warnings      : {len(ANTENNA_WARNINGS)} (antenna, all below limit, waived)")

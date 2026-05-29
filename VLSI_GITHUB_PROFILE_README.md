@@ -14,7 +14,7 @@ I am a **VLSI Design & Computer Architecture Engineer** currently pursuing my **
 
 I bridge the gap between abstract computer architectures and physical silicon, working with both industry-standard **Cadence Toolchains** and modern **Open-Source EDA toolsets**.
 
-* **🔭 Current Focus**: Designing and implementing Linux-capable quad-core RV64GC SoCs targeted for SCL 180nm physical fabrication.
+* **🔭 Current Focus**: Designing and implementing Linux-capable quad-core RV64GC SoCs targeted for OSU018 180nm physical fabrication.
 * **⚡ Key Strengths**: Standard-cell synthesis, STA, Clock Tree Synthesis (CTS), physical verification (DRC/LVS), DFT, and FPGA prototyping.
 * **🏫 Academic Affiliation**: Shri Mata Vaishno Devi University (SMVDU), Katra, J&K, India.
 * **📬 Let's Connect**: Open to research opportunities, internships, and collaborations in digital design and physical layout.
@@ -50,13 +50,13 @@ I bridge the gap between abstract computer architectures and physical silicon, w
 ### 🌟 Featured VLSI Projects
 
 #### 🛡️ **[SMVDU-TITAN-X: Advanced RISC-V SoC](https://github.com/anupamsarashwat1-cloud/smvdu-titan-x)**
-*SCL 180nm CMOS 5-Hart RISC-V Multicore SoC | May 2026 – Present*
+*OSU018 180nm CMOS 5-Hart RISC-V Multicore SoC | May 2026 – Present*
 * **Phase 1: Bare-Metal Core Bring-Up**: Configured and validated a single RV64GC Rocket core with private 32KB L1 instruction/data caches, a SiFive UART peripheral block, and bare-metal firmware stubs.
 * **Phase 2: Boot Infrastructure**: Designed a synthesizable first-stage BootROM, APB-to-TileLink 32-bit GPIO controller, and memory-mapped SPI Flash interface to execute OpenSBI boot firmware.
 * **Phase 3: Linux-Capable SMP Cluster**: Scaled up to a coherent Quad-Core RV64GC Rocket complex with a shared inclusive 512KB banked L2 cache, 2GB LiteDRAM DDR space, and LiteETH Gigabit MAC.
 * **Phase 4: High-Speed Serial I/O**: Integrated PCIe Gen2 (x4) controller with full LTSSM L0 training state machine, USB 2.0 OTG, and HDMI TMDS active colorbars generator on a dual-core topology.
 * **Phase 5: Coprocessor & Accelerators**: Designed and integrated a tightly coupled 8x8 INT8 Systolic Array ML Coprocessor via the RoCC custom interface, dual-channel AXI4 HBM2 controller, and MMIO Cryptographic blocks (AES-256/SHA-3).
-* **Final Unified Integration**: Completed a unified 5-Hart silicon-ready SoC (4x RV64GC Application cores + 1x RV64IMAC Monitor core) optimized for physical semiconductor tapeout (SCL 180nm node).
+* **Final Unified Integration**: Completed a unified 5-Hart silicon-ready SoC (4x RV64GC Application cores + 1x RV64IMAC Monitor core) optimized for physical semiconductor tapeout (180nm node).
 * **ASIC CAD & Verification Flow**: Authored production-grade scripts covering the complete 10-step silicon roadmap: SystemVerilog/UVM simulations with **Cadence Xcelium**, Block/Toggle/Expression coverage with **IMC**, multi-corner logical synthesis with **Genus**, scan-chain insertion and stuck-at/transition fault ATPG generation with **Modus**, Gate-Level Simulations (GLS) with SDF back-annotation, formal logical equivalence checking (LEC) with **Conformal**, and macro P&R implementation scripts with **Innovus** yielding tape-out readiness.
 
 #### ⚡ **SMVDU-AHO-32: 32-bit RISC-V Processor Core**

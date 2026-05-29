@@ -1,7 +1,7 @@
 // SMVDU-TITAN-X Final Integrated SoC Top-Level RTL Wrapper
 //
 // Strictly partitioned hierarchy suitable for physical semiconductor compilation 
-// on SCL 180nm CMOS technology (6-Metal Layer).
+// on OSU018 180nm CMOS technology (6-Metal Layer).
 // Incorporates all components developed across prior phases:
 //   - 4x Application Cores + 1x Monitor Core CPU Complex
 //   - Banked L2 Cache & AXI4 DDR4 Memory Controller Interface

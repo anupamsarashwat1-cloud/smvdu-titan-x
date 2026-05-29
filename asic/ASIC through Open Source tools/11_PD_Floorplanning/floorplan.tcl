@@ -1,4 +1,4 @@
-# Step 11: Floorplanning Script for SMVDU-TITAN-X SoC (SCL 180nm)
+# Step 11: Floorplanning Script for SMVDU-TITAN-X SoC (OSU018 180nm)
 # Defines core bounds, nested placement partitions, I/O pin placements, and hard macro positions.
 
 # 1. Main Core bounds (State level)

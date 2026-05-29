@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 SMVDU TITAN-X SoC — GDSII Layout Stream Database Generator
-Technology  : SCL 180nm / OSU018 Standard Cell Library
+Technology  : OSU018 180nm Standard Cell Library
 File Type   : Conforming Binary GDSII Stream Format (conforming to Calibre/KLayout specs)
 Target      : asic/ASIC through Open Source tools/delivery/titan_x_top.gds
 Author      : Physical Design Team, SMVDU
@@ -133,7 +133,7 @@ class GdsWriter:
 # Main GDS Database Generator Logic
 # -----------------------------------------------------------------------------
 def main():
-    # Valid layout GDS layers mapped in SCN6M_SUBM.10.tech (OSU018 / SCL 180nm)
+    # Valid layout GDS layers mapped in SCN6M_SUBM.10.tech (OSU018 / OSU018 180nm)
     L_NW = 42       # N-well (yellow hatch)
     L_ACT = 43      # Active diffusion (green/brown)
     L_PLY = 46      # Poly silicon (red)
@@ -155,7 +155,7 @@ def main():
     os.makedirs(target_dir, exist_ok=True)
     gds_path = os.path.join(target_dir, "titan_x_top.gds")
 
-    print(f"[INFO] Initializing SCL 180nm / OSU018 GDSII binary stream writer...")
+    print(f"[INFO] Initializing OSU018 180nm GDSII binary stream writer...")
     print(f"[INFO] Target Path: {gds_path}")
     
     writer = GdsWriter(gds_path)

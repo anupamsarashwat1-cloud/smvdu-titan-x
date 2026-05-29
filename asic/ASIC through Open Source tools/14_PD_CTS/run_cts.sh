@@ -2,7 +2,7 @@
 ################################################################################
 # SMVDU TITAN-X SoC – Step 14: Clock Tree Synthesis Shell Wrapper
 # Invokes OpenROAD with the CTS TCL script.
-# Technology : SCL 180nm / OSU018
+# Technology : OSU018 180nm
 # Clock      : sys_clk @ 100 MHz
 # Author     : Physical Design Flow
 # Date       : 2026-05-28
@@ -18,7 +18,7 @@ mkdir -p "${LOG_DIR}"
 
 echo "========================================================"
 echo "  SMVDU TITAN-X SoC – Step 14: Clock Tree Synthesis"
-echo "  Technology : SCL 180nm / OSU018"
+echo "  Technology : OSU018 180nm"
 echo "  Clock      : sys_clk @ 100 MHz (period = 10 ns)"
 echo "  Skew Target: < 200 ps"
 echo "  Timestamp  : ${TIMESTAMP}"

@@ -121,11 +121,9 @@ The chip has been physically partitioned into four quadrants separated by micros
 | **GDSII Export** | 100% compatible GDS-II Release 6.0 | Magic GDS Writer | **✅ TAPE-OUT READY** |
 
 ### 🔍 Interactive Layout Viewer
-
-We provide a lightweight layout viewer script to open and inspect the layout directly in Magic VLSI, featuring full macro blocks and cell layouts:
-
+We provide a lightweight layout viewer script to open and inspect the layout directly in either **KLayout** (recommended for high performance) or **Magic VLSI**, featuring full macro blocks and cell layouts:
 ```bash
-# Launch Magic VLSI GUI with the custom tech file and fully expanded hierarchical cells
+# Launch the physical layout viewer from the repository root:
 bash "asic/ASIC through Open Source tools/docs/open_layout.sh"
 ```
 
@@ -867,7 +865,7 @@ python3 generate_lvs_outputs.py
 Primary fabrication stream export compilation resulting in the final **202 KB binary `titan_x_top.gds`** database.
 
 #### Step 21: Interactive Layout Viewing
-Inspect the final layout hierarchies, standard cells, power rings, and SRAM macros in the Magic VLSI graphic layout viewer:
+Inspect the final layout hierarchies, standard cells, power rings, and SRAM macros in either **KLayout** (recommended) or **Magic VLSI** using our unified graphic layout viewer script:
 ```bash
 # From the repository root, execute:
 bash "asic/ASIC through Open Source tools/docs/open_layout.sh"

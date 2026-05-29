@@ -31,16 +31,27 @@
 
 ## How to Open the Layout
 
+You can open and view the GDSII layout database in either **KLayout** (recommended for high performance) or **Magic VLSI** with our unified launcher script:
+
 ```bash
-# From the repo root — one command, opens Magic VLSI GUI with full layout:
+# Launch the layout viewer from the repository root:
 bash "asic/ASIC through Open Source tools/docs/open_layout.sh"
 ```
 
-The script automatically:
-1. Converts `titan_x_top.gds` → `titan_x_top.mag` (batch mode, one-time)
-2. Opens `titan_x_top.mag` directly in the Magic VLSI GUI
+The script will present an elegant terminal selection menu:
+1. **KLayout** (Recommended): Opens `titan_x_top.gds` directly. High-resolution rendering, intuitive navigation, and detailed layer inspection.
+   * **Tip**: Press **`F2`** to zoom to fit. Press **`*`** (asterisk) to fully expand all cell hierarchies and view standard cell logic gates.
+2. **Magic VLSI**: Converts GDSII to native `.mag` format and launches the Magic GUI.
+   * **Tip**: Press **`v`** to zoom to fit. Type **`expand`** in the `tkcon` console to expand subcells.
 
-> **Tip:** Once Magic opens, press `v` in the layout window to zoom to fit, or type `expand` in the tkcon console to expand all subcells.
+You can also bypass the menu and launch your preferred viewer directly:
+```bash
+# Launch directly in KLayout
+bash "asic/ASIC through Open Source tools/docs/open_layout.sh" --klayout
+
+# Launch directly in Magic VLSI
+bash "asic/ASIC through Open Source tools/docs/open_layout.sh" --magic
+```
 
 ---
 

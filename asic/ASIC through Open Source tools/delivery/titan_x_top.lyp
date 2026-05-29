@@ -14,7 +14,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>N-Well (42/0) - Yellow Hatch</name>
-  <source>42/0@1</source>
+  <source>42/0</source>
  </properties>
  <properties>
   <frame-color>#32cd32</frame-color>
@@ -30,7 +30,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Active Diffusion (43/0) - Green</name>
-  <source>43/0@1</source>
+  <source>43/0</source>
  </properties>
  <properties>
   <frame-color>#ff0000</frame-color>
@@ -46,7 +46,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Poly Gates (46/0) - Red</name>
-  <source>46/0@1</source>
+  <source>46/0</source>
  </properties>
  <properties>
   <frame-color>#505050</frame-color>
@@ -62,7 +62,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Contact (48/0) - Dark Gray</name>
-  <source>48/0@1</source>
+  <source>48/0</source>
  </properties>
  <properties>
   <frame-color>#0000ff</frame-color>
@@ -78,7 +78,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Metal1 (49/0) - Blue</name>
-  <source>49/0@1</source>
+  <source>49/0</source>
  </properties>
  <properties>
   <frame-color>#00ffff</frame-color>
@@ -94,7 +94,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Via1 (50/0) - Cyan</name>
-  <source>50/0@1</source>
+  <source>50/0</source>
  </properties>
  <properties>
   <frame-color>#800080</frame-color>
@@ -110,7 +110,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Metal2 (51/0) - Purple</name>
-  <source>51/0@1</source>
+  <source>51/0</source>
  </properties>
  <properties>
   <frame-color>#ff00ff</frame-color>
@@ -126,7 +126,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Via2 (61/0) - Magenta</name>
-  <source>61/0@1</source>
+  <source>61/0</source>
  </properties>
  <properties>
   <frame-color>#00e5ff</frame-color>
@@ -142,7 +142,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Metal3 (62/0) - Cyan/Light Blue</name>
-  <source>62/0@1</source>
+  <source>62/0</source>
  </properties>
  <properties>
   <frame-color>#ffff00</frame-color>
@@ -158,7 +158,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Via3 (30/0) - Yellow</name>
-  <source>30/0@1</source>
+  <source>30/0</source>
  </properties>
  <properties>
   <frame-color>#ffd600</frame-color>
@@ -174,7 +174,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Metal4 (31/0) - Yellow (Quadrant Borders)</name>
-  <source>31/0@1</source>
+  <source>31/0</source>
  </properties>
  <properties>
   <frame-color>#ffffff</frame-color>
@@ -190,7 +190,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Via4 (32/0) - White</name>
-  <source>32/0@1</source>
+  <source>32/0</source>
  </properties>
  <properties>
   <frame-color>#ff007f</frame-color>
@@ -206,7 +206,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Metal5 (33/0) - Pink/Magenta (VSS stripes/Core)</name>
-  <source>33/0@1</source>
+  <source>33/0</source>
  </properties>
  <properties>
   <frame-color>#a0a0a0</frame-color>
@@ -222,7 +222,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Via5 (36/0) - Light Gray</name>
-  <source>36/0@1</source>
+  <source>36/0</source>
  </properties>
  <properties>
   <frame-color>#a52a2a</frame-color>
@@ -238,7 +238,7 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Metal6 (37/0) - Brown-Red (VDD rings/Pads)</name>
-  <source>37/0@1</source>
+  <source>37/0</source>
  </properties>
  <properties>
   <frame-color>#c0c0c0</frame-color>
@@ -254,6 +254,6 @@
   <xfill>false</xfill>
   <animation>0</animation>
   <name>Glass/Ports (52/0) - Silver/Outline</name>
-  <source>52/0@1</source>
+  <source>52/0</source>
  </properties>
 </layer-properties>

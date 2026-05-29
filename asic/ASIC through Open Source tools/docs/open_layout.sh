@@ -52,7 +52,7 @@ if [ "$VIEWER" == "klayout" ]; then
     echo "          * Press '*' (asterisk) to fully expand cell hierarchy"
     echo "          * Toggle layers in the right-side Layers Panel"
     echo ""
-    klayout "$GDS_FILE" &
+    klayout "$GDS_FILE" -l "$DELIVERY_DIR/titan_x_top.lyp" &
     exit 0
 fi
 

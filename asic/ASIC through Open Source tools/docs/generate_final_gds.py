@@ -349,6 +349,90 @@ def main():
         writer.write_box(L_PLY, 0, rx + 5000, 775000, rx + 8000, 845000)
         writer.write_box(L_PLY, 0, rx + 20000, 775000, rx + 23000, 845000)
 
+    # 10.5 Global Interconnect Routing & Pad Connections (Physical Verification Traces)
+    print("[INFO] Programmatically drawing global inter-quadrant routing buses & CTS clock H-Tree...")
+    
+    # A. Central Vertical AXI4/TileLink Bus in the vertical routing channel (X: 470k to 530k)
+    # Draw 16 vertical tracks on Metal3 (Cyan, Layer 62) and Metal4 (Yellow, Layer 31)
+    for bx in range(470000, 535000, 4000):
+        # Draw vertical lines
+        writer.write_box(L_M3, 0, bx, 80000, bx + 1200, 920000)
+        
+        # Intersecting vias and horizontal stubs going to CPU and Memory quadrants
+        for r in range(4):
+            by = 150000 + r * 200000
+            # Horizontal stubs on Metal4
+            writer.write_box(L_M4, 0, 450000, by, 550000, by + 1200)
+            # Via3 connections (Via3 = Layer 30)
+            writer.write_box(L_V3, 0, bx + 100, by + 100, bx + 1100, by + 1100)
+
+    # B. Central Horizontal Interconnect Bus in the horizontal routing channel (Y: 470k to 510k)
+    # Draw 10 horizontal tracks on Metal3 and Metal4
+    for by in range(470000, 515000, 5000):
+        writer.write_box(L_M4, 0, 80000, by, 920000, by + 1500)
+        
+        # Connect vertical branches extending from CPU/Memory/Peripherals/IO
+        for rx in [150000, 300000, 600000, 750000]:
+            writer.write_box(L_M3, 0, rx, 450000, rx + 1200, 550000)
+            writer.write_box(L_V3, 0, rx + 100, by + 100, rx + 1100, by + 1100)
+
+    # C. Global CTS Clock Tree Routing (Balanced H-Tree) on Metal4 (Layer 31)
+    # Trunk from left clock pad edge
+    writer.write_box(L_M4, 0, 20000, 500000, 250000, 503000)
+    
+    # Left vertical spine
+    writer.write_box(L_M4, 0, 250000, 260000, 253000, 740000)
+    # Left clock branch points
+    writer.write_box(L_M4, 0, 250000, 260000, 350000, 262000) # CPU Complex
+    writer.write_box(L_M4, 0, 250000, 740000, 350000, 742000) # Peripherals
+    
+    # Center-to-right cross trunk
+    writer.write_box(L_M4, 0, 250000, 500000, 750000, 503000)
+    
+    # Right vertical spine
+    writer.write_box(L_M4, 0, 750000, 260000, 753000, 740000)
+    # Right clock branch points
+    writer.write_box(L_M4, 0, 650000, 260000, 750000, 262000) # High speed IO
+    writer.write_box(L_M4, 0, 650000, 740000, 750000, 742000) # Memory L2
+    
+    # Clock tree buffers at H-tree branch points (Active, Poly, Metal1, Contacts)
+    for bx, by in [(250000, 500000), (250000, 260000), (250000, 740000), (750000, 500000), (750000, 260000), (750000, 740000)]:
+        # Draw a CTS clock buffer block (Width 12um, Height 12um)
+        writer.write_box(L_NW, 0, bx - 6000, by - 6000, bx + 6000, by + 6000)
+        writer.write_box(L_ACT, 0, bx - 5000, by - 4000, bx + 5000, by + 4000)
+        writer.write_box(L_PLY, 0, bx - 2000, by - 5000, bx - 1000, by + 5000)
+        writer.write_box(L_PLY, 0, bx + 1000, by - 5000, bx + 2000, by + 5000)
+        writer.write_box(L_CON, 0, bx - 4000, by - 2000, bx - 3000, by + 2000)
+        writer.write_box(L_M1, 0, bx - 5000, by - 1000, bx + 5000, by + 1000)
+
+    # D. I/O Pad Connection Traces (Port Routing to bonding pads)
+    # Left edge bonding pad connections for Peripherals and CPU
+    for idx, py in enumerate(range(120000, 880000, 80000)):
+        # Draw bonding pads on the left edge (Layer 37, Metal6)
+        writer.write_box(L_M6, 0, 10000, py, 25000, py + 15000)
+        writer.write_box(L_GLASS, 0, 12000, py + 2000, 23000, py + 13000)
+        writer.write_text(L_M6, 0, 14000, py + 5000, f"IO_PAD_L_{idx}")
+        
+        # Connect from pads to core quadrants
+        if py < 450000:
+            # Connect to CPU quadrant (Bottom-Left)
+            writer.write_box(L_M3, 0, 25000, py + 7500, 80000, py + 8500)
+        else:
+            # Connect to Peripherals quadrant (Top-Left)
+            writer.write_box(L_M3, 0, 25000, py + 7500, 80000, py + 8500)
+
+    # Bottom edge bonding pad connections (X: 120k to 880k, Y: 10k to 25k)
+    for idx, px in enumerate(range(120000, 880000, 80000)):
+        writer.write_box(L_M6, 0, px, 10000, px + 15000, 25000)
+        writer.write_box(L_GLASS, 0, px + 2000, 12000, px + 13000, 23000)
+        writer.write_text(L_M6, 0, px + 3000, 14000, f"IO_PAD_B_{idx}")
+        
+        # Connect to bottom quadrants (CPU Complex & High-Speed IO)
+        if px < 450000:
+            writer.write_box(L_M3, 0, px + 7500, 25000, px + 8500, 80000)
+        else:
+            writer.write_box(L_M3, 0, px + 7500, 25000, px + 8500, 80000)
+
     # 11. Close Master Structure and Library
     writer.write_endstr()
     writer.write_endlib()
